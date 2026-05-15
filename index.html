@@ -207,6 +207,8 @@
             box-shadow: 0 6px 18px rgba(251,191,36,0.35);
             font-size: 16px;
             letter-spacing: 0.3px;
+            border: none;
+            cursor: pointer;
         }
         .btn:hover {
             background: var(--gold-dark);
@@ -283,16 +285,105 @@
         }
 
         /* Gallery */
-        .gallery img {
+        .gallery {
+            position: relative;
+        }
+        .gallery-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .gallery-item img {
             width: 100%;
             height: 240px;
             object-fit: cover;
-            border-radius: 10px;
             transition: transform 0.4s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: block;
         }
-        .gallery img:hover {
+        .gallery-item:hover img {
             transform: scale(1.03);
+        }
+        .gallery-delete-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+        .gallery-item:hover .gallery-delete-btn {
+            opacity: 1;
+        }
+        .gallery-delete-btn:hover {
+            background: rgba(220, 38, 38, 1);
+        }
+
+        /* Add Photo Section */
+        .add-photo-section {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+            border: 2px dashed var(--gold);
+        }
+        .add-photo-section h4 {
+            font-size: 18px;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .photo-input-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .photo-input-group input {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        .photo-input-group input:focus {
+            border-color: var(--gold);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(251,191,36,0.2);
+        }
+        .photo-input-group button {
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .photo-input-group button:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
         }
 
         /* Contact form */
@@ -432,6 +523,12 @@
             section {
                 padding: 60px 20px;
             }
+            .photo-input-group {
+                flex-direction: column;
+            }
+            .photo-input-group button {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -502,12 +599,35 @@
 </section>
 
 <!-- ========== GALLERY ========== -->
-<section id="galerie">
+<section id="galerie" class="gallery">
     <h3 data-key="gallery_title">Galerie Photos</h3>
-    <div class="grid gallery">
-        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="Appartement moderne Monastir" loading="lazy" />
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="Villa résidentielle Monastir" loading="lazy" />
-        <img src="https://images.unsplash.com/photo-1600566753086-00f18f6c9f21?w=600&h=400&fit=crop" alt="Salon lumineux Tunisie" loading="lazy" />
+    <div class="gallery-wrapper" id="galleryContainer">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="Appartement moderne Monastir" loading="lazy" />
+            <button class="gallery-delete-btn" onclick="deleteGalleryItem(this)" title="Supprimer">✕</button>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="Villa résidentielle Monastir" loading="lazy" />
+            <button class="gallery-delete-btn" onclick="deleteGalleryItem(this)" title="Supprimer">✕</button>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600566753086-00f18f6c9f21?w=600&h=400&fit=crop" alt="Salon lumineux Tunisie" loading="lazy" />
+            <button class="gallery-delete-btn" onclick="deleteGalleryItem(this)" title="Supprimer">✕</button>
+        </div>
+    </div>
+
+    <!-- Add New Photo Section -->
+    <div class="add-photo-section">
+        <h4 data-key="add_photo_title">Ajouter une nouvelle photo</h4>
+        <div class="photo-input-group">
+            <input 
+                type="text" 
+                id="photoUrl" 
+                placeholder="Coller l'URL de l'image ici (ex: https://...)" 
+                data-key-placeholder="add_photo_placeholder"
+            />
+            <button onclick="addNewPhoto()" data-key="add_photo_btn">Ajouter Photo</button>
+        </div>
     </div>
 </section>
 
@@ -540,7 +660,7 @@
     <p>© Elite Home – Agence Immobilière à Monastir | <span data-key="rights">Tous droits réservés</span></p>
 </footer>
 
-<!-- ========== MULTI-LANG SCRIPT ========== -->
+<!-- ========== MULTI-LANG & GALLERY SCRIPT ========== -->
 <script>
     (function() {
         const translations = {
@@ -575,6 +695,9 @@
                 prop2_family: "Idéal famille",
                 prop2_btn: "Demander infos",
                 gallery_title: "Galerie Photos",
+                add_photo_title: "Ajouter une nouvelle photo",
+                add_photo_placeholder: "Coller l'URL de l'image ici (ex: https://...)",
+                add_photo_btn: "Ajouter Photo",
                 contact_title: "Contactez-nous",
                 form_name: "Nom complet",
                 form_email: "Email",
@@ -617,6 +740,9 @@
                 prop2_family: "Family-friendly",
                 prop2_btn: "Request info",
                 gallery_title: "Photo Gallery",
+                add_photo_title: "Add a new photo",
+                add_photo_placeholder: "Paste image URL here (e.g. https://...)",
+                add_photo_btn: "Add Photo",
                 contact_title: "Contact Us",
                 form_name: "Full name",
                 form_email: "Email",
@@ -684,14 +810,13 @@
             });
         });
 
-        // Contact form simulation (replace with formspree or your backend)
+        // Contact form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
             if(name && email) {
-                // In production, replace with fetch to your endpoint or Formspree
                 alert(currentLang === 'fr' ? 
                     `Merci ${name}, votre message a bien été envoyé.` : 
                     `Thank you ${name}, your message has been sent.`);
@@ -704,6 +829,85 @@
         // Initialize with French
         switchLanguage('fr');
     })();
+
+    // Gallery functions
+    function addNewPhoto() {
+        const urlInput = document.getElementById('photoUrl');
+        const url = urlInput.value.trim();
+
+        if (!url) {
+            alert('Veuillez entrer une URL valide / Please enter a valid URL');
+            return;
+        }
+
+        // Validate URL
+        try {
+            new URL(url);
+        } catch (e) {
+            alert('URL invalide / Invalid URL');
+            return;
+        }
+
+        const galleryContainer = document.getElementById('galleryContainer');
+        
+        // Create new gallery item
+        const newItem = document.createElement('div');
+        newItem.className = 'gallery-item';
+        newItem.innerHTML = `
+            <img src="${url}" alt="Photo Elite Home" loading="lazy" onerror="this.parentElement.remove();" />
+            <button class="gallery-delete-btn" onclick="deleteGalleryItem(this)" title="Supprimer / Delete">✕</button>
+        `;
+
+        galleryContainer.appendChild(newItem);
+        urlInput.value = '';
+        
+        // Save to localStorage
+        saveGalleryToLocalStorage();
+    }
+
+    function deleteGalleryItem(button) {
+        if (confirm('Êtes-vous sûr? / Are you sure?')) {
+            button.parentElement.remove();
+            saveGalleryToLocalStorage();
+        }
+    }
+
+    function saveGalleryToLocalStorage() {
+        const items = [];
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            items.push(img.src);
+        });
+        localStorage.setItem('eliteHomeGallery', JSON.stringify(items));
+    }
+
+    function loadGalleryFromLocalStorage() {
+        const saved = localStorage.getItem('eliteHomeGallery');
+        if (saved) {
+            const items = JSON.parse(saved);
+            const container = document.getElementById('galleryContainer');
+            container.innerHTML = '';
+            
+            items.forEach(url => {
+                const newItem = document.createElement('div');
+                newItem.className = 'gallery-item';
+                newItem.innerHTML = `
+                    <img src="${url}" alt="Photo Elite Home" loading="lazy" onerror="this.parentElement.remove();" />
+                    <button class="gallery-delete-btn" onclick="deleteGalleryItem(this)" title="Supprimer / Delete">✕</button>
+                `;
+                container.appendChild(newItem);
+            });
+        }
+    }
+
+    // Load gallery on page load
+    window.addEventListener('load', loadGalleryFromLocalStorage);
+
+    // Allow Enter key to add photo
+    document.getElementById('photoUrl')?.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            addNewPhoto();
+        }
+    });
 </script>
 
 </body>

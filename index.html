@@ -1,632 +1,558 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Home | Immobilier Monastir – Location, Vente, Investissement</title>
-    <meta name="description" content="Agence immobilière à Monastir, Tunisie. Location, vente et investissement en toute confiance.">
-    <meta name="keywords" content="location Monastir, vente appartement Monastir, investissement Tunisie, immobilier Monastir">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Мозаичная галерея | Песок & олива</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Elite Home – Location, Vente, Investissement">
-    <meta property="og:description" content="Votre partenaire immobilier à Monastir.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200">
-    <meta property="og:url" content="https://elitehomeseaview.github.io/EliteHome/">
+    /* ----- ФОН: мозаика песочного цвета ----- */
+    body {
+      /* Основной песочный фон + узор из "мозаичных плиток" */
+      background-color: #f7e9d0;
+      background-image: 
+        linear-gradient(45deg, #e9d6b0 1px, transparent 1px),
+        linear-gradient(-45deg, #e9d6b0 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.4;
+      padding: 20px;
+      min-height: 100vh;
+    }
 
-    <style>
-        :root {
-            --bleu-med: #1a3b5c;    /* глубокий средиземноморский синий */
-            --terracotta: #c96b4a;   /* терракота */
-            --gold: #e6b43c;         /* золотой */
-            --white: #fdfbf7;        /* тёплый белый */
-            --sand: #f4e9d8;         /* песочный */
-            --dark: #2e1e0f;
-            --mosaic: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path d="M0 0h20v20H0zm20 20h20v20H20zM20 0h20v20H20zM0 20h20v20H0z" fill="%23c96b4a" opacity="0.08"/></svg>');
-        }
+    /* Центрирующий контейнер */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: transparent;
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: var(--white);
-            color: #2e1e0f;
-            line-height: 1.6;
-            background-image: var(--mosaic), linear-gradient(to bottom, #fdfbf7 0%, #f4e9d8 100%);
-        }
+    /* ----- ПАНЕЛИ (оливковый цвет) ----- */
+    .panel, .card, .admin-panel, .login-panel, .add-photo-panel, 
+    .site-header, .control-buttons {
+      background-color: #6b8e23;  /* оливковый базовый */
+      color: #000000;            /* чёрный текст */
+      border-radius: 24px;
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15), inset 0 1px 2px rgba(255, 255, 200, 0.4);
+      transition: all 0.2s ease;
+    }
 
-        /* ---------- ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ ---------- */
-        .olive-branch {
-            display: inline-block;
-            font-size: 1.2em;
-            margin: 0 4px;
-        }
-        .carthage-symbol {
-            font-size: 1.8em;
-            vertical-align: middle;
-        }
-        .mosaic-pattern {
-            background: var(--mosaic);
-            height: 8px;
-            width: 100%;
-            border-radius: 4px;
-            opacity: 0.6;
-        }
+    /* Заголовок сайта – особая стилизация */
+    .site-header {
+      text-align: center;
+      backdrop-filter: blur(2px);
+    }
 
-        header {
-            background: var(--bleu-med);
-            color: white;
-            padding: 16px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            border-bottom: 4px solid var(--gold);
-        }
-        .logo {
-            font-size: 30px;
-            font-weight: 700;
-            color: var(--gold);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            letter-spacing: -0.5px;
-        }
-        .logo span {
-            font-size: 14px;
-            font-weight: 400;
-            color: #f4e9d8;
-            border-left: 2px solid var(--terracotta);
-            padding-left: 12px;
-        }
-        nav { display: flex; align-items: center; gap: 10px; }
-        nav a {
-            color: #fdfbf7;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 18px;
-            border-radius: 20px;
-            transition: 0.3s;
-            background: rgba(255,255,255,0.05);
-        }
-        nav a:hover { background: var(--gold); color: var(--bleu-med); font-weight: 700; }
-        .lang-switch {
-            background: none;
-            border: 2px solid var(--gold);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: 0.3s;
-            margin-left: 10px;
-        }
-        .lang-switch:hover { background: var(--gold); color: var(--bleu-med); }
-        .menu-toggle { display: none; }
+    .site-header h1 {
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      font-weight: 800;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.05);
+      margin-bottom: 8px;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #1a3b5c 0%, #0f2a3f 100%);
-            color: white;
-            padding: 100px 40px 80px;
-            text-align: center;
-            position: relative;
-            border-bottom: 8px solid var(--terracotta);
-        }
-        .hero::after {
-            content: "🐘  🫒  🧿  🏛️";
-            font-size: 60px;
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255,255,255,0.9);
-            padding: 0 20px;
-            border-radius: 40px;
-            letter-spacing: 15px;
-        }
-        .hero h2 { font-size: 46px; font-weight: 800; margin-bottom: 20px; }
-        .hero p { font-size: 22px; opacity: 0.9; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; }
-        .btn {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--bleu-med);
-            font-weight: 700;
-            padding: 14px 34px;
-            border-radius: 40px;
-            text-decoration: none;
-            box-shadow: 0 8px 18px rgba(230,180,60,0.4);
-            transition: 0.3s;
-            font-size: 16px;
-        }
-        .btn:hover { background: var(--terracotta); color: white; transform: translateY(-2px); }
+    .site-header h1 span {
+      font-size: 2rem;
+    }
 
-        section { padding: 70px 40px; max-width: 1200px; margin: auto; }
-        h3 {
-            font-size: 32px;
-            margin-bottom: 30px;
-            color: var(--bleu-med);
-            position: relative;
-            display: inline-block;
-        }
-        h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 80px;
-            height: 5px;
-            background: var(--terracotta);
-            border-radius: 2px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 24px;
-            margin-top: 30px;
-        }
-        .card {
-            background: white;
-            padding: 28px;
-            border-radius: 16px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-            border: 1px solid #e2dace;
-            transition: 0.3s;
-        }
-        .card:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(0,0,0,0.1); }
-        .card strong { font-size: 20px; color: var(--bleu-med); display: block; margin-bottom: 10px; }
+    .subhead {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      font-weight: 500;
+      border-top: 1px solid rgba(0,0,0,0.15);
+      display: inline-block;
+      padding-top: 8px;
+      color: #000;
+    }
 
-        /* Properties dynamic */
-        .property {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 8px 22px rgba(0,0,0,0.07);
-            overflow: hidden;
-            transition: 0.3s;
-        }
-        .property:hover { transform: translateY(-5px); }
-        .property img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 4px solid var(--gold);
-        }
-        .property-info { padding: 20px; }
-        .property h4 { font-size: 22px; color: var(--bleu-med); margin-bottom: 10px; }
-        .property ul { list-style: none; padding: 0; margin: 12px 0; }
-        .property li { padding: 5px 0; border-bottom: 1px dashed #d2c8b6; }
+    /* Карточки фотографий – тоже оливковые панели */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 10px;
+    }
 
-        .contact-form {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            max-width: 600px;
-            margin-top: 20px;
-            border: 2px solid var(--gold);
-        }
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 16px;
-            border: 1px solid #c9b896;
-            border-radius: 8px;
-            background: #fdfbf7;
-        }
-        .contact-form button {
-            background: var(--bleu-med);
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
-        }
-        .contact-form button:hover { background: var(--terracotta); }
+    .card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      padding: 0;
+      background-color: #6b8e23;
+      border-radius: 32px;
+    }
 
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 34px;
-            box-shadow: 0 6px 18px rgba(37,211,102,0.4);
-            z-index: 999;
-            text-decoration: none;
-        }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 28px rgba(0,0,0,0.2);
+    }
 
-        /* Admin panel */
-        .admin-login {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--bleu-med);
-            color: white;
-            padding: 30px;
-            border-radius: 12px;
-            z-index: 2000;
-            display: none;
-            flex-direction: column;
-            gap: 10px;
-            box-shadow: 0 0 0 2000px rgba(0,0,0,0.7);
-        }
-        .admin-login input { padding: 10px; border-radius: 6px; border: none; }
-        .admin-login button { padding: 10px; background: var(--gold); border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
-        .admin-panel {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1999;
-            overflow-y: auto;
-        }
-        .admin-content {
-            background: var(--white);
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 30px;
-            border-radius: 16px;
-            border: 4px solid var(--gold);
-        }
-        .admin-content h2 { color: var(--bleu-med); }
-        .admin-content input, .admin-content textarea {
-            width: 100%; padding: 10px; margin: 8px 0; border-radius: 6px; border: 1px solid #ccc;
-        }
-        .admin-content button {
-            background: var(--terracotta);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            margin: 5px;
-        }
-        .property-admin-item {
-            background: #f4e9d8;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .card-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background-color: #4a6419;
+      display: block;
+      border-bottom: 3px solid rgba(0,0,0,0.2);
+    }
 
-        footer {
-            background: var(--bleu-med);
-            color: #fdfbf7;
-            text-align: center;
-            padding: 30px;
-            border-top: 5px solid var(--gold);
-            font-size: 15px;
-        }
+    .card-content {
+      padding: 18px 16px 20px 16px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-        @media (max-width: 768px) {
-            header { flex-direction: column; align-items: flex-start; }
-            .menu-toggle { display: block; }
-            nav { display: none; flex-direction: column; width: 100%; }
-            nav.active { display: flex; }
-        }
-    </style>
+    .card-description {
+      font-size: 1rem;
+      font-weight: 500;
+      word-break: break-word;
+      background: rgba(0,0,0,0.05);
+      padding: 8px 12px;
+      border-radius: 40px;
+      color: #000000;
+      margin-top: 4px;
+    }
+
+    /* значок-символ (вводный знак) */
+    .photo-symbol {
+      font-size: 1.7rem;
+      line-height: 1;
+      letter-spacing: 6px;
+      color: #1e2a0c;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    /* Кнопки */
+    button, .btn-like {
+      background-color: #2c2c1c;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 60px;
+      font-weight: bold;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #f9f3d9;
+      background: #3e4d1c;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      margin: 4px 6px 4px 0;
+    }
+
+    button:hover {
+      background-color: #556b2f;
+      transform: scale(0.97);
+      color: #ffffff;
+    }
+
+    .admin-btn {
+      background: #2c2b1f;
+      color: #f5eace;
+    }
+
+    .danger-btn {
+      background: #7a2e2e;
+      color: #fff0e0;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 16px;
+      margin: 10px 0;
+      border-radius: 48px;
+      border: 1px solid #4a5c23;
+      background-color: #fffef7;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #000;
+    }
+
+    textarea {
+      border-radius: 24px;
+      resize: vertical;
+    }
+
+    .flex-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      justify-content: space-between;
+    }
+
+    .admin-zone {
+      display: none;
+    }
+
+    .admin-zone.visible {
+      display: block;
+    }
+
+    .info-message {
+      background: #ffe0b5;
+      border-left: 8px solid #6b8e23;
+      padding: 10px;
+      border-radius: 28px;
+      margin-top: 10px;
+      color: #2b2b0f;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.8rem;
+      background: transparent;
+      color: #3d3b1f;
+      padding: 10px;
+    }
+
+    hr {
+      margin: 12px 0;
+      border-color: rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 12px;
+      }
+      .panel, .card, .admin-panel {
+        padding: 16px;
+      }
+      .site-header h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">
-        🏛️ Elite Home <span>Monastir</span>
+<div class="container">
+  <!-- ШАПКА САЙТА (редактируемая через админа) -->
+  <header class="site-header panel" id="siteHeader">
+    <h1>
+      <span>🪨✨</span> 
+      <span id="mainTitle">МОЗАИЧНАЯ ГАЛЕРЕЯ</span>
+      <span>✨🧩</span>
+    </h1>
+    <div class="subhead" id="mainSubhead">песочные мозаики • оливковые панели • знаки ввода</div>
+  </header>
+
+  <!-- Область входа / админ-панель -->
+  <div class="panel login-panel" id="loginPanel">
+    <div class="flex-row">
+      <span>🔐 ДОСТУП АДМИНИСТРАТОРА</span>
+      <button id="adminLoginBtn" class="admin-btn">🔑 Вход по коду</button>
+      <button id="adminLogoutBtn" style="display: none;" class="danger-btn">🚪 Выйти</button>
     </div>
-    <button class="menu-toggle">☰</button>
-    <nav id="nav">
-        <a href="#accueil" data-key="nav_home">Accueil</a>
-        <a href="#services" data-key="nav_services">Services</a>
-        <a href="#biens" data-key="nav_properties">Biens</a>
-        <a href="#galerie" data-key="nav_gallery">Galerie</a>
-        <a href="#contact" data-key="nav_contact">Contact</a>
-        <button class="lang-switch" id="langToggle">EN</button>
-    </nav>
-</header>
-
-<section class="hero" id="accueil">
-    <h2 data-key="hero_title">Votre Agence Immobilière à Monastir</h2>
-    <p data-key="hero_sub">Location, vente et investissement – avec l’esprit de Carthage</p>
-    <a class="btn" href="#contact">Contactez-nous</a>
-</section>
-
-<section id="services">
-    <h3 data-key="services_title">Nos Services</h3>
-    <div class="grid">
-        <div class="card">
-            <strong>🏠 <span data-key="service_location">Location</span></strong>
-            <p data-key="service_location_desc">Appartements et villas à louer toute l'année.</p>
-        </div>
-        <div class="card">
-            <strong>🏷️ <span data-key="service_vente">Vente</span></strong>
-            <p data-key="service_vente_desc">Achetez votre bien résidentiel ou commercial.</p>
-        </div>
-        <div class="card">
-            <strong>📈 <span data-key="service_invest">Investissement</span></strong>
-            <p data-key="service_invest_desc">Rentabilité optimale dans les zones touristiques.</p>
-        </div>
+    <div id="adminZone" class="admin-zone">
+      <hr>
+      <div class="add-photo-panel" style="background: #8aaE44; border-radius: 24px; padding: 18px;">
+        <h3>📸 ➕ Добавить фотографию (загрузка с устройства)</h3>
+        <input type="file" id="photoInput" accept="image/jpeg,image/png,image/webp,image/gif">
+        <textarea id="photoDescription" rows="2" placeholder="Введите описание фотографии ... (чёрный текст)"></textarea>
+        <button id="addPhotoBtn">📤 ЗАГРУЗИТЬ И СОХРАНИТЬ</button>
+        <div class="info-message">✔️ Фото сохраняется прямо в браузере (localStorage). Все данные остаются на вашем устройстве.</div>
+      </div>
+      <hr>
+      <div class="flex-row">
+        <button id="editHeaderBtn">✏️ Редактировать заголовок сайта</button>
+        <span style="font-size: 0.8rem;">✨ вводные знаки повсюду ✨</span>
+      </div>
+      <p style="margin-top: 12px;"><span>🪄</span> <strong>Режим администратора активен</strong> – можно редактировать описания, удалять фото, менять шапку.</p>
     </div>
-    <div class="mosaic-pattern" style="margin-top: 30px;"></div>
-</section>
+  </div>
 
-<section id="biens">
-    <h3 data-key="properties_title">Biens Immobiliers Disponibles</h3>
-    <div class="grid" id="propertiesContainer">
-        <!-- Заполняется динамически через JS -->
-    </div>
-    <p style="text-align: center; margin-top: 20px;">
-        <button id="adminBtn" style="background: var(--terracotta); color: white; border: none; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 14px;">
-            🔐 Administration
-        </button>
-    </p>
-</section>
-
-<section id="galerie">
-    <h3 data-key="gallery_title">Galerie Photos</h3>
-    <div class="grid gallery">
-        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop" alt="Appartement Monastir">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop" alt="Villa Monastir">
-        <img src="https://images.unsplash.com/photo-1600566753086-00f18f6c9f21?w=400&h=300&fit=crop" alt="Salon Tunisie">
-    </div>
-</section>
-
-<section id="contact">
-    <h3 data-key="contact_title">Contactez-nous</h3>
-    <form class="contact-form">
-        <input type="text" placeholder="Nom complet" data-key-placeholder="form_name">
-        <input type="email" placeholder="Email" data-key-placeholder="form_email">
-        <textarea rows="4" placeholder="Votre message" data-key-placeholder="form_message"></textarea>
-        <button type="submit" data-key="form_btn">Envoyer</button>
-    </form>
-    <div style="margin-top: 30px; background: white; padding: 20px; border-radius: 12px;">
-        <p><strong>📍 Adresse :</strong> Avenue Habib Bourguiba, Monastir</p>
-        <p><strong>📧 Email :</strong> contact@elitehome.tn</p>
-        <p><strong>📱 WhatsApp :</strong> +216 12 345 678</p>
-    </div>
-</section>
-
-<a href="https://wa.me/21612345678" class="whatsapp-float" target="_blank">💬</a>
-
-<!-- АДМИН-ЛОГИН -->
-<div class="admin-login" id="adminLogin">
-    <h3>🔐 Accès administrateur</h3>
-    <input type="password" id="adminPassword" placeholder="Mot de passe">
-    <button onclick="loginAdmin()">Connexion</button>
-    <button onclick="closeAdminLogin()" style="background:#ccc;">Annuler</button>
+  <!-- ГАЛЕРЕЯ ФОТОГРАФИЙ (карточки) -->
+  <div id="galleryContainer" class="gallery">
+    <!-- Динамически заполняется из JS -->
+  </div>
+  <footer>
+    🧩 мозаика песочная | панели оливковые | ✦ чёрный текст ✦
+  </footer>
 </div>
-
-<!-- АДМИН-ПАНЕЛЬ -->
-<div class="admin-panel" id="adminPanel">
-    <div class="admin-content">
-        <h2>Gestion des Biens Immobiliers</h2>
-        <p>Ajouter / Modifier / Supprimer des objets. Ces changements s'afficheront sur le site (stockés localement).</p>
-        <div>
-            <input type="text" id="newTitle" placeholder="Titre du bien (ex: Appartement vue mer)">
-            <textarea id="newDesc" placeholder="Description courte"></textarea>
-            <input type="text" id="newImage" placeholder="URL de l'image (lien web)">
-            <input type="text" id="newDetails" placeholder="Caractéristiques (séparées par des virgules)">
-            <button onclick="addProperty()">➕ Ajouter</button>
-        </div>
-        <hr style="margin: 20px 0;">
-        <div id="adminList"></div>
-        <button onclick="closeAdminPanel()">❌ Fermer</button>
-    </div>
-</div>
-
-<footer>
-    <p>© Elite Home – Agence Immobilière Monastir | <span data-key="rights">Tous droits réservés</span></p>
-    <p style="font-size: 12px; opacity: 0.8;">Inspiré par l’héritage d’Hannibal – 🐘</p>
-</footer>
 
 <script>
-    // ========== МУЛЬТИЯЗЫЧНОСТЬ ==========
-    const translations = {
-        fr: {
-            nav_home: "Accueil",
-            nav_services: "Services",
-            nav_properties: "Biens",
-            nav_gallery: "Galerie",
-            nav_contact: "Contact",
-            hero_title: "Votre Agence Immobilière à Monastir",
-            hero_sub: "Location, vente et investissement – avec l’esprit de Carthage",
-            services_title: "Nos Services",
-            service_location: "Location",
-            service_location_desc: "Appartements et villas à louer toute l'année.",
-            service_vente: "Vente",
-            service_vente_desc: "Achetez votre bien résidentiel ou commercial.",
-            service_invest: "Investissement",
-            service_invest_desc: "Rentabilité optimale dans les zones touristiques.",
-            properties_title: "Biens Immobiliers Disponibles",
-            gallery_title: "Galerie Photos",
-            contact_title: "Contactez-nous",
-            form_name: "Nom complet",
-            form_email: "Email",
-            form_message: "Votre message",
-            form_btn: "Envoyer",
-            rights: "Tous droits réservés"
-        },
-        en: {
-            nav_home: "Home",
-            nav_services: "Services",
-            nav_properties: "Properties",
-            nav_gallery: "Gallery",
-            nav_contact: "Contact",
-            hero_title: "Your Real Estate Agency in Monastir",
-            hero_sub: "Rental, sale and investment – with the spirit of Carthage",
-            services_title: "Our Services",
-            service_location: "Rental",
-            service_location_desc: "Apartments and villas for rent all year round.",
-            service_vente: "Sale",
-            service_vente_desc: "Buy your residential or commercial property.",
-            service_invest: "Investment",
-            service_invest_desc: "Optimal profitability in tourist areas.",
-            properties_title: "Available Properties",
-            gallery_title: "Photo Gallery",
-            contact_title: "Contact Us",
-            form_name: "Full name",
-            form_email: "Email",
-            form_message: "Your message",
-            form_btn: "Send",
-            rights: "All rights reserved"
-        }
-    };
+  // -------- Глобальные данные ----------
+  let galleryItems = [];      // массив объектов { id, imageDataUrl, description }
+  let isAdmin = false;        // флаг режима админа
+  let nextId = Date.now();
 
-    let currentLang = 'fr';
-    function switchLang(lang) {
-        currentLang = lang;
-        document.querySelectorAll('[data-key]').forEach(el => {
-            const key = el.getAttribute('data-key');
-            if (translations[lang][key]) el.textContent = translations[lang][key];
-        });
-        document.querySelectorAll('[data-key-placeholder]').forEach(el => {
-            const key = el.getAttribute('data-key-placeholder');
-            if (translations[lang][key]) el.placeholder = translations[lang][key];
-        });
-        document.documentElement.lang = lang;
-        document.getElementById('langToggle').textContent = lang === 'fr' ? 'EN' : 'FR';
-    }
-    document.getElementById('langToggle').addEventListener('click', () => {
-        switchLang(currentLang === 'fr' ? 'en' : 'fr');
-    });
+  // DOM элементы
+  const galleryDiv = document.getElementById('galleryContainer');
+  const adminZone = document.getElementById('adminZone');
+  const adminLoginBtn = document.getElementById('adminLoginBtn');
+  const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+  const photoInput = document.getElementById('photoInput');
+  const photoDesc = document.getElementById('photoDescription');
+  const addPhotoBtn = document.getElementById('addPhotoBtn');
+  const editHeaderBtn = document.getElementById('editHeaderBtn');
+  const mainTitleSpan = document.getElementById('mainTitle');
+  const mainSubheadSpan = document.getElementById('mainSubhead');
 
-    // ========== СВОЙСТВА (динамическое хранилище) ==========
-    const STORAGE_KEY = 'elitehome_properties';
-    const defaultProperties = [
-        {
-            title: "Appartement Spacieux – Zone Touristique",
-            desc: "Superbe appartement lumineux proche de la plage.",
-            image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop",
-            details: ["175 m²", "3 chambres", "2 balcons", "Parking privé"]
-        },
-        {
-            title: "Villa Moderne – Quartier Résidentiel",
-            desc: "Villa familiale avec jardin méditerranéen.",
-            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop",
-            details: ["Quartier calme", "Finitions modernes", "Idéal famille"]
-        }
-    ];
-
-    function loadProperties() {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        return stored ? JSON.parse(stored) : defaultProperties;
-    }
-    function saveProperties(props) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(props));
-    }
-
-    function renderProperties() {
-        const container = document.getElementById('propertiesContainer');
-        const props = loadProperties();
-        container.innerHTML = props.map((p, index) => `
-            <div class="property">
-                <img src="${p.image}" alt="${p.title}">
-                <div class="property-info">
-                    <h4>${p.title}</h4>
-                    <p>${p.desc}</p>
-                    <ul>${p.details.map(d => `<li>✔️ ${d}</li>`).join('')}</ul>
-                    <a class="btn" href="#contact">Demander infos</a>
-                </div>
-            </div>
-        `).join('');
-        // Обновляем также админ-список
-        renderAdminList();
-    }
-
-    // ========== АДМИНКА ==========
-    const ADMIN_PASSWORD = 'Carthage2024'; // измените на свой пароль
-
-    function showAdminLogin() {
-        document.getElementById('adminLogin').style.display = 'flex';
-    }
-    function closeAdminLogin() {
-        document.getElementById('adminLogin').style.display = 'none';
-    }
-    function loginAdmin() {
-        const pwd = document.getElementById('adminPassword').value;
-        if (pwd === ADMIN_PASSWORD) {
-            closeAdminLogin();
-            openAdminPanel();
+  // ---------- Загрузка / сохранение в localStorage ----------
+  function loadFromStorage() {
+    const stored = localStorage.getItem('mosaic_gallery_data');
+    if (stored) {
+      try {
+        galleryItems = JSON.parse(stored);
+        // валидация простейшая
+        if (!Array.isArray(galleryItems)) galleryItems = [];
+        // обновим nextId чтобы избежать коллизий
+        if (galleryItems.length > 0) {
+          const maxId = Math.max(...galleryItems.map(item => item.id), 0);
+          nextId = maxId + 1;
         } else {
-            alert('Mot de passe incorrect');
+          nextId = Date.now();
         }
+      } catch(e) { galleryItems = []; }
+    } else {
+      // Стартовые демо-данные (для наглядности, но можно пусто)
+      galleryItems = [];
+      // При желании можно добавить пример, но для чистоты оставим пустую галерею.
+      // Чтобы пользователь видел как работает – добавим один пример с встроенной иконкой? 
+      // Лучше без мусора, но чтобы показать мозаику - создадим демо-запись с dataURL маленькой заглушкой?
+      // Не загромождаем, оставим пусто, пользователь сам загрузит.
     }
-    function openAdminPanel() {
-        document.getElementById('adminPanel').style.display = 'block';
-        renderAdminList();
-    }
-    function closeAdminPanel() {
-        document.getElementById('adminPanel').style.display = 'none';
+    renderGallery();
+  }
+
+  function saveToStorage() {
+    localStorage.setItem('mosaic_gallery_data', JSON.stringify(galleryItems));
+  }
+
+  // ---------- Отображение галереи (с учетом админ-режима) ----------
+  function renderGallery() {
+    if (!galleryDiv) return;
+    if (galleryItems.length === 0) {
+      galleryDiv.innerHTML = `<div class="panel" style="text-align:center; background:#6b8e23; color:#000;">✨ Пока нет ни одной фотографии. 
+      ${isAdmin ? 'Войдите в админ-панель и загрузите изображения из телефона/компьютера.' : 'Войдите как администратор, чтобы добавить фотографии.'} ✨</div>`;
+      return;
     }
 
-    function renderAdminList() {
-        const props = loadProperties();
-        const listDiv = document.getElementById('adminList');
-        listDiv.innerHTML = props.map((p, index) => `
-            <div class="property-admin-item">
-                <div>
-                    <strong>${p.title}</strong><br>
-                    <small>${p.desc}</small>
-                </div>
-                <button onclick="deleteProperty(${index})">🗑️ Supprimer</button>
-            </div>
-        `).join('');
+    let html = '';
+    for (let item of galleryItems) {
+      // безопасный id
+      const id = item.id;
+      const imgUrl = item.imageDataUrl || '';
+      const desc = item.description ? escapeHtml(item.description) : 'Без описания';
+
+      // "вводные знаки" – добавим символы перед описанием, как элемент мозаики
+      const symbolsList = ['✦', '✧', '◈', '◆', '⬟', '◍', '◎'];
+      const randomSymbol = symbolsList[Math.floor(Math.random() * symbolsList.length)];
+      
+      html += `
+        <div class="card" data-id="${id}">
+          <img class="card-image" src="${imgUrl}" alt="галерея мозаика" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20150%22%3E%3Crect%20width%3D%22200%22%20height%3D%22150%22%20fill%3D%22%23808040%22%2F%3E%3Ctext%20x%3D%2210%22%20y%3D%2275%22%20fill%3D%22black%22%3E%F0%9F%96%BC%20ошибка%3C%2Ftext%3E%3C%2Fsvg%3E'">
+          <div class="card-content">
+            <div class="photo-symbol">${randomSymbol} ${randomSymbol} ${randomSymbol}</div>
+            <div class="card-description">📝 ${desc}</div>
+            ${isAdmin ? `
+              <div class="flex-row" style="justify-content: flex-end; margin-top: 8px;">
+                <button class="editDescBtn" data-id="${id}">✏️ Прав. описание</button>
+                <button class="deletePhotoBtn danger-btn" data-id="${id}">🗑 Удалить фото</button>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `;
     }
+    galleryDiv.innerHTML = html;
 
-    function addProperty() {
-        const title = document.getElementById('newTitle').value.trim();
-        const desc = document.getElementById('newDesc').value.trim();
-        const image = document.getElementById('newImage').value.trim();
-        const detailsStr = document.getElementById('newDetails').value.trim();
-        if (!title || !image) return alert('Titre et image requis');
-        const details = detailsStr.split(',').map(s => s.trim()).filter(s => s);
-        const props = loadProperties();
-        props.push({ title, desc, image, details });
-        saveProperties(props);
-        renderProperties();
-        // Очистка полей
-        ['newTitle','newDesc','newImage','newDetails'].forEach(id => document.getElementById(id).value = '');
+    // Если админ – навешиваем обработчики на кнопки редактирования/удаления
+    if (isAdmin) {
+      document.querySelectorAll('.editDescBtn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = parseInt(btn.getAttribute('data-id'));
+          editDescriptionById(id);
+        });
+      });
+      document.querySelectorAll('.deletePhotoBtn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = parseInt(btn.getAttribute('data-id'));
+          deletePhotoById(id);
+        });
+      });
     }
+  }
 
-    function deleteProperty(index) {
-        const props = loadProperties();
-        props.splice(index, 1);
-        saveProperties(props);
-        renderProperties();
-    }
-
-    // Кнопка админа
-    document.getElementById('adminBtn').addEventListener('click', showAdminLogin);
-
-    // Вход по Enter
-    document.getElementById('adminPassword').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') loginAdmin();
+  // вспомогательная функция для экранирования HTML
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+      return c;
     });
+  }
 
-    // Мобильное меню
-    document.querySelector('.menu-toggle').addEventListener('click', () => {
-        document.getElementById('nav').classList.toggle('active');
+  // Редактирование описания
+  function editDescriptionById(id) {
+    const item = galleryItems.find(i => i.id === id);
+    if (!item) return;
+    const newDesc = prompt('Введите новое описание (чёрный текст):', item.description);
+    if (newDesc !== null) {
+      item.description = newDesc.substring(0, 300);
+      saveToStorage();
+      renderGallery();
+    }
+  }
+
+  // Удаление фотографии
+  function deletePhotoById(id) {
+    if (confirm('Удалить эту фотографию навсегда?')) {
+      galleryItems = galleryItems.filter(i => i.id !== id);
+      saveToStorage();
+      renderGallery();
+    }
+  }
+
+  // Добавление новой фотографии (из файла, прямая загрузка)
+  function addNewPhoto(file, description) {
+    if (!file || !file.type.startsWith('image/')) {
+      alert('Пожалуйста, выберите файл изображения (JPEG, PNG, WEBP, GIF)');
+      return false;
+    }
+    const maxSize = 5 * 1024 * 1024; // 5 MB
+    if (file.size > maxSize) {
+      alert('Файл слишком большой. Максимум 5MB.');
+      return false;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      const imageDataUrl = evt.target.result;
+      const newItem = {
+        id: nextId++,
+        imageDataUrl: imageDataUrl,
+        description: description.trim() || 'фотография без описания'
+      };
+      galleryItems.push(newItem);
+      saveToStorage();
+      renderGallery();
+      // очищаем форму добавления
+      photoInput.value = '';
+      photoDesc.value = '';
+      alert('✅ Фото успешно добавлено в мозаичную галерею!');
+    };
+    reader.onerror = function() {
+      alert('Ошибка чтения файла.');
+    };
+    reader.readAsDataURL(file);
+    return true;
+  }
+
+  // ----- Админ-режим: вход/выход, редактирование шапки -----
+  function enableAdminMode() {
+    isAdmin = true;
+    adminZone.classList.add('visible');
+    adminLoginBtn.style.display = 'none';
+    adminLogoutBtn.style.display = 'inline-block';
+    renderGallery();   // перерисовываем галерею с кнопками админа
+  }
+
+  function disableAdminMode() {
+    isAdmin = false;
+    adminZone.classList.remove('visible');
+    adminLoginBtn.style.display = 'inline-block';
+    adminLogoutBtn.style.display = 'none';
+    renderGallery();   // убираем админ-кнопки
+  }
+
+  // Обработчик входа по коду
+  function handleAdminLogin() {
+    const code = prompt('🔐 Введите секретный код администратора:');
+    // код доступа – меняется на "mosaicAdmin2025" или любой, но для простоты "admin123"
+    if (code === 'admin123' || code === 'мозаика2025' || code === 'mosaic2025') {
+      enableAdminMode();
+      alert('Добро пожаловать! Теперь вы можете добавлять фотографии, менять описания и редактировать заголовки.');
+    } else {
+      alert('Неверный код доступа. Доступ запрещён.');
+    }
+  }
+
+  // Редактирование заголовка и подзаголовка сайта (небольшие изменения)
+  function editSiteHeader() {
+    if (!isAdmin) {
+      alert('Только администратор может редактировать заголовок! Войдите по коду.');
+      return;
+    }
+    const newTitle = prompt('Введите новый главный заголовок:', mainTitleSpan.innerText);
+    if (newTitle !== null && newTitle.trim() !== '') {
+      mainTitleSpan.innerText = newTitle.trim();
+      // сохраняем настройки заголовка в localStorage
+      localStorage.setItem('mosaic_site_title', newTitle.trim());
+    }
+    const newSub = prompt('Введите новый подзаголовок (вводные знаки приветствуются):', mainSubheadSpan.innerText);
+    if (newSub !== null) {
+      mainSubheadSpan.innerText = newSub.trim();
+      localStorage.setItem('mosaic_site_subhead', newSub.trim());
+    }
+  }
+
+  // Загрузка сохранённых заголовков
+  function loadHeaderFromStorage() {
+    const savedTitle = localStorage.getItem('mosaic_site_title');
+    const savedSub = localStorage.getItem('mosaic_site_subhead');
+    if (savedTitle) mainTitleSpan.innerText = savedTitle;
+    if (savedSub) mainSubheadSpan.innerText = savedSub;
+  }
+
+  // ----- Инициализация событий -----
+  function initEvents() {
+    adminLoginBtn.addEventListener('click', handleAdminLogin);
+    adminLogoutBtn.addEventListener('click', () => {
+      disableAdminMode();
+      alert('Вы вышли из режима администратора.');
     });
+    addPhotoBtn.addEventListener('click', () => {
+      if (!isAdmin) {
+        alert('Пожалуйста, сначала войдите как администратор (код доступа).');
+        return;
+      }
+      const file = photoInput.files[0];
+      const description = photoDesc.value;
+      if (!file) {
+        alert('Выберите фотографию с вашего устройства (телефон/компьютер).');
+        return;
+      }
+      addNewPhoto(file, description);
+    });
+    editHeaderBtn.addEventListener('click', editSiteHeader);
+  }
 
-    // Инициализация
-    renderProperties();
-    switchLang('fr');
+  // Загружаем данные, заголовки, инициализируем рендер
+  function init() {
+    loadHeaderFromStorage();
+    loadFromStorage();   // загрузит галерею и вызовет рендер
+    initEvents();
+    // Если есть какой-то остаточный админ из sessionStorage - не храним, всегда начинаем без админа
+    disableAdminMode();   // гарантия: админ выключен при старте
+    // добавим красивую подпись что фото добавляются через загрузку
+    console.log('Сайт готов: фон-мозаика, оливковые панели, чёрные надписи, загрузка фото напрямую');
+  }
+
+  // запуск после загрузки DOM
+  document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
 </html>

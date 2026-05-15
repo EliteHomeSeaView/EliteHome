@@ -1,14 +1,52 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Elite Homes - Immobilier de luxe à Monastir, Tunisie</title>
-    <!-- Font Awesome 6 (free icons) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: modern & airy -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elite Home | Agence Immobilière à Monastir</title>
+    <meta name="description" content="Elite Home est une agence immobilière à Monastir spécialisée dans la vente, l'achat et l'investissement immobilier. Découvrez nos biens et services." />
+    <meta name="keywords" content="agence immobilière Monastir, immobilier Tunisie, appartement Monastir, villa Monastir, achat, vente, investissement" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Elite Home - Agence Immobilière Monastir" />
+    <meta property="og:description" content="Achetez, vendez, investissez en toute confiance à Monastir." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200" />
+    <meta property="og:url" content="https://www.elitehome.tn" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Schema.org microdata for local real estate agency -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "RealEstateAgent",
+            "name": "Elite Home",
+            "description": "Agence immobilière à Monastir spécialisée dans la vente, l'achat et l'investissement.",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Avenue Combattant Suprême",
+                "addressLocality": "Monastir",
+                "addressCountry": "TN"
+            },
+            "telephone": "+216 XX XXX XXX",
+            "email": "contact@elitehome.tn",
+            "url": "https://www.elitehome.tn",
+            "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800"
+        }
+    </script>
+
     <style>
+        :root {
+            --dark: #0f172a;
+            --gold: #fbbf24;
+            --gold-dark: #f59e0b;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --gray: #64748b;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+            --transition: 0.3s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -16,598 +54,657 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: #faf7f0;  /* light sandy base */
-            color: #1e2a1b;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
             scroll-behavior: smooth;
         }
 
-        /* olive main color: #6B8E23 (oliveDrab) with wooden panels */
-        :root {
-            --olive: #6B8E23;
-            --olive-dark: #556B2F;
-            --wood: #C18F5B;
-            --wood-light: #D9B48B;
-            --wood-panel: #A57248;
-            --white-text: #FFFFFF;
-            --card-bg: #ffffffdd;
-            --shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
-        }
-
-        /* wooden top bar + panels */
-        .wooden-panel {
-            background: linear-gradient(135deg, #b87c4f 0%, #8b5a2b 100%);
-            backdrop-filter: blur(2px);
-            border-bottom: 2px solid #e9c891;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-
-        .wooden-side {
-            background: rgba(139, 90, 43, 0.2);
-            border-radius: 28px;
-            backdrop-filter: blur(2px);
-        }
-
-        .btn-olive {
-            background-color: var(--olive);
+        /* ---------- HEADER ---------- */
+        header {
+            background: var(--dark);
             color: white;
-            transition: all 0.2s ease;
-            border: none;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo span {
+            font-size: 14px;
+            font-weight: 400;
+            color: #cbd5e1;
+            margin-left: 10px;
+            border-left: 1px solid #334155;
+            padding-left: 12px;
+        }
+
+        /* Navigation desktop */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        nav a {
+            color: #e2e8f0;
+            text-decoration: none;
             font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-size: 15px;
         }
-        .btn-olive:hover {
-            background-color: var(--olive-dark);
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--gold);
+        }
+        .lang-switch {
+            background: none;
+            border: 1px solid #475569;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 14px;
+            margin-left: 8px;
+        }
+        .lang-switch:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--dark);
+        }
+
+        /* Mobile menu button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 100px 40px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(251,191,36,0.08) 0%, transparent 60%);
+            animation: float 12s infinite alternate ease-in-out;
+        }
+        @keyframes float {
+            from { transform: translate(0, 0); }
+            to { transform: translate(20px, -20px); }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h2 {
+            font-size: 44px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease;
+        }
+        .hero p {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 6px 18px rgba(251,191,36,0.35);
+            font-size: 16px;
+            letter-spacing: 0.3px;
+        }
+        .btn:hover {
+            background: var(--gold-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(107, 142, 35, 0.3);
+            box-shadow: 0 10px 24px rgba(251,191,36,0.5);
         }
-        .card {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(2px);
-            border-radius: 28px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(107, 142, 35, 0.2);
+
+        /* ---------- SECTIONS ---------- */
+        section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h3 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+        .card, .property {
+            background: white;
+            padding: 28px 24px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+        .card:hover, .property:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        }
+        .card strong {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        .property h4 {
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 14px;
+        }
+        .property ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        .property li {
+            padding: 6px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 15px;
+        }
+        .property .btn {
+            margin-top: 15px;
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+
+        /* Gallery */
+        .gallery img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.4s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Contact form */
+        form {
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin-top: 20px;
+        }
+        form input, form textarea {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            font-size: 15px;
+            transition: 0.2s;
+            background: #f8fafc;
+        }
+        form input:focus, form textarea:focus {
+            border-color: var(--gold);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(251,191,36,0.2);
+            background: white;
+        }
+        form button {
+            background: var(--dark);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.3s;
+            width: 100%;
+        }
+        form button:hover {
+            background: #1e293b;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
             box-shadow: var(--shadow);
         }
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: var(--olive);
+        .contact-info div {
+            flex: 1 1 200px;
         }
-        .filter-btn {
-            background: transparent;
-            border: 1.5px solid var(--olive);
-            color: var(--olive-dark);
-            padding: 0.6rem 1.5rem;
-            border-radius: 40px;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-        .filter-btn.active {
-            background: var(--olive);
-            color: white;
-            border-color: var(--olive);
-        }
-        .lang-btn {
-            background: rgba(255,255,240,0.2);
-            border: none;
-            font-weight: 500;
-            padding: 6px 12px;
-            border-radius: 30px;
-            color: white;
-            transition: 0.2s;
-        }
-        .lang-btn.active-lang {
-            background: var(--olive);
-            color: white;
-        }
+
+        /* WhatsApp floating button */
         .whatsapp-float {
             position: fixed;
-            bottom: 28px;
-            right: 28px;
+            bottom: 30px;
+            right: 30px;
             background: #25D366;
             color: white;
-            width: 58px;
-            height: 58px;
             border-radius: 50%;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 32px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: 0.2s;
-            z-index: 99;
+            box-shadow: 0 6px 20px rgba(37,211,102,0.45);
+            z-index: 999;
+            transition: transform 0.3s;
+            text-decoration: none;
         }
         .whatsapp-float:hover {
-            transform: scale(1.08);
-            background: #128C7E;
+            transform: scale(1.1);
         }
-        .admin-badge {
-            background: var(--wood);
-            padding: 8px 16px;
-            border-radius: 60px;
-            font-size: 0.85rem;
+
+        /* Map container */
+        .map-container {
+            margin-top: 30px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
         }
-        .modal-video iframe {
+        iframe {
             width: 100%;
-            aspect-ratio: 16 / 9;
-            border-radius: 20px;
+            height: 300px;
+            border: 0;
         }
-        .image-gallery img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .image-gallery img:hover {
-            opacity: 0.85;
-        }
-        input, textarea, select {
-            border-radius: 20px;
-            border: 1px solid #ddd;
-            padding: 10px 16px;
-            width: 100%;
-            font-family: inherit;
-        }
-        .property-detail-img {
-            max-height: 350px;
-            object-fit: cover;
-            border-radius: 28px;
-        }
-        .wood-tag {
-            background: var(--wood-panel);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
+
+        /* Footer */
         footer {
-            background: #4a3520;
-            color: #e9dbc4;
+            background: var(--dark);
+            color: #cbd5e1;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 15px;
+            margin-top: 40px;
         }
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .grid-cols-cards {
-                grid-template-columns: 1fr;
+            header {
+                padding: 16px 24px;
             }
-            .filter-group {
-                flex-wrap: wrap;
-                justify-content: center;
+            .menu-toggle {
+                display: flex;
+            }
+            nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: var(--dark);
+                position: absolute;
+                top: 70px;
+                left: 0;
+                padding: 20px;
+                gap: 8px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            }
+            nav.active {
+                display: flex;
+            }
+            .hero {
+                padding: 80px 20px 60px;
+            }
+            .hero h2 {
+                font-size: 34px;
+            }
+            section {
+                padding: 60px 20px;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- WhatsApp Fixed Contact -->
-<a href="https://wa.me/21625801607?text=Bonjour%21%20Je%20souhaite%20plus%20d%27informations%20sur%20vos%20biens%20immobiliers" target="_blank" class="whatsapp-float">
-    <i class="fab fa-whatsapp"></i>
+<!-- ========== HEADER ========== -->
+<header>
+    <div class="logo">
+        Elite Home <span>Monastir</span>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+    <nav id="mainNav">
+        <a href="#accueil" data-key="nav_home">Accueil</a>
+        <a href="#services" data-key="nav_services">Services</a>
+        <a href="#biens" data-key="nav_properties">Biens</a>
+        <a href="#galerie" data-key="nav_gallery">Galerie</a>
+        <a href="#contact" data-key="nav_contact">Contact</a>
+        <button class="lang-switch" id="langToggle">EN</button>
+    </nav>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="accueil">
+    <div class="hero-content">
+        <h2 data-key="hero_title">Agence Immobilière de Confiance à Monastir</h2>
+        <p data-key="hero_sub">Nous vous accompagnons pour acheter, vendre et investir en toute sérénité.</p>
+        <a class="btn" href="#contact" data-key="cta_contact">Contactez-nous</a>
+    </div>
+</section>
+
+<!-- ========== SERVICES ========== -->
+<section id="services">
+    <h3 data-key="services_title">Nos Services</h3>
+    <div class="grid">
+        <div class="card"><strong data-key="service1_title">Achat & Vente</strong><br data-key="service1_desc">Processus clair et sécurisé.</div>
+        <div class="card"><strong data-key="service2_title">Biens Résidentiels</strong><br data-key="service2_desc">Appartements et villas sélectionnés.</div>
+        <div class="card"><strong data-key="service3_title">Investissement</strong><br data-key="service3_desc">Rentabilité et zones touristiques.</div>
+        <div class="card"><strong data-key="service4_title">Conseil Immobilier</strong><br data-key="service4_desc">Expertise locale et transparence.</div>
+    </div>
+</section>
+
+<!-- ========== PROPERTIES ========== -->
+<section id="biens">
+    <h3 data-key="properties_title">Nos Biens Immobiliers</h3>
+    <div class="grid">
+        <div class="property">
+            <h4 data-key="prop1_title">Appartement Spacieux – Zone Touristique</h4>
+            <ul>
+                <li data-key="prop1_size">175 m²</li>
+                <li data-key="prop1_bed">3 chambres</li>
+                <li data-key="prop1_balcony">2 balcons</li>
+                <li data-key="prop1_park">Parking privé</li>
+            </ul>
+            <a class="btn" href="#contact" data-key="prop1_btn">Demander infos</a>
+        </div>
+        <div class="property">
+            <h4 data-key="prop2_title">Villa Moderne – Quartier Résidentiel</h4>
+            <ul>
+                <li data-key="prop2_area">Quartier calme</li>
+                <li data-key="prop2_finish">Finitions modernes</li>
+                <li data-key="prop2_family">Idéal famille</li>
+            </ul>
+            <a class="btn" href="#contact" data-key="prop2_btn">Demander infos</a>
+        </div>
+    </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section id="galerie">
+    <h3 data-key="gallery_title">Galerie Photos</h3>
+    <div class="grid gallery">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="Appartement moderne Monastir" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="Villa résidentielle Monastir" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18f6c9f21?w=600&h=400&fit=crop" alt="Salon lumineux Tunisie" loading="lazy" />
+    </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact">
+    <h3 data-key="contact_title">Contactez-nous</h3>
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Nom complet" required data-key-placeholder="form_name" />
+        <input type="email" id="email" placeholder="Email" required data-key-placeholder="form_email" />
+        <textarea id="message" rows="4" placeholder="Votre message" data-key-placeholder="form_message"></textarea>
+        <button type="submit" data-key="form_btn">Envoyer</button>
+    </form>
+    <div class="contact-info">
+        <div><strong data-key="address_label">Adresse :</strong> <span data-key="address">Avenue Combattant Suprême, Monastir</span></div>
+        <div><strong data-key="email_label">Email :</strong> contact@elitehome.tn</div>
+        <div><strong data-key="whatsapp_label">WhatsApp :</strong> +216 12 345 678</div>
+    </div>
+    <div class="map-container">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=10.8155%2C35.7675%2C10.8355%2C35.7875&amp;layer=mapnik&amp;marker=35.7775%2C10.8255" allowfullscreen="" loading="lazy" title="Carte Monastir"></iframe>
+    </div>
+</section>
+
+<!-- ========== WHATSAPP FLOAT BUTTON ========== -->
+<a href="https://wa.me/21612345678?text=Bonjour%20Elite%20Home%2C%20je%20souhaite%20des%20informations." class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <span style="font-size:34px;">💬</span>
 </a>
 
-<!-- Header with wooden panel & Acropolis icon -->
-<div class="wooden-panel text-white py-4 px-6 md:px-12 sticky top-0 z-30 shadow-md">
-    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4">
-        <div class="flex items-center gap-3">
-            <i class="fas fa-landmark text-3xl drop-shadow-md"></i> <!-- Acropolis / antique icon -->
-            <h1 class="text-2xl md:text-3xl font-bold tracking-wide">Elite Homes</h1>
-        </div>
-        <div class="flex items-center gap-3 flex-wrap">
-            <div class="flex gap-2">
-                <button data-lang="fr" class="lang-btn active-lang">🇫🇷 FR</button>
-                <button data-lang="en" class="lang-btn">🇬🇧 EN</button>
-                <button data-lang="it" class="lang-btn">🇮🇹 IT</button>
-            </div>
-            <button id="adminLoginBtn" class="bg-amber-800 hover:bg-amber-900 text-white px-4 py-2 rounded-full text-sm flex items-center gap-2 transition"><i class="fas fa-user-shield"></i> <span data-i18n="admin">Admin</span></button>
-        </div>
-    </div>
-</div>
-
-<!-- Main Container -->
-<main class="max-w-7xl mx-auto px-5 py-10">
-    <!-- Filter Section (Sell, Rent, Invest) -->
-    <div class="flex justify-center gap-4 mb-12 filter-group">
-        <button data-filter="all" class="filter-btn active"><span data-i18n="filter_all">Tous</span></button>
-        <button data-filter="vente" class="filter-btn"><span data-i18n="filter_sale">Vente</span></button>
-        <button data-filter="location" class="filter-btn"><span data-i18n="filter_rent">Location</span></button>
-        <button data-filter="investissement" class="filter-btn"><span data-i18n="filter_invest">Investissement</span></button>
-    </div>
-
-    <!-- Properties Grid -->
-    <div id="propertiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-</main>
-
-<!-- Admin Panel (Hidden by default) -->
-<div id="adminPanel" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-        <div class="sticky top-0 bg-white p-5 border-b flex justify-between items-center">
-            <h2 class="text-2xl font-bold text-olive-dark"><i class="fas fa-cog"></i> <span data-i18n="admin_panel">Panel Admin</span></h2>
-            <button id="closeAdminBtn" class="text-gray-600 text-3xl">&times;</button>
-        </div>
-        <div class="p-6">
-            <!-- Auth form -->
-            <div id="adminAuthForm" class="mb-6">
-                <label class="block font-semibold"><span data-i18n="admin_password">Mot de passe admin</span></label>
-                <div class="flex gap-2 mt-1">
-                    <input type="password" id="adminPass" class="flex-1" placeholder="********">
-                    <button id="verifyAdminBtn" class="btn-olive px-6 rounded-full"><span data-i18n="login">Se connecter</span></button>
-                </div>
-                <p id="adminError" class="text-red-500 text-sm mt-1 hidden">Mot de passe incorrect</p>
-            </div>
-            <!-- Admin content (visible after login) -->
-            <div id="adminContent" class="hidden">
-                <div class="flex gap-3 mb-6">
-                    <button id="newPropertyBtn" class="btn-olive px-5 py-2 rounded-full"><i class="fas fa-plus"></i> <span data-i18n="add_property">Ajouter un bien</span></button>
-                    <button id="cancelEditBtn" class="bg-gray-300 px-5 py-2 rounded-full hidden"><span data-i18n="cancel">Annuler</span></button>
-                </div>
-                <!-- Form add/edit -->
-                <div id="propertyForm" class="bg-amber-50 p-5 rounded-2xl mb-8 hidden wooden-side">
-                    <h3 class="text-xl font-bold mb-3" id="formTitle"><span data-i18n="new_property">Nouveau bien</span></h3>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <select id="propType" class="border">
-                            <option value="vente">Vente / Sale</option>
-                            <option value="location">Location / Rent</option>
-                            <option value="investissement">Investissement</option>
-                        </select>
-                        <input type="text" id="propPrice" placeholder="Prix (ex: 250 000 €)" class="border">
-                        <input type="text" id="titleFr" placeholder="Titre (FR)" class="border">
-                        <input type="text" id="titleEn" placeholder="Title (EN)">
-                        <input type="text" id="titleIt" placeholder="Titolo (IT)">
-                        <textarea id="descFr" rows="2" placeholder="Description (FR)"></textarea>
-                        <textarea id="descEn" rows="2" placeholder="Description (EN)"></textarea>
-                        <textarea id="descIt" rows="2" placeholder="Descrizione (IT)"></textarea>
-                        <input type="text" id="videoUrl" placeholder="Lien YouTube / Vimeo (optionnel)">
-                        <div class="col-span-2">
-                            <label class="block font-semibold">Images (plusieurs, JPG/PNG)</label>
-                            <input type="file" id="imageUpload" multiple accept="image/*" class="border">
-                            <div id="imagePreview" class="flex flex-wrap gap-2 mt-2"></div>
-                            <small class="text-gray-500">Les images seront stockées en local (base64).</small>
-                        </div>
-                    </div>
-                    <div class="flex gap-3 mt-5">
-                        <button id="savePropertyBtn" class="btn-olive px-6 py-2 rounded-full"><span data-i18n="save">Enregistrer</span></button>
-                        <button id="cancelFormBtn" class="bg-gray-400 text-white px-4 rounded-full"><span data-i18n="cancel">Annuler</span></button>
-                    </div>
-                </div>
-                <!-- List of properties for admin -->
-                <h3 class="text-xl font-bold mt-4 mb-3"><span data-i18n="manage_properties">Gérer les biens</span></h3>
-                <div id="adminPropertiesList" class="space-y-3 max-h-96 overflow-y-auto"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal for property detail (client view) -->
-<div id="detailModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-        <div class="p-5 flex justify-between items-center border-b">
-            <h3 id="modalTitle" class="text-2xl font-bold text-olive-dark">Titre</h3>
-            <button id="closeModalBtn" class="text-3xl">&times;</button>
-        </div>
-        <div id="modalBody" class="p-5"></div>
-    </div>
-</div>
-
-<footer class="mt-20 py-8 text-center text-sm">
-    <p>© 2025 Elite Homes - Immobilier de prestige à Monastir, Tunisie. <i class="fas fa-heart text-red-400"></i> Votre rêve méditerranéen.</p>
+<!-- ========== FOOTER ========== -->
+<footer>
+    <p>© Elite Home – Agence Immobilière à Monastir | <span data-key="rights">Tous droits réservés</span></p>
 </footer>
 
+<!-- ========== MULTI-LANG SCRIPT ========== -->
 <script>
-    // ---------- I18n Translations ----------
-    const translations = {
-        fr: {
-            admin: "Admin", filter_all: "Tous", filter_sale: "Vente", filter_rent: "Location", filter_invest: "Investissement",
-            admin_panel: "Panel Admin", admin_password: "Mot de passe admin", login: "Se connecter", add_property: "Ajouter un bien",
-            cancel: "Annuler", new_property: "Nouveau bien", save: "Enregistrer", manage_properties: "Gérer les biens",
-            edit: "Modifier", delete: "Supprimer", view_details: "Voir détails", price: "Prix", type: "Type", video: "Vidéo"
-        },
-        en: {
-            admin: "Admin", filter_all: "All", filter_sale: "Sale", filter_rent: "Rent", filter_invest: "Investment",
-            admin_panel: "Admin Panel", admin_password: "Admin password", login: "Login", add_property: "Add Property",
-            cancel: "Cancel", new_property: "New Property", save: "Save", manage_properties: "Manage Properties",
-            edit: "Edit", delete: "Delete", view_details: "View details", price: "Price", type: "Type", video: "Video"
-        },
-        it: {
-            admin: "Admin", filter_all: "Tutti", filter_sale: "Vendita", filter_rent: "Affitto", filter_invest: "Investimento",
-            admin_panel: "Pannello Admin", admin_password: "Password admin", login: "Accedi", add_property: "Aggiungi proprietà",
-            cancel: "Annulla", new_property: "Nuova proprietà", save: "Salva", manage_properties: "Gestisci proprietà",
-            edit: "Modifica", delete: "Elimina", view_details: "Vedi dettagli", price: "Prezzo", type: "Tipo", video: "Video"
+    (function() {
+        const translations = {
+            fr: {
+                nav_home: "Accueil",
+                nav_services: "Services",
+                nav_properties: "Biens",
+                nav_gallery: "Galerie",
+                nav_contact: "Contact",
+                hero_title: "Agence Immobilière de Confiance à Monastir",
+                hero_sub: "Nous vous accompagnons pour acheter, vendre et investir en toute sérénité.",
+                cta_contact: "Contactez-nous",
+                services_title: "Nos Services",
+                service1_title: "Achat & Vente",
+                service1_desc: "Processus clair et sécurisé.",
+                service2_title: "Biens Résidentiels",
+                service2_desc: "Appartements et villas sélectionnés.",
+                service3_title: "Investissement",
+                service3_desc: "Rentabilité et zones touristiques.",
+                service4_title: "Conseil Immobilier",
+                service4_desc: "Expertise locale et transparence.",
+                properties_title: "Nos Biens Immobiliers",
+                prop1_title: "Appartement Spacieux – Zone Touristique",
+                prop1_size: "175 m²",
+                prop1_bed: "3 chambres",
+                prop1_balcony: "2 balcons",
+                prop1_park: "Parking privé",
+                prop1_btn: "Demander infos",
+                prop2_title: "Villa Moderne – Quartier Résidentiel",
+                prop2_area: "Quartier calme",
+                prop2_finish: "Finitions modernes",
+                prop2_family: "Idéal famille",
+                prop2_btn: "Demander infos",
+                gallery_title: "Galerie Photos",
+                contact_title: "Contactez-nous",
+                form_name: "Nom complet",
+                form_email: "Email",
+                form_message: "Votre message",
+                form_btn: "Envoyer",
+                address_label: "Adresse :",
+                address: "Avenue Combattant Suprême, Monastir",
+                email_label: "Email :",
+                whatsapp_label: "WhatsApp :",
+                rights: "Tous droits réservés"
+            },
+            en: {
+                nav_home: "Home",
+                nav_services: "Services",
+                nav_properties: "Properties",
+                nav_gallery: "Gallery",
+                nav_contact: "Contact",
+                hero_title: "Trusted Real Estate Agency in Monastir",
+                hero_sub: "We assist you in buying, selling, and investing with complete peace of mind.",
+                cta_contact: "Contact us",
+                services_title: "Our Services",
+                service1_title: "Buying & Selling",
+                service1_desc: "Clear and secure process.",
+                service2_title: "Residential Properties",
+                service2_desc: "Selected apartments and villas.",
+                service3_title: "Investment",
+                service3_desc: "Profitability and tourist areas.",
+                service4_title: "Real Estate Consulting",
+                service4_desc: "Local expertise and transparency.",
+                properties_title: "Our Properties",
+                prop1_title: "Spacious Apartment – Tourist Area",
+                prop1_size: "175 sqm",
+                prop1_bed: "3 bedrooms",
+                prop1_balcony: "2 balconies",
+                prop1_park: "Private parking",
+                prop1_btn: "Request info",
+                prop2_title: "Modern Villa – Residential Area",
+                prop2_area: "Quiet neighborhood",
+                prop2_finish: "Modern finishes",
+                prop2_family: "Family-friendly",
+                prop2_btn: "Request info",
+                gallery_title: "Photo Gallery",
+                contact_title: "Contact Us",
+                form_name: "Full name",
+                form_email: "Email",
+                form_message: "Your message",
+                form_btn: "Send",
+                address_label: "Address:",
+                address: "Avenue Combattant Suprême, Monastir",
+                email_label: "Email:",
+                whatsapp_label: "WhatsApp:",
+                rights: "All rights reserved"
+            }
+        };
+
+        let currentLang = 'fr';
+        const langToggle = document.getElementById('langToggle');
+        const elements = document.querySelectorAll('[data-key]');
+        const placeholders = document.querySelectorAll('[data-key-placeholder]');
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            // Update text content
+            elements.forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            // Update placeholders
+            placeholders.forEach(el => {
+                const key = el.getAttribute('data-key-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+            // Update toggle button text
+            langToggle.textContent = lang === 'fr' ? 'EN' : 'FR';
+            // Update WhatsApp message language
+            const waLink = document.querySelector('.whatsapp-float');
+            if (waLink) {
+                const msg = lang === 'fr' ?
+                    "Bonjour%20Elite%20Home%2C%20je%20souhaite%20des%20informations." :
+                    "Hello%20Elite%20Home%2C%20I%20would%20like%20some%20information.";
+                waLink.href = `https://wa.me/21612345678?text=${msg}`;
+            }
         }
-    };
-    let currentLang = "fr";
 
-    // ---------- Data Model ----------
-    let properties = [];
-    const STORAGE_KEY = "elite_homes_properties";
-    let editingId = null; // for admin edit mode
-    let adminLogged = false;
+        langToggle.addEventListener('click', () => {
+            const newLang = currentLang === 'fr' ? 'en' : 'fr';
+            switchLanguage(newLang);
+        });
 
-    // Load demo data if empty
-    function loadInitialData() {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if(stored) {
-            properties = JSON.parse(stored);
-        } else {
-            properties = [
-                { id: 1, type: "vente", price: "320 000 €", images: [], videoUrl: "", title_fr: "Magnifique villa avec piscine", title_en: "Stunning villa with pool", title_it: "Splendida villa con piscina", desc_fr: " Vue imprenable sur la mer, 4 chambres, jardin méditerranéen.", desc_en: "Sea view, 4 bedrooms, mediterranean garden.", desc_it: "Vista mare, 4 camere, giardino mediterraneo.", location: "Monastir" },
-                { id: 2, type: "location", price: "1 800 €/mois", images: [], videoUrl: "", title_fr: "Appartement moderne Corniche", title_en: "Modern apartment Corniche", title_it: "Appartamento moderno Corniche", desc_fr: " En plein centre, proche plage, 2 chambres.", desc_en: "City center near beach, 2 bedrooms.", desc_it: "Centro città vicino spiaggia, 2 camere." },
-                { id: 3, type: "investissement", price: "À partir de 150K €", images: [], videoUrl: "", title_fr: "Terrain constructible – Zone touristique", title_en: "Buildable land – tourist zone", title_it: "Terreno edificabile – zona turistica", desc_fr: "Rendement élevé, proximité aéroport Monastir.", desc_en: "High ROI, near Monastir airport.", desc_it: "Alto ROI, vicino aeroporto di Monastir." }
-            ];
-            // Add dummy image placeholder icons (base64 not needed, empty for demo)
-            properties.forEach(p => p.images = []);
-            saveToLocal();
-        }
-        renderProperties();
-    }
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
 
-    function saveToLocal() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(properties));
-    }
-
-    // Render property cards (client side, filter by category)
-    let currentFilter = "all";
-    function renderProperties() {
-        let filtered = properties.filter(p => currentFilter === "all" ? true : p.type === currentFilter);
-        const grid = document.getElementById("propertiesGrid");
-        if(!grid) return;
-        if(filtered.length === 0) {
-            grid.innerHTML = `<div class="col-span-full text-center p-10 text-gray-500"><i class="fas fa-home fa-3x"></i><p data-i18n="no_props">Aucun bien correspondant</p></div>`;
-        } else {
-            grid.innerHTML = filtered.map(prop => `
-                <div class="card p-5 cursor-pointer property-card" data-id="${prop.id}">
-                    <div class="relative">
-                        ${prop.images && prop.images[0] ? `<img src="${prop.images[0]}" class="w-full h-56 object-cover rounded-2xl mb-3" alt="property">` : `<div class="w-full h-56 bg-amber-100 rounded-2xl flex items-center justify-center mb-3"><i class="fas fa-tree text-5xl text-olive"></i></div>`}
-                        <span class="absolute top-3 left-3 wood-tag">${getTypeLabel(prop.type)}</span>
-                    </div>
-                    <div class="mt-2">
-                        <h3 class="text-xl font-bold">${prop[`title_${currentLang}`] || prop.title_fr}</h3>
-                        <p class="text-gray-600 line-clamp-2">${prop[`desc_${currentLang}`] || prop.desc_fr}</p>
-                        <div class="flex justify-between items-center mt-3">
-                            <span class="text-olive-dark font-bold text-lg">${prop.price}</span>
-                            <button class="text-olive text-sm font-semibold view-detail" data-id="${prop.id}"><span data-i18n="view_details">Voir détails</span> →</button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-        attachCardEvents();
-        applyLanguageToStatic();
-    }
-
-    function getTypeLabel(type) {
-        if(type === 'vente') return currentLang === 'fr' ? 'Vente' : (currentLang === 'en' ? 'Sale' : 'Vendita');
-        if(type === 'location') return currentLang === 'fr' ? 'Location' : (currentLang === 'en' ? 'Rent' : 'Affitto');
-        return currentLang === 'fr' ? 'Investissement' : (currentLang === 'en' ? 'Investment' : 'Investimento');
-    }
-
-    function attachCardEvents() {
-        document.querySelectorAll('.view-detail').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const id = parseInt(btn.dataset.id);
-                showPropertyDetail(id);
+        // Close menu on link click
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
             });
         });
-        document.querySelectorAll('.property-card').forEach(card => {
-            card.addEventListener('click', (e) => {
-                if(e.target.classList.contains('view-detail')) return;
-                const id = parseInt(card.dataset.id);
-                showPropertyDetail(id);
-            });
-        });
-    }
 
-    function showPropertyDetail(id) {
-        const prop = properties.find(p => p.id === id);
-        if(!prop) return;
-        const modal = document.getElementById("detailModal");
-        const modalTitle = document.getElementById("modalTitle");
-        const modalBody = document.getElementById("modalBody");
-        modalTitle.innerText = prop[`title_${currentLang}`] || prop.title_fr;
-        let imagesHtml = '';
-        if(prop.images && prop.images.length) {
-            imagesHtml = `<div class="image-gallery grid grid-cols-2 gap-3 mb-4">${prop.images.map(img => `<img src="${img}" class="property-detail-img w-full cursor-pointer" onclick="window.open(this.src)">`).join('')}</div>`;
-        } else {
-            imagesHtml = `<div class="bg-gray-100 rounded-2xl p-6 text-center mb-4"><i class="fas fa-image fa-3x text-gray-400"></i><p>Aucune image</p></div>`;
-        }
-        let videoHtml = '';
-        if(prop.videoUrl && prop.videoUrl.trim() !== '') {
-            let embedUrl = prop.videoUrl;
-            if(prop.videoUrl.includes('youtu.be') || prop.videoUrl.includes('youtube.com')) {
-                let vidId = prop.videoUrl.split('v=')[1]?.split('&')[0] || prop.videoUrl.split('/').pop();
-                embedUrl = `https://www.youtube.com/embed/${vidId}`;
-            } else if(prop.videoUrl.includes('vimeo')) {
-                embedUrl = prop.videoUrl.replace('vimeo.com', 'player.vimeo.com/video');
+        // Contact form simulation (replace with formspree or your backend)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            if(name && email) {
+                // In production, replace with fetch to your endpoint or Formspree
+                alert(currentLang === 'fr' ? 
+                    `Merci ${name}, votre message a bien été envoyé.` : 
+                    `Thank you ${name}, your message has been sent.`);
+                this.reset();
+            } else {
+                alert(currentLang === 'fr' ? 'Veuillez remplir les champs obligatoires.' : 'Please fill in the required fields.');
             }
-            videoHtml = `<div class="modal-video mt-4"><h4 class="font-bold mb-2"><i class="fas fa-video"></i> ${translations[currentLang].video}</h4><iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe></div>`;
-        }
-        modalBody.innerHTML = `
-            <div class="space-y-3">
-                <div><span class="font-semibold">📌 ${translations[currentLang].type}:</span> ${getTypeLabel(prop.type)}</div>
-                <div><span class="font-semibold">💰 ${translations[currentLang].price}:</span> ${prop.price}</div>
-                <div><p class="text-gray-700">${prop[`desc_${currentLang}`] || prop.desc_fr}</p></div>
-                ${imagesHtml}
-                ${videoHtml}
-                <div class="pt-3"><a href="https://wa.me/21625801607?text=Bonjour%2C%20je%20suis%20intéressé%20par%20${encodeURIComponent(prop.title_fr)}" target="_blank" class="btn-olive inline-block px-5 py-2 rounded-full"><i class="fab fa-whatsapp"></i> Contacter via WhatsApp</a></div>
-            </div>
-        `;
-        modal.classList.remove("hidden");
-    }
-
-    // Admin functions
-    function refreshAdminList() {
-        const container = document.getElementById("adminPropertiesList");
-        if(!container) return;
-        if(properties.length === 0) { container.innerHTML = "<p class='text-gray-500'>Aucun bien</p>"; return; }
-        container.innerHTML = properties.map(prop => `
-            <div class="flex justify-between items-center bg-white p-3 rounded-xl shadow-sm border">
-                <div><strong>${prop.title_fr}</strong> (${prop.price}) <span class="text-xs bg-amber-100 px-2 rounded-full">${prop.type}</span></div>
-                <div class="flex gap-2">
-                    <button class="edit-prop bg-blue-600 text-white px-3 py-1 rounded-full text-sm" data-id="${prop.id}"><i class="fas fa-edit"></i> ${translations[currentLang].edit}</button>
-                    <button class="delete-prop bg-red-600 text-white px-3 py-1 rounded-full text-sm" data-id="${prop.id}"><i class="fas fa-trash"></i> ${translations[currentLang].delete}</button>
-                </div>
-            </div>
-        `).join('');
-        document.querySelectorAll('.edit-prop').forEach(btn => {
-            btn.addEventListener('click', () => editProperty(parseInt(btn.dataset.id)));
         });
-        document.querySelectorAll('.delete-prop').forEach(btn => {
-            btn.addEventListener('click', () => { if(confirm('Supprimer définitivement ?')) deleteProperty(parseInt(btn.dataset.id)); });
-        });
-    }
 
-    function editProperty(id) {
-        const prop = properties.find(p => p.id === id);
-        if(!prop) return;
-        editingId = id;
-        document.getElementById("propType").value = prop.type;
-        document.getElementById("propPrice").value = prop.price;
-        document.getElementById("titleFr").value = prop.title_fr;
-        document.getElementById("titleEn").value = prop.title_en || '';
-        document.getElementById("titleIt").value = prop.title_it || '';
-        document.getElementById("descFr").value = prop.desc_fr || '';
-        document.getElementById("descEn").value = prop.desc_en || '';
-        document.getElementById("descIt").value = prop.desc_it || '';
-        document.getElementById("videoUrl").value = prop.videoUrl || '';
-        document.getElementById("imagePreview").innerHTML = '';
-        if(prop.images) prop.images.forEach(img => { addImagePreview(img); });
-        document.getElementById("propertyForm").classList.remove("hidden");
-        document.getElementById("formTitle").innerText = "✏️ Modifier le bien";
-        document.getElementById("cancelEditBtn").classList.remove("hidden");
-    }
-
-    function addImagePreview(src) {
-        const div = document.createElement('div');
-        div.className = "relative w-16 h-16";
-        div.innerHTML = `<img src="${src}" class="w-full h-full object-cover rounded-lg"><span class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-center text-xs cursor-pointer remove-img">✕</span>`;
-        document.getElementById("imagePreview").appendChild(div);
-        div.querySelector('.remove-img')?.addEventListener('click', () => div.remove());
-    }
-
-    function collectImagesFromPreview() {
-        const imgs = [];
-        document.querySelectorAll("#imagePreview img").forEach(img => {
-            if(img.src && img.src.startsWith('data:') || img.src.startsWith('http')) imgs.push(img.src);
-        });
-        return imgs;
-    }
-
-    function savePropertyFromForm() {
-        const type = document.getElementById("propType").value;
-        const price = document.getElementById("propPrice").value;
-        const titleFr = document.getElementById("titleFr").value;
-        const titleEn = document.getElementById("titleEn").value;
-        const titleIt = document.getElementById("titleIt").value;
-        const descFr = document.getElementById("descFr").value;
-        const descEn = document.getElementById("descEn").value;
-        const descIt = document.getElementById("descIt").value;
-        const videoUrl = document.getElementById("videoUrl").value;
-        let images = collectImagesFromPreview();
-        if(editingId !== null) {
-            const index = properties.findIndex(p => p.id === editingId);
-            if(index !== -1) {
-                properties[index] = { ...properties[index], type, price, title_fr: titleFr, title_en: titleEn, title_it: titleIt, desc_fr: descFr, desc_en: descEn, desc_it: descIt, videoUrl, images };
-                saveToLocal();
-            }
-            editingId = null;
-        } else {
-            const newId = Date.now();
-            properties.push({ id: newId, type, price, title_fr: titleFr, title_en: titleEn, title_it: titleIt, desc_fr: descFr, desc_en: descEn, desc_it: descIt, videoUrl, images });
-            saveToLocal();
-        }
-        resetForm();
-        renderProperties();
-        if(adminLogged) refreshAdminList();
-    }
-
-    function resetForm() {
-        document.getElementById("propertyForm").classList.add("hidden");
-        document.getElementById("propType").value = "vente";
-        document.getElementById("propPrice").value = "";
-        document.getElementById("titleFr").value = "";
-        document.getElementById("titleEn").value = "";
-        document.getElementById("titleIt").value = "";
-        document.getElementById("descFr").value = "";
-        document.getElementById("descEn").value = "";
-        document.getElementById("descIt").value = "";
-        document.getElementById("videoUrl").value = "";
-        document.getElementById("imagePreview").innerHTML = "";
-        editingId = null;
-        document.getElementById("cancelEditBtn").classList.add("hidden");
-    }
-
-    function deleteProperty(id) {
-        properties = properties.filter(p => p.id !== id);
-        saveToLocal();
-        renderProperties();
-        if(adminLogged) refreshAdminList();
-    }
-
-    // Image file handling
-    document.getElementById("imageUpload")?.addEventListener("change", function(e) {
-        const files = Array.from(e.target.files);
-        files.forEach(file => {
-            const reader = new FileReader();
-            reader.onload = function(ev) {
-                addImagePreview(ev.target.result);
-            };
-            reader.readAsDataURL(file);
-        });
-        e.target.value = '';
-    });
-
-    // Admin login & UI
-    document.getElementById("adminLoginBtn")?.addEventListener("click", () => document.getElementById("adminPanel").classList.remove("hidden"));
-    document.getElementById("closeAdminBtn")?.addEventListener("click", () => document.getElementById("adminPanel").classList.add("hidden"));
-    document.getElementById("verifyAdminBtn")?.addEventListener("click", () => {
-        const pass = document.getElementById("adminPass").value;
-        if(pass === "admin123") {
-            adminLogged = true;
-            document.getElementById("adminAuthForm").style.display = "none";
-            document.getElementById("adminContent").classList.remove("hidden");
-            refreshAdminList();
-        } else {
-            document.getElementById("adminError").classList.remove("hidden");
-        }
-    });
-    document.getElementById("newPropertyBtn")?.addEventListener("click", () => {
-        resetForm();
-        document.getElementById("propertyForm").classList.remove("hidden");
-        document.getElementById("formTitle").innerText = "➕ " + translations[currentLang].new_property;
-    });
-    document.getElementById("savePropertyBtn")?.addEventListener("click", savePropertyFromForm);
-    document.getElementById("cancelFormBtn")?.addEventListener("click", resetForm);
-    document.getElementById("cancelEditBtn")?.addEventListener("click", resetForm);
-    document.getElementById("closeModalBtn")?.addEventListener("click", () => document.getElementById("detailModal").classList.add("hidden"));
-
-    // Filters
-    document.querySelectorAll(".filter-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            currentFilter = btn.getAttribute("data-filter");
-            renderProperties();
-        });
-    });
-
-    // Language switcher
-    function applyLanguageToStatic() {
-        document.querySelectorAll("[data-i18n]").forEach(el => {
-            const key = el.getAttribute("data-i18n");
-            if(translations[currentLang][key]) el.innerText = translations[currentLang][key];
-        });
-        renderProperties(); // re-render dynamic texts
-    }
-    document.querySelectorAll(".lang-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            currentLang = btn.getAttribute("data-lang");
-            document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active-lang"));
-            btn.classList.add("active-lang");
-            applyLanguageToStatic();
-            if(adminLogged && document.getElementById("adminContent").classList.contains("hidden")===false) refreshAdminList();
-        });
-    });
-
-    loadInitialData();
+        // Initialize with French
+        switchLanguage('fr');
+    })();
 </script>
+
 </body>
 </html>

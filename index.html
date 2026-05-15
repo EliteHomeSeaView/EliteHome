@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Elite Home | Agence Immobilière à Monastir</title>
     <meta name="description" content="Elite Home est une agence immobilière à Monastir spécialisée dans la vente, l'achat et l'investissement immobilier. Découvrez nos biens et services." />
-    <meta name="keywords" content="agence immobilière Monastir, immobilier Tunisie, appartement Monastir, villa Monastir, achat, vente, investissement" />
+    <meta name="keywords" content="agence immobilière Monastir, immobilier Tunisie, appartement Monastir, villa Monastir, achat, vente, investissement, location" />
 
     <!-- Open Graph / Social -->
     <meta property="og:title" content="Elite Home - Agence Immobilière Monastir" />
-    <meta property="og:description" content="Achetez, vendez, investissez en toute confiance à Monastir." />
+    <meta property="og:description" content="Achetez, vendez, louez et investissez en toute confiance à Monastir." />
     <meta property="og:image" content="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200" />
     <meta property="og:url" content="https://www.elitehome.tn" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -20,7 +20,7 @@
             "@context": "https://schema.org",
             "@type": "RealEstateAgent",
             "name": "Elite Home",
-            "description": "Agence immobilière à Monastir spécialisée dans la vente, l'achat et l'investissement.",
+            "description": "Agence immobilière à Monastir spécialisée dans la vente, l'achat, la location et l'investissement.",
             "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Avenue Combattant Suprême",
@@ -263,6 +263,11 @@
             margin-bottom: 8px;
             color: var(--dark);
         }
+        .card p {
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.5;
+        }
         .property h4 {
             font-size: 20px;
             color: var(--dark);
@@ -288,102 +293,89 @@
         .gallery {
             position: relative;
         }
-        .gallery-wrapper {
+        .gallery-controls {
+            background: white;
+            padding: 24px;
+            border-radius: var(--radius);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .gallery-controls input {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+        .gallery-controls input:focus {
+            border-color: var(--gold);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(251,191,36,0.2);
+        }
+        .gallery-controls button {
+            background: var(--dark);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+        .gallery-controls button:hover {
+            background: #1e293b;
+        }
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 24px;
-            margin-top: 30px;
         }
         .gallery-item {
             position: relative;
-            border-radius: 10px;
             overflow: hidden;
+            border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .gallery-item img {
+        .gallery img {
             width: 100%;
             height: 240px;
             object-fit: cover;
             transition: transform 0.4s;
             display: block;
         }
-        .gallery-item:hover img {
+        .gallery img:hover {
             transform: scale(1.03);
         }
-        .gallery-delete-btn {
+        .gallery-delete {
             position: absolute;
-            top: 8px;
-            right: 8px;
+            top: 10px;
+            right: 10px;
             background: rgba(239, 68, 68, 0.9);
             color: white;
             border: none;
-            border-radius: 50%;
             width: 36px;
             height: 36px;
-            cursor: pointer;
+            border-radius: 50%;
             font-size: 20px;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s;
-            z-index: 10;
         }
-        .gallery-item:hover .gallery-delete-btn {
+        .gallery-item:hover .gallery-delete {
             opacity: 1;
         }
-        .gallery-delete-btn:hover {
-            background: rgba(220, 38, 38, 1);
-        }
-
-        /* Add Photo Section */
-        .add-photo-section {
-            background: white;
-            padding: 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            margin-top: 30px;
-            border: 2px dashed var(--gold);
-        }
-        .add-photo-section h4 {
-            font-size: 18px;
-            color: var(--dark);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        .photo-input-group {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .photo-input-group input {
-            flex: 1;
-            min-width: 250px;
-            padding: 12px 16px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: 0.2s;
-        }
-        .photo-input-group input:focus {
-            border-color: var(--gold);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(251,191,36,0.2);
-        }
-        .photo-input-group button {
-            background: var(--gold);
-            color: var(--dark);
-            border: none;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
-        .photo-input-group button:hover {
-            background: var(--gold-dark);
-            transform: translateY(-2px);
+        .gallery-delete:hover {
+            background: rgba(239, 68, 68, 1);
         }
 
         /* Contact form */
@@ -523,10 +515,13 @@
             section {
                 padding: 60px 20px;
             }
-            .photo-input-group {
+            .gallery-controls {
                 flex-direction: column;
             }
-            .photo-input-group button {
+            .gallery-controls input {
+                min-width: auto;
+            }
+            .gallery-controls button {
                 width: 100%;
             }
         }
@@ -556,19 +551,34 @@
 <section class="hero" id="accueil">
     <div class="hero-content">
         <h2 data-key="hero_title">Agence Immobilière de Confiance à Monastir</h2>
-        <p data-key="hero_sub">Nous vous accompagnons pour acheter, vendre et investir en toute sérénité.</p>
+        <p data-key="hero_sub">Nous vous accompagnons pour acheter, vendre, louer et investir en toute sérénité.</p>
         <a class="btn" href="#contact" data-key="cta_contact">Contactez-nous</a>
     </div>
 </section>
 
 <!-- ========== SERVICES ========== -->
 <section id="services">
-    <h3 data-key="services_title">Nos Services</h3>
+    <h3 data-key="services_main_title">Nos Services Principaux</h3>
     <div class="grid">
-        <div class="card"><strong data-key="service1_title">Achat & Vente</strong><br data-key="service1_desc">Processus clair et sécurisé.</div>
-        <div class="card"><strong data-key="service2_title">Biens Résidentiels</strong><br data-key="service2_desc">Appartements et villas sélectionnés.</div>
-        <div class="card"><strong data-key="service3_title">Investissement</strong><br data-key="service3_desc">Rentabilité et zones touristiques.</div>
-        <div class="card"><strong data-key="service4_title">Conseil Immobilier</strong><br data-key="service4_desc">Expertise locale et transparence.</div>
+        <div class="card">
+            <strong data-key="service_investment_title">🏢 Investissement</strong>
+            <p data-key="service_investment_desc">Opportunités d'investissement rentables dans les meilleures zones touristiques et résidentielles de Monastir.</p>
+        </div>
+        <div class="card">
+            <strong data-key="service_rentals_title">🔑 Locations</strong>
+            <p data-key="service_rentals_desc">Nous gérons la location de vos propriétés avec une gestion complète et des locataires fiables.</p>
+        </div>
+        <div class="card">
+            <strong data-key="service_sales_title">💼 Ventes</strong>
+            <p data-key="service_sales_desc">Vente de biens immobiliers de qualité. Processus clair, transparent et sécurisé pour tous les clients.</p>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 60px;" data-key="services_additional_title">Services Additionnels</h3>
+    <div class="grid">
+        <div class="card"><strong data-key="service1_title">Achat & Vente</strong><p data-key="service1_desc">Processus clair et sécurisé.</p></div>
+        <div class="card"><strong data-key="service2_title">Biens Résidentiels</strong><p data-key="service2_desc">Appartements et villas sélectionnés.</p></div>
+        <div class="card"><strong data-key="service4_title">Conseil Immobilier</strong><p data-key="service4_desc">Expertise locale et transparence.</p></div>
     </div>
 </section>
 
@@ -599,34 +609,28 @@
 </section>
 
 <!-- ========== GALLERY ========== -->
-<section id="galerie" class="gallery">
+<section id="galerie">
     <h3 data-key="gallery_title">Galerie Photos</h3>
-    <div class="gallery-wrapper" id="galleryContainer">
+    
+    <!-- Add Photo Section -->
+    <div class="gallery-controls">
+        <input type="text" id="photoUrl" placeholder="https://example.com/image.jpg" data-key-placeholder="add_photo_placeholder" />
+        <button id="addPhotoBtn" data-key="add_photo_btn">Ajouter Photo</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid" id="galleryGrid">
         <div class="gallery-item">
             <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="Appartement moderne Monastir" loading="lazy" />
-            <button class="gallery-delete-btn" onclick="deleteGalleryItem(this)" title="Supprimer">✕</button>
+            <button class="gallery-delete" title="Supprimer">✕</button>
         </div>
         <div class="gallery-item">
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="Villa résidentielle Monastir" loading="lazy" />
-            <button class="gallery-delete-btn" onclick="deleteGalleryItem(this)" title="Supprimer">✕</button>
+            <button class="gallery-delete" title="Supprimer">✕</button>
         </div>
         <div class="gallery-item">
             <img src="https://images.unsplash.com/photo-1600566753086-00f18f6c9f21?w=600&h=400&fit=crop" alt="Salon lumineux Tunisie" loading="lazy" />
-            <button class="gallery-delete-btn" onclick="deleteGalleryItem(this)" title="Supprimer">✕</button>
-        </div>
-    </div>
-
-    <!-- Add New Photo Section -->
-    <div class="add-photo-section">
-        <h4 data-key="add_photo_title">Ajouter une nouvelle photo</h4>
-        <div class="photo-input-group">
-            <input 
-                type="text" 
-                id="photoUrl" 
-                placeholder="Coller l'URL de l'image ici (ex: https://...)" 
-                data-key-placeholder="add_photo_placeholder"
-            />
-            <button onclick="addNewPhoto()" data-key="add_photo_btn">Ajouter Photo</button>
+            <button class="gallery-delete" title="Supprimer">✕</button>
         </div>
     </div>
 </section>
@@ -671,15 +675,20 @@
                 nav_gallery: "Galerie",
                 nav_contact: "Contact",
                 hero_title: "Agence Immobilière de Confiance à Monastir",
-                hero_sub: "Nous vous accompagnons pour acheter, vendre et investir en toute sérénité.",
+                hero_sub: "Nous vous accompagnons pour acheter, vendre, louer et investir en toute sérénité.",
                 cta_contact: "Contactez-nous",
-                services_title: "Nos Services",
+                services_main_title: "Nos Services Principaux",
+                services_additional_title: "Services Additionnels",
+                service_investment_title: "🏢 Investissement",
+                service_investment_desc: "Opportunités d'investissement rentables dans les meilleures zones touristiques et résidentielles de Monastir.",
+                service_rentals_title: "🔑 Locations",
+                service_rentals_desc: "Nous gérons la location de vos propriétés avec une gestion complète et des locataires fiables.",
+                service_sales_title: "💼 Ventes",
+                service_sales_desc: "Vente de biens immobiliers de qualité. Processus clair, transparent et sécurisé pour tous les clients.",
                 service1_title: "Achat & Vente",
                 service1_desc: "Processus clair et sécurisé.",
                 service2_title: "Biens Résidentiels",
                 service2_desc: "Appartements et villas sélectionnés.",
-                service3_title: "Investissement",
-                service3_desc: "Rentabilité et zones touristiques.",
                 service4_title: "Conseil Immobilier",
                 service4_desc: "Expertise locale et transparence.",
                 properties_title: "Nos Biens Immobiliers",
@@ -695,8 +704,7 @@
                 prop2_family: "Idéal famille",
                 prop2_btn: "Demander infos",
                 gallery_title: "Galerie Photos",
-                add_photo_title: "Ajouter une nouvelle photo",
-                add_photo_placeholder: "Coller l'URL de l'image ici (ex: https://...)",
+                add_photo_placeholder: "Collez l'URL de votre photo ici...",
                 add_photo_btn: "Ajouter Photo",
                 contact_title: "Contactez-nous",
                 form_name: "Nom complet",
@@ -716,15 +724,20 @@
                 nav_gallery: "Gallery",
                 nav_contact: "Contact",
                 hero_title: "Trusted Real Estate Agency in Monastir",
-                hero_sub: "We assist you in buying, selling, and investing with complete peace of mind.",
+                hero_sub: "We assist you in buying, selling, renting, and investing with complete peace of mind.",
                 cta_contact: "Contact us",
-                services_title: "Our Services",
+                services_main_title: "Our Main Services",
+                services_additional_title: "Additional Services",
+                service_investment_title: "🏢 Investment",
+                service_investment_desc: "Profitable investment opportunities in the best tourist and residential areas of Monastir.",
+                service_rentals_title: "🔑 Rentals",
+                service_rentals_desc: "We manage the rental of your properties with complete management and reliable tenants.",
+                service_sales_title: "💼 Sales",
+                service_sales_desc: "Sale of quality real estate. Clear, transparent and secure process for all clients.",
                 service1_title: "Buying & Selling",
                 service1_desc: "Clear and secure process.",
                 service2_title: "Residential Properties",
                 service2_desc: "Selected apartments and villas.",
-                service3_title: "Investment",
-                service3_desc: "Profitability and tourist areas.",
                 service4_title: "Real Estate Consulting",
                 service4_desc: "Local expertise and transparency.",
                 properties_title: "Our Properties",
@@ -740,8 +753,7 @@
                 prop2_family: "Family-friendly",
                 prop2_btn: "Request info",
                 gallery_title: "Photo Gallery",
-                add_photo_title: "Add a new photo",
-                add_photo_placeholder: "Paste image URL here (e.g. https://...)",
+                add_photo_placeholder: "Paste your photo URL here...",
                 add_photo_btn: "Add Photo",
                 contact_title: "Contact Us",
                 form_name: "Full name",
@@ -763,25 +775,20 @@
 
         function switchLanguage(lang) {
             currentLang = lang;
-            // Update text content
             elements.forEach(el => {
                 const key = el.getAttribute('data-key');
                 if (translations[lang] && translations[lang][key]) {
                     el.textContent = translations[lang][key];
                 }
             });
-            // Update placeholders
             placeholders.forEach(el => {
                 const key = el.getAttribute('data-key-placeholder');
                 if (translations[lang] && translations[lang][key]) {
                     el.placeholder = translations[lang][key];
                 }
             });
-            // Update HTML lang attribute
             document.documentElement.lang = lang;
-            // Update toggle button text
             langToggle.textContent = lang === 'fr' ? 'EN' : 'FR';
-            // Update WhatsApp message language
             const waLink = document.querySelector('.whatsapp-float');
             if (waLink) {
                 const msg = lang === 'fr' ?
@@ -803,14 +810,13 @@
             mainNav.classList.toggle('active');
         });
 
-        // Close menu on link click
         mainNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mainNav.classList.remove('active');
             });
         });
 
-        // Contact form submission
+        // Contact form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value.trim();
@@ -830,84 +836,69 @@
         switchLanguage('fr');
     })();
 
-    // Gallery functions
-    function addNewPhoto() {
-        const urlInput = document.getElementById('photoUrl');
-        const url = urlInput.value.trim();
+    // Gallery functionality with LocalStorage
+    const galleryGrid = document.getElementById('galleryGrid');
+    const photoUrlInput = document.getElementById('photoUrl');
+    const addPhotoBtn = document.getElementById('addPhotoBtn');
+    const STORAGE_KEY = 'eliteHomePhotos';
 
-        if (!url) {
-            alert('Veuillez entrer une URL valide / Please enter a valid URL');
-            return;
+    // Load photos from localStorage
+    function loadPhotos() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            const photos = JSON.parse(stored);
+            photos.forEach(url => addPhotoToGallery(url, false));
         }
+    }
 
-        // Validate URL
-        try {
-            new URL(url);
-        } catch (e) {
-            alert('URL invalide / Invalid URL');
-            return;
-        }
-
-        const galleryContainer = document.getElementById('galleryContainer');
+    // Add photo to gallery and localStorage
+    function addPhotoToGallery(url, save = true) {
+        if (!url.trim()) return;
         
-        // Create new gallery item
-        const newItem = document.createElement('div');
-        newItem.className = 'gallery-item';
-        newItem.innerHTML = `
-            <img src="${url}" alt="Photo Elite Home" loading="lazy" onerror="this.parentElement.remove();" />
-            <button class="gallery-delete-btn" onclick="deleteGalleryItem(this)" title="Supprimer / Delete">✕</button>
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.innerHTML = `
+            <img src="${url}" alt="Photo" loading="lazy" onerror="this.parentElement.remove()" />
+            <button class="gallery-delete" title="Supprimer">✕</button>
         `;
 
-        galleryContainer.appendChild(newItem);
-        urlInput.value = '';
-        
-        // Save to localStorage
-        saveGalleryToLocalStorage();
-    }
-
-    function deleteGalleryItem(button) {
-        if (confirm('Êtes-vous sûr? / Are you sure?')) {
-            button.parentElement.remove();
-            saveGalleryToLocalStorage();
-        }
-    }
-
-    function saveGalleryToLocalStorage() {
-        const items = [];
-        document.querySelectorAll('.gallery-item img').forEach(img => {
-            items.push(img.src);
+        item.querySelector('.gallery-delete').addEventListener('click', function(e) {
+            e.preventDefault();
+            item.remove();
+            if (save) savePhotos();
         });
-        localStorage.setItem('eliteHomeGallery', JSON.stringify(items));
-    }
 
-    function loadGalleryFromLocalStorage() {
-        const saved = localStorage.getItem('eliteHomeGallery');
-        if (saved) {
-            const items = JSON.parse(saved);
-            const container = document.getElementById('galleryContainer');
-            container.innerHTML = '';
-            
-            items.forEach(url => {
-                const newItem = document.createElement('div');
-                newItem.className = 'gallery-item';
-                newItem.innerHTML = `
-                    <img src="${url}" alt="Photo Elite Home" loading="lazy" onerror="this.parentElement.remove();" />
-                    <button class="gallery-delete-btn" onclick="deleteGalleryItem(this)" title="Supprimer / Delete">✕</button>
-                `;
-                container.appendChild(newItem);
-            });
+        galleryGrid.appendChild(item);
+
+        if (save) {
+            savePhotos();
+            photoUrlInput.value = '';
         }
     }
 
-    // Load gallery on page load
-    window.addEventListener('load', loadGalleryFromLocalStorage);
+    // Save photos to localStorage
+    function savePhotos() {
+        const photos = Array.from(galleryGrid.querySelectorAll('img')).map(img => img.src);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(photos));
+    }
 
-    // Allow Enter key to add photo
-    document.getElementById('photoUrl')?.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            addNewPhoto();
+    // Add photo button click
+    addPhotoBtn.addEventListener('click', function() {
+        const url = photoUrlInput.value.trim();
+        if (url) {
+            addPhotoToGallery(url);
         }
     });
+
+    // Add photo on Enter key
+    photoUrlInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            addPhotoBtn.click();
+        }
+    });
+
+    // Load photos on page load
+    window.addEventListener('load', loadPhotos);
 </script>
 
 </body>

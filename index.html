@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Тунис Недвижимость | Жильё у монастыря</title>
+    <title>Tunisie Immobilier | Monastir & Ribat</title>
     <!-- Google Fonts & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -21,14 +21,12 @@
             line-height: 1.5;
         }
 
-        /* Container */
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* Header */
         .header {
             background: white;
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
@@ -59,6 +57,28 @@
             font-size: 0.8rem;
             color: #475569;
         }
+        .lang-switch {
+            display: flex;
+            gap: 12px;
+            background: #f1f5f9;
+            padding: 6px 12px;
+            border-radius: 40px;
+        }
+        .lang-btn {
+            background: none;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 6px 14px;
+            border-radius: 30px;
+            transition: 0.2s;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+        .lang-btn.active {
+            background: #d97706;
+            color: white;
+        }
         .whatsapp-btn {
             background-color: #25D366;
             color: white;
@@ -80,7 +100,6 @@
             transform: scale(1.02);
         }
 
-        /* Hero */
         .hero {
             background: linear-gradient(105deg, #1e293b 0%, #0f172a 100%), url('https://images.unsplash.com/photo-1565094736274-93d7e3d8b6c7?q=80&w=1974&auto=format');
             background-size: cover;
@@ -109,7 +128,6 @@
             backdrop-filter: blur(4px);
         }
 
-        /* Section title */
         .section-title {
             font-size: 1.8rem;
             font-weight: 700;
@@ -128,7 +146,6 @@
             border-radius: 4px;
         }
 
-        /* Cards grid */
         .property-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -176,7 +193,6 @@
             margin-top: 8px;
         }
 
-        /* Галерея достопримечательностей */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -203,7 +219,6 @@
             background: #fff;
         }
 
-        /* user upload section */
         .upload-area {
             background: white;
             border-radius: 32px;
@@ -278,7 +293,6 @@
             cursor: pointer;
         }
 
-        /* Map section */
         .map-container {
             border-radius: 28px;
             overflow: hidden;
@@ -292,7 +306,6 @@
             border: 0;
         }
 
-        /* footer */
         .footer {
             background: #0f172a;
             color: #cbd5e1;
@@ -306,7 +319,6 @@
             text-decoration: none;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .container {
                 padding: 0 16px;
@@ -328,6 +340,9 @@
                 align-items: center;
                 text-align: center;
             }
+            .lang-switch {
+                order: 1;
+            }
         }
         button, .upload-label {
             cursor: pointer;
@@ -341,7 +356,11 @@
         <div class="header-content">
             <div class="logo">
                 <h1>🏡 Tunisian Heritage Estates</h1>
-                <p>Недвижимость рядом с древним монастырём | Живые фото Туниса</p>
+                <p data-i18n="logo-sub">Immobilier près du monastère | Photos vivantes de Tunisie</p>
+            </div>
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="fr">FR</button>
+                <button class="lang-btn" data-lang="en">EN</button>
             </div>
             <a href="https://wa.me/21625801607" target="_blank" class="whatsapp-btn" rel="noopener noreferrer">
                 <i class="fab fa-whatsapp"></i> +216 25 801 607
@@ -352,208 +371,338 @@
 
 <section class="hero">
     <div class="container">
-        <div class="badge"><i class="fas fa-place-of-worship"></i> Монастырь Рибат • Монастир, Тунис</div>
-        <h2>Ваше жильё у моря и истории</h2>
-        <p>Апартаменты, виллы и риады в пешей доступности от древнего монастыря. Аутентичный Тунис с современным комфортом.</p>
-        <a href="#contact" style="background:#d97706; color:white; padding:12px 28px; border-radius:40px; display:inline-block; margin-top:8px; text-decoration:none; font-weight:600;"><i class="fab fa-whatsapp"></i> Связаться сейчас</a>
+        <div class="badge"><i class="fas fa-place-of-worship"></i> <span data-i18n="hero-badge">Ribat de Monastir • Tunisie</span></div>
+        <h2 data-i18n="hero-title">Votre logement entre mer et histoire</h2>
+        <p data-i18n="hero-desc">Appartements, villas et riads à quelques pas du monastère antique. Tunisie authentique avec confort moderne.</p>
+        <a href="#contact" id="hero-cta" style="background:#d97706; color:white; padding:12px 28px; border-radius:40px; display:inline-block; margin-top:8px; text-decoration:none; font-weight:600;"><i class="fab fa-whatsapp"></i> <span data-i18n="hero-btn">Contacter maintenant</span></a>
     </div>
 </section>
 
 <div class="container">
-    <!-- Объекты недвижимости (Калгари/Гамильтон стиль) -->
-    <h2 class="section-title"><i class="fas fa-building"></i> Эксклюзивные объекты</h2>
-    <div class="property-grid" id="propertyGrid">
-        <!-- Карточка 1 -->
-        <div class="property-card">
-            <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1580237072351-8c2f92303918?q=80&w=1974&auto=format'); background-size: cover;"></div>
-            <div class="card-content">
-                <h3>Апартаменты «Панорама монастыря»</h3>
-                <div class="price">€ 125 000</div>
-                <p>2 спальни, вид на Рибат, 70м², терраса. Всего 300м до пляжа.</p>
-                <div class="details"><span><i class="fas fa-bed"></i> 2</span> <span><i class="fas fa-bath"></i> 2</span> <span><i class="fas fa-vector-square"></i> 70м²</span></div>
-            </div>
-        </div>
-        <!-- Карточка 2 -->
-        <div class="property-card">
-            <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1565043666747-69b6646c0d4f?q=80&w=2070&auto=format');"></div>
-            <div class="card-content">
-                <h3>Риад в медине, 5 мин до монастыря</h3>
-                <div class="price">€ 290 000</div>
-                <p>Традиционный дом с внутренним двором, 3 спальни, восстановлен.</p>
-                <div class="details"><span><i class="fas fa-bed"></i> 3</span> <span><i class="fas fa-bath"></i> 3</span> <span><i class="fas fa-vector-square"></i> 145м²</span></div>
-            </div>
-        </div>
-        <!-- Карточка 3 -->
-        <div class="property-card">
-            <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1583083527882-4bee9aba2eea?q=80&w=2070&auto=format');"></div>
-            <div class="card-content">
-                <h3>Вилла с бассейном, вид на море</h3>
-                <div class="price">€ 520 000</div>
-                <p>Престижный район, земельный участок 800м², до монастыря 1 км.</p>
-                <div class="details"><span><i class="fas fa-bed"></i> 4</span> <span><i class="fas fa-bath"></i> 3</span> <span><i class="fas fa-vector-square"></i> 210м²</span></div>
-            </div>
-        </div>
-    </div>
+    <h2 class="section-title"><i class="fas fa-building"></i> <span data-i18n="properties-title">Biens exclusifs</span></h2>
+    <div id="propertyGrid" class="property-grid"></div>
 
-    <!-- Тунисские достопримечательности: фото+видео "живые фотографии" -->
-    <h2 class="section-title"><i class="fas fa-camera-retro"></i> Живые кадры Туниса • Монастырь и окрестности</h2>
-    <div class="gallery-grid" id="staticGallery">
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1533929736458-ca588d47db77?q=80&w=2070&auto=format" alt="Монастырь Рибат Монастир">
-            <div class="caption">🏛️ Рибат Монастир — древняя крепость VIII века</div>
-        </div>
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1602264769956-1451eb3cf57e?q=80&w=1974&auto=format" alt="Пляж Сканес">
-            <div class="caption">🌊 Пляж Сканес • бирюзовая вода</div>
-        </div>
-        <div class="gallery-item">
-            <video controls poster="https://images.unsplash.com/photo-1591954946403-7b983c9b8d71?q=80&w=1974&auto=format">
-                <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
-                Ваш браузер не поддерживает видео.
-            </video>
-            <div class="caption">🎥 Прогулка по Монастиру • атмосфера города</div>
-        </div>
-        <div class="gallery-item">
-            <img src="https://plus.unsplash.com/premium_photo-1661915661139-5b6a4e4a6f7c?q=80&w=2070&auto=format" alt="Озеро Шотт-эль-Джерид">
-            <div class="caption">🏜️ Соляное озеро • магия юга Туниса</div>
-        </div>
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1559128010-7a1ad5e2b6a0?q=80&w=1974&auto=format" alt="Медина Туниса">
-            <div class="caption">🕌 Медина Туниса • объект ЮНЕСКО</div>
-        </div>
-    </div>
+    <h2 class="section-title"><i class="fas fa-camera-retro"></i> <span data-i18n="gallery-title">Images vivantes de Tunisie • Monastir et ses environs</span></h2>
+    <div id="galleryGrid" class="gallery-grid"></div>
 
-    <!-- Мобильная загрузка фото/видео без URL -->
     <div class="upload-area" id="uploadSection">
         <i class="fas fa-cloud-upload-alt" style="font-size: 2.5rem; color:#d97706;"></i>
-        <h3 style="margin: 12px 0;">📱 Загрузите свои фото и видео объектов</h3>
-        <p style="margin-bottom: 20px;">Выберите файлы с устройства (изображения или видео) — они появятся ниже. Прямая загрузка без ссылок</p>
+        <h3 style="margin: 12px 0;" data-i18n="upload-title">📱 Téléchargez vos propres photos et vidéos</h3>
+        <p style="margin-bottom: 20px;" data-i18n="upload-desc">Choisissez des fichiers depuis votre appareil (images ou vidéos) — ils apparaîtront ci-dessous. Téléchargement direct sans lien.</p>
         <label for="uploadInput" class="upload-label">
-            <i class="fas fa-plus-circle"></i> Выбрать фото / видео
+            <i class="fas fa-plus-circle"></i> <span data-i18n="upload-btn">Sélectionner photo / vidéo</span>
         </label>
         <input type="file" id="uploadInput" accept="image/*,video/*" multiple>
         <div id="userMediaContainer" class="user-media-gallery"></div>
-        <button id="clearAllBtn" class="clear-all"><i class="fas fa-trash-alt"></i> Очистить мои загрузки</button>
-        <p style="font-size: 0.75rem; margin-top: 16px; color:#475569;"><i class="fas fa-mobile-alt"></i> Мобильная версия: загружайте прямо с камеры / галереи</p>
+        <button id="clearAllBtn" class="clear-all"><i class="fas fa-trash-alt"></i> <span data-i18n="upload-clear">Effacer mes téléchargements</span></button>
+        <p style="font-size: 0.75rem; margin-top: 16px; color:#475569;"><i class="fas fa-mobile-alt"></i> <span data-i18n="upload-mobile">Version mobile : téléchargez directement depuis l'appareil photo / galerie</span></p>
     </div>
 
-    <!-- Карта местоположения (Тунис, монастырь) -->
-    <h2 class="section-title"><i class="fas fa-map-marker-alt"></i> Расположение • Монастырь Монастир</h2>
+    <h2 class="section-title"><i class="fas fa-map-marker-alt"></i> <span data-i18n="map-title">Localisation • Monastir & Ribat</span></h2>
     <div class="map-container">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3249.244340381691!2d10.8339272!3d35.7759665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd8b6e4b4c4b9b%3A0x9b1c3d1c8b7b6b5!2z0KDQuNCx0LDRgiDQnNC-0L3QsNGB0YLQuNGALCDQnNC-0L3QsNGB0YLQuNGA!5e0!3m2!1sru!2sru!4v1711790000000!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-    <!-- Контактный блок WhatsApp -->
     <div id="contact" style="background: #fef9e6; border-radius: 28px; padding: 24px 20px; margin: 20px 0 30px; text-align: center;">
         <i class="fab fa-whatsapp" style="font-size: 44px; color:#25D366;"></i>
-        <h3 style="margin: 12px 0;">Консультация по недвижимости в Тунисе</h3>
-        <p>Напишите нам в WhatsApp, чтобы получить актуальные предложения возле монастыря, организовать онлайн-показ и видеообзоры.</p>
-        <a href="https://wa.me/21625801607?text=Здравствуйте! Интересует недвижимость возле монастыря в Тунисе" target="_blank" class="whatsapp-btn" style="margin-top: 16px; display: inline-flex; background:#25D366;">Связаться через WhatsApp →</a>
-        <p style="margin-top: 14px; font-size: 0.85rem;"><i class="fas fa-phone-alt"></i> Прямой номер: +216 25 801 607</p>
+        <h3 style="margin: 12px 0;" data-i18n="contact-title">Conseil en immobilier en Tunisie</h3>
+        <p data-i18n="contact-desc">Écrivez-nous sur WhatsApp pour obtenir les offres actuelles près du monastère, organiser une visite en ligne et des visites vidéo.</p>
+        <a href="https://wa.me/21625801607?text=Bonjour%20!%20Je%20suis%20intéressé%20par%20un%20bien%20immobilier%20près%20du%20monastère%20en%20Tunisie" target="_blank" class="whatsapp-btn" style="margin-top: 16px; display: inline-flex; background:#25D366;"><i class="fab fa-whatsapp"></i> <span data-i18n="contact-wa-btn">Contacter via WhatsApp →</span></a>
+        <p style="margin-top: 14px; font-size: 0.85rem;"><i class="fas fa-phone-alt"></i> <span data-i18n="contact-phone">Numéro direct :</span> +216 25 801 607</p>
     </div>
 </div>
 
 <footer class="footer">
     <div class="container">
-        <p>© 2025 Tunisia Heritage Real Estate — Жильё рядом с монастырём. Все фото и видео загруженные пользователями отображаются локально.</p>
-        <p style="margin-top: 10px;"><i class="fab fa-whatsapp"></i> Контакт WhatsApp: <a href="https://wa.me/21625801607" class="wa-link">+216 25 801 607</a> | Тунис, Монастир</p>
-        <p style="margin-top: 16px; font-size: 0.75rem;">💡 Возможность загрузки фотографий и видео напрямую с мобильных устройств — добавьте свои впечатления о Тунисе</p>
+        <p data-i18n="footer-text">© 2025 Tunisia Heritage Real Estate — Logements près du monastère. Toutes les photos et vidéos téléchargées par les utilisateurs sont affichées localement.</p>
+        <p style="margin-top: 10px;"><i class="fab fa-whatsapp"></i> <span data-i18n="footer-wa">Contact WhatsApp :</span> <a href="https://wa.me/21625801607" class="wa-link">+216 25 801 607</a> | Tunisie, Monastir</p>
+        <p style="margin-top: 16px; font-size: 0.75rem;" data-i18n="footer-note">💡 Téléchargez directement des photos/vidéos depuis votre mobile — partagez vos impressions de la Tunisie</p>
     </div>
 </footer>
 
 <script>
-    (function() {
-        // --- Логика загрузки фото/видео (без URL, напрямую с устройства)
-        const uploadInput = document.getElementById('uploadInput');
-        const userMediaContainer = document.getElementById('userMediaContainer');
-        const clearAllBtn = document.getElementById('clearAllBtn');
+    // ------------- TRADUCTIONS -------------
+    const translations = {
+        fr: {
+            "logo-sub": "Immobilier près du monastère | Photos vivantes de Tunisie",
+            "hero-badge": "Ribat de Monastir • Tunisie",
+            "hero-title": "Votre logement entre mer et histoire",
+            "hero-desc": "Appartements, villas et riads à quelques pas du monastère antique. Tunisie authentique avec confort moderne.",
+            "hero-btn": "Contacter maintenant",
+            "properties-title": "Biens exclusifs",
+            "gallery-title": "Images vivantes de Tunisie • Monastir et ses environs",
+            "upload-title": "📱 Téléchargez vos propres photos et vidéos",
+            "upload-desc": "Choisissez des fichiers depuis votre appareil (images ou vidéos) — ils apparaîtront ci-dessous. Téléchargement direct sans lien.",
+            "upload-btn": "Sélectionner photo / vidéo",
+            "upload-clear": "Effacer mes téléchargements",
+            "upload-mobile": "Version mobile : téléchargez directement depuis l'appareil photo / galerie",
+            "map-title": "Localisation • Monastir & Ribat",
+            "contact-title": "Conseil en immobilier en Tunisie",
+            "contact-desc": "Écrivez-nous sur WhatsApp pour obtenir les offres actuelles près du monastère, organiser une visite en ligne et des visites vidéo.",
+            "contact-wa-btn": "Contacter via WhatsApp →",
+            "contact-phone": "Numéro direct :",
+            "footer-text": "© 2025 Tunisia Heritage Real Estate — Logements près du monastère. Toutes les photos et vidéos téléchargées par les utilisateurs sont affichées localement.",
+            "footer-wa": "Contact WhatsApp :",
+            "footer-note": "💡 Téléchargez directement des photos/vidéos depuis votre mobile — partagez vos impressions de la Tunisie",
+            // properties
+            prop1_title: "Appartement « Panorama du Monastère »",
+            prop1_desc: "2 chambres, vue sur le Ribat, 70m², terrasse. À seulement 300m de la plage.",
+            prop2_title: "Riad dans la médina, 5 min du monastère",
+            prop2_desc: "Maison traditionnelle avec cour intérieure, 3 chambres, entièrement rénovée.",
+            prop3_title: "Villa avec piscine, vue mer",
+            prop3_desc: "Quartier prestigieux, terrain de 800m², à 1 km du monastère.",
+            // gallery captions
+            gal1: "🏛️ Ribat de Monastir — forteresse du VIIIe siècle",
+            gal2: "🌊 Plage de Skanes • eau turquoise",
+            gal3: "🎥 Promenade à Monastir • ambiance de la ville",
+            gal4: "🏜️ Lac salé Chott el-Jérid • magie du sud tunisien",
+            gal5: "🕌 Médina de Tunis • site UNESCO"
+        },
+        en: {
+            "logo-sub": "Real estate near the monastery | Live photos of Tunisia",
+            "hero-badge": "Ribat of Monastir • Tunisia",
+            "hero-title": "Your home between sea and history",
+            "hero-desc": "Apartments, villas and riads within walking distance of the ancient monastery. Authentic Tunisia with modern comfort.",
+            "hero-btn": "Contact now",
+            "properties-title": "Exclusive properties",
+            "gallery-title": "Live shots of Tunisia • Monastir & surroundings",
+            "upload-title": "📱 Upload your own photos and videos",
+            "upload-desc": "Select files from your device (images or videos) — they will appear below. Direct upload without links.",
+            "upload-btn": "Choose photo / video",
+            "upload-clear": "Clear my uploads",
+            "upload-mobile": "Mobile version: upload directly from camera / gallery",
+            "map-title": "Location • Monastir & Ribat",
+            "contact-title": "Real estate consultancy in Tunisia",
+            "contact-desc": "Message us on WhatsApp to get current listings near the monastery, arrange online tours and video walkthroughs.",
+            "contact-wa-btn": "Contact via WhatsApp →",
+            "contact-phone": "Direct number:",
+            "footer-text": "© 2025 Tunisia Heritage Real Estate — Homes near the monastery. All user-uploaded photos and videos are displayed locally.",
+            "footer-wa": "WhatsApp contact:",
+            "footer-note": "💡 Upload photos/videos directly from your mobile — share your impressions of Tunisia",
+            prop1_title: "Apartment 'Monastery Panorama'",
+            prop1_desc: "2 bedrooms, view of the Ribat, 70m², terrace. Only 300m from the beach.",
+            prop2_title: "Riad in the medina, 5 min from the monastery",
+            prop2_desc: "Traditional house with inner courtyard, 3 bedrooms, fully restored.",
+            prop3_title: "Villa with pool, sea view",
+            prop3_desc: "Prestigious area, land 800m², 1 km from the monastery.",
+            gal1: "🏛️ Ribat of Monastir — 8th century fortress",
+            gal2: "🌊 Skanes Beach • turquoise water",
+            gal3: "🎥 Walk in Monastir • city atmosphere",
+            gal4: "🏜️ Chott el-Jerid salt lake • magic of southern Tunisia",
+            gal5: "🕌 Medina of Tunis • UNESCO site"
+        }
+    };
 
-        let loadedMediaObjects = [];
-        let currentMediaFiles = [];
+    let currentLang = 'fr';
 
-        function renderUserMedia(filesArray) {
-            userMediaContainer.innerHTML = '';
-            loadedMediaObjects.forEach(url => URL.revokeObjectURL(url));
-            loadedMediaObjects = [];
+    // Data for properties
+    const propertiesData = [
+        { img: "https://images.unsplash.com/photo-1580237072351-8c2f92303918?q=80&w=1974&auto=format", price: "€ 125 000", beds: 2, baths: 2, area: "70m²", key: "prop1" },
+        { img: "https://images.unsplash.com/photo-1565043666747-69b6646c0d4f?q=80&w=2070&auto=format", price: "€ 290 000", beds: 3, baths: 3, area: "145m²", key: "prop2" },
+        { img: "https://images.unsplash.com/photo-1583083527882-4bee9aba2eea?q=80&w=2070&auto=format", price: "€ 520 000", beds: 4, baths: 3, area: "210m²", key: "prop3" }
+    ];
 
-            if (!filesArray.length) {
-                userMediaContainer.innerHTML = '<div style="width:100%; text-align:center; padding:20px; color:#64748b;">Пока нет загруженных фото/видео. Добавьте прямо сейчас!</div>';
-                return;
+    // Gallery data (images, video, and captions keys)
+    const galleryData = [
+        { type: "img", src: "https://images.unsplash.com/photo-1533929736458-ca588d47db77?q=80&w=2070&auto=format", captionKey: "gal1" },
+        { type: "img", src: "https://images.unsplash.com/photo-1602264769956-1451eb3cf57e?q=80&w=1974&auto=format", captionKey: "gal2" },
+        { type: "video", src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", poster: "https://images.unsplash.com/photo-1591954946403-7b983c9b8d71?q=80&w=1974&auto=format", captionKey: "gal3" },
+        { type: "img", src: "https://plus.unsplash.com/premium_photo-1661915661139-5b6a4e4a6f7c?q=80&w=2070&auto=format", captionKey: "gal4" },
+        { type: "img", src: "https://images.unsplash.com/photo-1559128010-7a1ad5e2b6a0?q=80&w=1974&auto=format", captionKey: "gal5" }
+    ];
+
+    function renderProperties() {
+        const container = document.getElementById('propertyGrid');
+        if (!container) return;
+        container.innerHTML = '';
+        propertiesData.forEach(prop => {
+            const title = translations[currentLang][prop.key + '_title'];
+            const desc = translations[currentLang][prop.key + '_desc'];
+            const card = document.createElement('div');
+            card.className = 'property-card';
+            card.innerHTML = `
+                <div class="card-img" style="background-image: url('${prop.img}'); background-size: cover;"></div>
+                <div class="card-content">
+                    <h3>${title}</h3>
+                    <div class="price">${prop.price}</div>
+                    <p>${desc}</p>
+                    <div class="details"><span><i class="fas fa-bed"></i> ${prop.beds}</span> <span><i class="fas fa-bath"></i> ${prop.baths}</span> <span><i class="fas fa-vector-square"></i> ${prop.area}</span></div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function renderGallery() {
+        const container = document.getElementById('galleryGrid');
+        if (!container) return;
+        container.innerHTML = '';
+        galleryData.forEach(item => {
+            const captionText = translations[currentLang][item.captionKey];
+            const galDiv = document.createElement('div');
+            galDiv.className = 'gallery-item';
+            if (item.type === 'img') {
+                const img = document.createElement('img');
+                img.src = item.src;
+                img.alt = captionText;
+                galDiv.appendChild(img);
+            } else {
+                const video = document.createElement('video');
+                video.controls = true;
+                video.poster = item.poster;
+                const source = document.createElement('source');
+                source.src = item.src;
+                source.type = 'video/mp4';
+                video.appendChild(source);
+                video.textContent = "Votre navigateur ne supporte pas la vidéo.";
+                galDiv.appendChild(video);
             }
+            const captionDiv = document.createElement('div');
+            captionDiv.className = 'caption';
+            captionDiv.textContent = captionText;
+            galDiv.appendChild(captionDiv);
+            container.appendChild(galDiv);
+        });
+    }
 
-            filesArray.forEach((file, idx) => {
-                if (file.type.startsWith('image/') || file.type.startsWith('video/')) {
-                    const objectUrl = URL.createObjectURL(file);
-                    loadedMediaObjects.push(objectUrl);
-
-                    const mediaDiv = document.createElement('div');
-                    mediaDiv.className = 'user-media-card';
-                    
-                    if (file.type.startsWith('image/')) {
-                        const img = document.createElement('img');
-                        img.src = objectUrl;
-                        img.alt = 'Загруженное фото';
-                        mediaDiv.appendChild(img);
-                    } else if (file.type.startsWith('video/')) {
-                        const video = document.createElement('video');
-                        video.src = objectUrl;
-                        video.controls = true;
-                        video.style.width = '100%';
-                        video.style.height = '140px';
-                        video.style.objectFit = 'cover';
-                        mediaDiv.appendChild(video);
-                    }
-                    
-                    const delBtn = document.createElement('div');
-                    delBtn.className = 'delete-media';
-                    delBtn.innerHTML = '<i class="fas fa-times"></i>';
-                    delBtn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const newFiles = currentMediaFiles.filter((_, i) => i !== idx);
-                        currentMediaFiles = newFiles;
-                        renderUserMedia(currentMediaFiles);
-                    });
-                    mediaDiv.appendChild(delBtn);
-                    userMediaContainer.appendChild(mediaDiv);
+    function updateStaticTexts() {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[currentLang][key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = translations[currentLang][key];
+                } else {
+                    el.innerText = translations[currentLang][key];
                 }
-            });
-            if (filesArray.length === 0) {
-                userMediaContainer.innerHTML = '<div style="width:100%; text-align:center; padding:20px; color:#64748b;">Пока нет загруженных фото/видео. Добавьте прямо сейчас!</div>';
-            }
-        }
-
-        function handleFiles(files) {
-            if (!files.length) return;
-            const newFiles = Array.from(files);
-            const validFiles = newFiles.filter(f => f.type.startsWith('image/') || f.type.startsWith('video/'));
-            if (validFiles.length === 0) {
-                alert("Пожалуйста, выбирайте фото (jpeg, png) или видео (mp4, mov)");
-                return;
-            }
-            currentMediaFiles.push(...validFiles);
-            renderUserMedia(currentMediaFiles);
-            document.getElementById('uploadSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        uploadInput.addEventListener('change', (e) => {
-            if (e.target.files.length) {
-                handleFiles(e.target.files);
-                uploadInput.value = '';
             }
         });
+        // Update hero button span inside
+        const heroSpan = document.querySelector('#hero-cta span');
+        if (heroSpan && translations[currentLang]['hero-btn']) heroSpan.innerText = translations[currentLang]['hero-btn'];
+        // update upload labels and buttons text inside spans
+        const uploadBtnSpan = document.querySelector('.upload-label span');
+        if (uploadBtnSpan) uploadBtnSpan.innerText = translations[currentLang]['upload-btn'];
+        const clearSpan = document.querySelector('#clearAllBtn span');
+        if (clearSpan) clearSpan.innerText = translations[currentLang]['upload-clear'];
+        const mobileSpan = document.querySelector('#uploadSection p:last-of-type span');
+        if (mobileSpan) mobileSpan.innerText = translations[currentLang]['upload-mobile'];
+        const contactWaSpan = document.querySelector('#contact .whatsapp-btn span');
+        if (contactWaSpan) contactWaSpan.innerText = translations[currentLang]['contact-wa-btn'];
+        const phoneSpan = document.querySelector('#contact p:last-of-type span');
+        if (phoneSpan) phoneSpan.innerText = translations[currentLang]['contact-phone'];
+        const footerText = document.querySelector('.footer p:first-child');
+        if (footerText && footerText.hasAttribute('data-i18n')) footerText.innerText = translations[currentLang]['footer-text'];
+        const footerWaSpan = document.querySelector('.footer p:nth-child(2) span');
+        if (footerWaSpan) footerWaSpan.innerText = translations[currentLang]['footer-wa'];
+        const footerNote = document.querySelector('.footer p:last-child');
+        if (footerNote && footerNote.hasAttribute('data-i18n')) footerNote.innerText = translations[currentLang]['footer-note'];
+    }
 
-        clearAllBtn.addEventListener('click', () => {
-            if (currentMediaFiles.length && confirm('Очистить все загруженные фото и видео?')) {
-                currentMediaFiles = [];
-                renderUserMedia([]);
-            } else if (!currentMediaFiles.length) {
-                alert('Нет загруженных файлов');
+    function setLanguage(lang) {
+        currentLang = lang;
+        renderProperties();
+        renderGallery();
+        updateStaticTexts();
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+        // update html lang attribute
+        document.documentElement.lang = lang === 'fr' ? 'fr' : 'en';
+    }
+
+    // ---------- USER MEDIA UPLOAD (unchanged from original, works independently) ----------
+    const uploadInput = document.getElementById('uploadInput');
+    const userMediaContainer = document.getElementById('userMediaContainer');
+    const clearAllBtnMedia = document.getElementById('clearAllBtn');
+    let loadedMediaObjects = [];
+    let currentMediaFiles = [];
+
+    function renderUserMedia(filesArray) {
+        userMediaContainer.innerHTML = '';
+        loadedMediaObjects.forEach(url => URL.revokeObjectURL(url));
+        loadedMediaObjects = [];
+        if (!filesArray.length) {
+            userMediaContainer.innerHTML = '<div style="width:100%; text-align:center; padding:20px; color:#64748b;">Aucune photo/vidéo téléchargée pour le moment. Ajoutez-en dès maintenant !</div>';
+            return;
+        }
+        filesArray.forEach((file, idx) => {
+            if (file.type.startsWith('image/') || file.type.startsWith('video/')) {
+                const objectUrl = URL.createObjectURL(file);
+                loadedMediaObjects.push(objectUrl);
+                const mediaDiv = document.createElement('div');
+                mediaDiv.className = 'user-media-card';
+                if (file.type.startsWith('image/')) {
+                    const img = document.createElement('img');
+                    img.src = objectUrl;
+                    img.alt = 'Uploaded photo';
+                    mediaDiv.appendChild(img);
+                } else {
+                    const video = document.createElement('video');
+                    video.src = objectUrl;
+                    video.controls = true;
+                    video.style.width = '100%';
+                    video.style.height = '140px';
+                    video.style.objectFit = 'cover';
+                    mediaDiv.appendChild(video);
+                }
+                const delBtn = document.createElement('div');
+                delBtn.className = 'delete-media';
+                delBtn.innerHTML = '<i class="fas fa-times"></i>';
+                delBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const newFiles = currentMediaFiles.filter((_, i) => i !== idx);
+                    currentMediaFiles = newFiles;
+                    renderUserMedia(currentMediaFiles);
+                });
+                mediaDiv.appendChild(delBtn);
+                userMediaContainer.appendChild(mediaDiv);
             }
         });
+        if (filesArray.length === 0) {
+            userMediaContainer.innerHTML = '<div style="width:100%; text-align:center; padding:20px; color:#64748b;">Aucune photo/vidéo téléchargée pour le moment. Ajoutez-en dès maintenant !</div>';
+        }
+    }
 
-        renderUserMedia([]);
-    })();
+    function handleFiles(files) {
+        if (!files.length) return;
+        const newFiles = Array.from(files);
+        const validFiles = newFiles.filter(f => f.type.startsWith('image/') || f.type.startsWith('video/'));
+        if (validFiles.length === 0) {
+            alert("Veuillez sélectionner des images (jpeg, png) ou des vidéos (mp4, mov).");
+            return;
+        }
+        currentMediaFiles.push(...validFiles);
+        renderUserMedia(currentMediaFiles);
+        document.getElementById('uploadSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
 
+    uploadInput.addEventListener('change', (e) => {
+        if (e.target.files.length) {
+            handleFiles(e.target.files);
+            uploadInput.value = '';
+        }
+    });
+    clearAllBtnMedia.addEventListener('click', () => {
+        if (currentMediaFiles.length && confirm('Effacer tous les fichiers téléchargés ?')) {
+            currentMediaFiles = [];
+            renderUserMedia([]);
+        } else if (!currentMediaFiles.length) {
+            alert('Aucun fichier téléchargé');
+        }
+    });
+    renderUserMedia([]);
+
+    // Language switcher event
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const lang = btn.getAttribute('data-lang');
+            if (lang) setLanguage(lang);
+        });
+    });
+
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -565,6 +714,9 @@
             }
         });
     });
+
+    // Initialize with French
+    setLanguage('fr');
 </script>
 </body>
 </html>

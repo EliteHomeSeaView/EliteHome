@@ -1,69 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Elite Home | Agence Immobilière à Monastir</title>
-    <meta name="description" content="Elite Home est une agence immobilière à Monastir spécialisée dans la vente, l'achat et l'investissement immobilier. Découvrez nos biens et services." />
-    <meta name="keywords" content="agence immobilière Monastir, immobilier Tunisie, appartement Monastir, villa Monastir, achat, vente, investissement, location" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Home | Immobilier Monastir – Location, Vente, Investissement</title>
+    <meta name="description" content="Agence immobilière à Monastir, Tunisie. Location, vente et investissement en toute confiance.">
+    <meta name="keywords" content="location Monastir, vente appartement Monastir, investissement Tunisie, immobilier Monastir">
 
-    <!-- Open Graph / Social -->
-    <meta property="og:title" content="Elite Home - Agence Immobilière Monastir" />
-    <meta property="og:description" content="Achetez, vendez, louez et investissez en toute confiance à Monastir." />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200" />
-    <meta property="og:url" content="https://www.elitehome.tn" />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <!-- Schema.org microdata for local real estate agency -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "RealEstateAgent",
-            "name": "Elite Home",
-            "description": "Agence immobilière à Monastir spécialisée dans la vente, l'achat, la location et l'investissement.",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Avenue Combattant Suprême",
-                "addressLocality": "Monastir",
-                "addressCountry": "TN"
-            },
-            "telephone": "+216 25 801 607",
-            "email": "contact@elitehome.tn",
-            "url": "https://www.elitehome.tn",
-            "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800"
-        }
-    </script>
+    <!-- Open Graph -->
+    <meta property="og:title" content="Elite Home – Location, Vente, Investissement">
+    <meta property="og:description" content="Votre partenaire immobilier à Monastir.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200">
+    <meta property="og:url" content="https://elitehomeseaview.github.io/EliteHome/">
 
     <style>
         :root {
-            --dark: #0f172a;
-            --gold: #fbbf24;
-            --gold-dark: #f59e0b;
-            --light: #f8fafc;
-            --white: #ffffff;
-            --gray: #64748b;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --radius: 12px;
-            --transition: 0.3s ease;
+            --bleu-med: #1a3b5c;    /* глубокий средиземноморский синий */
+            --terracotta: #c96b4a;   /* терракота */
+            --gold: #e6b43c;         /* золотой */
+            --white: #fdfbf7;        /* тёплый белый */
+            --sand: #f4e9d8;         /* песочный */
+            --dark: #2e1e0f;
+            --mosaic: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path d="M0 0h20v20H0zm20 20h20v20H20zM20 0h20v20H20zM0 20h20v20H0z" fill="%23c96b4a" opacity="0.08"/></svg>');
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: #f1f5f9;
-            color: #1e293b;
+            background: var(--white);
+            color: #2e1e0f;
             line-height: 1.6;
-            scroll-behavior: smooth;
+            background-image: var(--mosaic), linear-gradient(to bottom, #fdfbf7 0%, #f4e9d8 100%);
         }
 
-        /* ---------- HEADER ---------- */
+        /* ---------- ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ ---------- */
+        .olive-branch {
+            display: inline-block;
+            font-size: 1.2em;
+            margin: 0 4px;
+        }
+        .carthage-symbol {
+            font-size: 1.8em;
+            vertical-align: middle;
+        }
+        .mosaic-pattern {
+            background: var(--mosaic);
+            height: 8px;
+            width: 100%;
+            border-radius: 4px;
+            opacity: 0.6;
+        }
+
         header {
-            background: var(--dark);
+            background: var(--bleu-med);
             color: white;
             padding: 16px 40px;
             display: flex;
@@ -73,159 +62,92 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-bottom: 4px solid var(--gold);
         }
         .logo {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 700;
             color: var(--gold);
-            letter-spacing: -0.5px;
             display: flex;
             align-items: center;
             gap: 8px;
+            letter-spacing: -0.5px;
         }
         .logo span {
             font-size: 14px;
             font-weight: 400;
-            color: #cbd5e1;
-            margin-left: 10px;
-            border-left: 1px solid #334155;
+            color: #f4e9d8;
+            border-left: 2px solid var(--terracotta);
             padding-left: 12px;
         }
-
-        /* Navigation desktop */
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        nav { display: flex; align-items: center; gap: 10px; }
         nav a {
-            color: #e2e8f0;
+            color: #fdfbf7;
             text-decoration: none;
             font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 6px;
-            transition: var(--transition);
-            font-size: 15px;
+            padding: 8px 18px;
+            border-radius: 20px;
+            transition: 0.3s;
+            background: rgba(255,255,255,0.05);
         }
-        nav a:hover {
-            background: rgba(255,255,255,0.1);
-            color: var(--gold);
-        }
+        nav a:hover { background: var(--gold); color: var(--bleu-med); font-weight: 700; }
         .lang-switch {
             background: none;
-            border: 1px solid #475569;
+            border: 2px solid var(--gold);
             color: white;
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 20px;
             cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            font-size: 14px;
-            margin-left: 8px;
+            font-weight: 700;
+            transition: 0.3s;
+            margin-left: 10px;
         }
-        .lang-switch:hover {
-            background: var(--gold);
-            border-color: var(--gold);
-            color: var(--dark);
-        }
+        .lang-switch:hover { background: var(--gold); color: var(--bleu-med); }
+        .menu-toggle { display: none; }
 
-        /* Mobile menu button */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            background: none;
-            border: none;
-            padding: 5px;
-        }
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            border-radius: 3px;
-            transition: var(--transition);
-        }
-
-        /* ---------- HERO ---------- */
+        /* Hero */
         .hero {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            background: linear-gradient(135deg, #1a3b5c 0%, #0f2a3f 100%);
             color: white;
             padding: 100px 40px 80px;
             text-align: center;
             position: relative;
-            overflow: hidden;
+            border-bottom: 8px solid var(--terracotta);
         }
-        .hero::before {
-            content: '';
+        .hero::after {
+            content: "🐘  🫒  🧿  🏛️";
+            font-size: 60px;
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(251,191,36,0.08) 0%, transparent 60%);
-            animation: float 12s infinite alternate ease-in-out;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.9);
+            padding: 0 20px;
+            border-radius: 40px;
+            letter-spacing: 15px;
         }
-        @keyframes float {
-            from { transform: translate(0, 0); }
-            to { transform: translate(20px, -20px); }
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .hero h2 {
-            font-size: 44px;
-            margin-bottom: 20px;
-            font-weight: 800;
-            line-height: 1.2;
-            animation: fadeInUp 0.8s ease;
-        }
-        .hero p {
-            font-size: 20px;
-            opacity: 0.9;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        .hero h2 { font-size: 46px; font-weight: 800; margin-bottom: 20px; }
+        .hero p { font-size: 22px; opacity: 0.9; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; }
         .btn {
             display: inline-block;
             background: var(--gold);
-            color: var(--dark);
+            color: var(--bleu-med);
             font-weight: 700;
-            padding: 14px 32px;
+            padding: 14px 34px;
             border-radius: 40px;
             text-decoration: none;
-            transition: all 0.3s;
-            box-shadow: 0 6px 18px rgba(251,191,36,0.35);
+            box-shadow: 0 8px 18px rgba(230,180,60,0.4);
+            transition: 0.3s;
             font-size: 16px;
-            letter-spacing: 0.3px;
-            border: none;
-            cursor: pointer;
         }
-        .btn:hover {
-            background: var(--gold-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 24px rgba(251,191,36,0.5);
-        }
+        .btn:hover { background: var(--terracotta); color: white; transform: translateY(-2px); }
 
-        /* ---------- SECTIONS ---------- */
-        section {
-            padding: 80px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        section { padding: 70px 40px; max-width: 1200px; margin: auto; }
         h3 {
             font-size: 32px;
             margin-bottom: 30px;
-            color: var(--dark);
+            color: var(--bleu-med);
             position: relative;
             display: inline-block;
         }
@@ -234,206 +156,78 @@
             position: absolute;
             bottom: -8px;
             left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--gold);
+            width: 80px;
+            height: 5px;
+            background: var(--terracotta);
             border-radius: 2px;
         }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 24px;
             margin-top: 30px;
         }
-        .card, .property {
+        .card {
             background: white;
-            padding: 28px 24px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #e2e8f0;
-        }
-        .card:hover, .property:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
-        }
-        .card strong {
-            font-size: 18px;
-            display: block;
-            margin-bottom: 8px;
-            color: var(--dark);
-        }
-        .card p {
-            font-size: 15px;
-            color: #64748b;
-            line-height: 1.5;
-        }
-        .property h4 {
-            font-size: 20px;
-            color: var(--dark);
-            margin-bottom: 14px;
-        }
-        .property ul {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0;
-        }
-        .property li {
-            padding: 6px 0;
-            border-bottom: 1px dashed #e2e8f0;
-            font-size: 15px;
-        }
-        .property .btn {
-            margin-top: 15px;
-            font-size: 14px;
-            padding: 10px 20px;
-        }
-
-        /* Gallery */
-        .gallery {
-            position: relative;
-        }
-        .gallery-controls {
-            background: white;
-            padding: 24px;
-            border-radius: var(--radius);
-            margin-bottom: 24px;
-            box-shadow: var(--shadow);
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .gallery-controls input {
-            flex: 1;
-            min-width: 250px;
-            padding: 12px 16px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 15px;
-            transition: 0.2s;
-        }
-        .gallery-controls input:focus {
-            border-color: var(--gold);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(251,191,36,0.2);
-        }
-        .gallery-controls button {
-            background: var(--dark);
-            color: white;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
+            padding: 28px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            border: 1px solid #e2dace;
             transition: 0.3s;
-            white-space: nowrap;
         }
-        .gallery-controls button:hover {
-            background: #1e293b;
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
-        }
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .gallery img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            transition: transform 0.4s;
-            display: block;
-        }
-        .gallery img:hover {
-            transform: scale(1.03);
-        }
-        .gallery-delete {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(239, 68, 68, 0.9);
-            color: white;
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .gallery-item:hover .gallery-delete {
-            opacity: 1;
-        }
-        .gallery-delete:hover {
-            background: rgba(239, 68, 68, 1);
-        }
+        .card:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(0,0,0,0.1); }
+        .card strong { font-size: 20px; color: var(--bleu-med); display: block; margin-bottom: 10px; }
 
-        /* Contact form */
-        form {
+        /* Properties dynamic */
+        .property {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.07);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .property:hover { transform: translateY(-5px); }
+        .property img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--gold);
+        }
+        .property-info { padding: 20px; }
+        .property h4 { font-size: 22px; color: var(--bleu-med); margin-bottom: 10px; }
+        .property ul { list-style: none; padding: 0; margin: 12px 0; }
+        .property li { padding: 5px 0; border-bottom: 1px dashed #d2c8b6; }
+
+        .contact-form {
             background: white;
             padding: 40px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
             max-width: 600px;
             margin-top: 20px;
+            border: 2px solid var(--gold);
         }
-        form input, form textarea {
+        .contact-form input, .contact-form textarea {
             width: 100%;
-            padding: 14px 16px;
+            padding: 14px;
             margin-bottom: 16px;
+            border: 1px solid #c9b896;
             border-radius: 8px;
-            border: 1px solid #cbd5e1;
-            font-size: 15px;
-            transition: 0.2s;
-            background: #f8fafc;
+            background: #fdfbf7;
         }
-        form input:focus, form textarea:focus {
-            border-color: var(--gold);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(251,191,36,0.2);
-            background: white;
-        }
-        form button {
-            background: var(--dark);
+        .contact-form button {
+            background: var(--bleu-med);
             color: white;
             border: none;
             padding: 14px 28px;
             border-radius: 8px;
+            font-weight: bold;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 16px;
             transition: 0.3s;
             width: 100%;
         }
-        form button:hover {
-            background: #1e293b;
-        }
+        .contact-form button:hover { background: var(--terracotta); }
 
-        .contact-info {
-            margin-top: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            background: white;
-            padding: 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-        .contact-info div {
-            flex: 1 1 200px;
-        }
-
-        /* WhatsApp floating button */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -446,98 +240,98 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
-            box-shadow: 0 6px 20px rgba(37,211,102,0.45);
+            font-size: 34px;
+            box-shadow: 0 6px 18px rgba(37,211,102,0.4);
             z-index: 999;
-            transition: transform 0.3s;
             text-decoration: none;
         }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
 
-        /* Map container */
-        .map-container {
-            margin-top: 30px;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
+        /* Admin panel */
+        .admin-login {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bleu-med);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 0 0 2000px rgba(0,0,0,0.7);
         }
-        iframe {
+        .admin-login input { padding: 10px; border-radius: 6px; border: none; }
+        .admin-login button { padding: 10px; background: var(--gold); border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 300px;
-            border: 0;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1999;
+            overflow-y: auto;
+        }
+        .admin-content {
+            background: var(--white);
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 30px;
+            border-radius: 16px;
+            border: 4px solid var(--gold);
+        }
+        .admin-content h2 { color: var(--bleu-med); }
+        .admin-content input, .admin-content textarea {
+            width: 100%; padding: 10px; margin: 8px 0; border-radius: 6px; border: 1px solid #ccc;
+        }
+        .admin-content button {
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px;
+        }
+        .property-admin-item {
+            background: #f4e9d8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* Footer */
         footer {
-            background: var(--dark);
-            color: #cbd5e1;
+            background: var(--bleu-med);
+            color: #fdfbf7;
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px;
+            border-top: 5px solid var(--gold);
             font-size: 15px;
-            margin-top: 40px;
-        }
-        footer a {
-            color: var(--gold);
-            text-decoration: none;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            header {
-                padding: 16px 24px;
-            }
-            .menu-toggle {
-                display: flex;
-            }
-            nav {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background: var(--dark);
-                position: absolute;
-                top: 70px;
-                left: 0;
-                padding: 20px;
-                gap: 8px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            }
-            nav.active {
-                display: flex;
-            }
-            .hero {
-                padding: 80px 20px 60px;
-            }
-            .hero h2 {
-                font-size: 34px;
-            }
-            section {
-                padding: 60px 20px;
-            }
-            .gallery-controls {
-                flex-direction: column;
-            }
-            .gallery-controls input {
-                min-width: auto;
-            }
-            .gallery-controls button {
-                width: 100%;
-            }
+            header { flex-direction: column; align-items: flex-start; }
+            .menu-toggle { display: block; }
+            nav { display: none; flex-direction: column; width: 100%; }
+            nav.active { display: flex; }
         }
     </style>
 </head>
 <body>
 
-<!-- ========== HEADER ========== -->
 <header>
     <div class="logo">
-        Elite Home <span>Monastir</span>
+        🏛️ Elite Home <span>Monastir</span>
     </div>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-    </button>
-    <nav id="mainNav">
+    <button class="menu-toggle">☰</button>
+    <nav id="nav">
         <a href="#accueil" data-key="nav_home">Accueil</a>
         <a href="#services" data-key="nav_services">Services</a>
         <a href="#biens" data-key="nav_properties">Biens</a>
@@ -547,359 +341,292 @@
     </nav>
 </header>
 
-<!-- ========== HERO ========== -->
 <section class="hero" id="accueil">
-    <div class="hero-content">
-        <h2 data-key="hero_title">Agence Immobilière de Confiance à Monastir</h2>
-        <p data-key="hero_sub">Nous vous accompagnons pour acheter, vendre, louer et investir en toute sérénité.</p>
-        <a class="btn" href="#contact" data-key="cta_contact">Contactez-nous</a>
-    </div>
+    <h2 data-key="hero_title">Votre Agence Immobilière à Monastir</h2>
+    <p data-key="hero_sub">Location, vente et investissement – avec l’esprit de Carthage</p>
+    <a class="btn" href="#contact">Contactez-nous</a>
 </section>
 
-<!-- ========== SERVICES ========== -->
 <section id="services">
-    <h3 data-key="services_main_title">Nos Services Principaux</h3>
+    <h3 data-key="services_title">Nos Services</h3>
     <div class="grid">
         <div class="card">
-            <strong data-key="service_investment_title">🏢 Investissement</strong>
-            <p data-key="service_investment_desc">Opportunités d'investissement rentables dans les meilleures zones touristiques et résidentielles de Monastir.</p>
+            <strong>🏠 <span data-key="service_location">Location</span></strong>
+            <p data-key="service_location_desc">Appartements et villas à louer toute l'année.</p>
         </div>
         <div class="card">
-            <strong data-key="service_rentals_title">🔑 Locations</strong>
-            <p data-key="service_rentals_desc">Nous gérons la location de vos propriétés avec une gestion complète et des locataires fiables.</p>
+            <strong>🏷️ <span data-key="service_vente">Vente</span></strong>
+            <p data-key="service_vente_desc">Achetez votre bien résidentiel ou commercial.</p>
         </div>
         <div class="card">
-            <strong data-key="service_sales_title">💼 Ventes</strong>
-            <p data-key="service_sales_desc">Vente de biens immobiliers de qualité. Processus clair, transparent et sécurisé pour tous les clients.</p>
+            <strong>📈 <span data-key="service_invest">Investissement</span></strong>
+            <p data-key="service_invest_desc">Rentabilité optimale dans les zones touristiques.</p>
         </div>
     </div>
-
-    <h3 style="margin-top: 60px;" data-key="services_additional_title">Services Additionnels</h3>
-    <div class="grid">
-        <div class="card"><strong data-key="service1_title">Achat & Vente</strong><p data-key="service1_desc">Processus clair et sécurisé.</p></div>
-        <div class="card"><strong data-key="service2_title">Biens Résidentiels</strong><p data-key="service2_desc">Appartements et villas sélectionnés.</p></div>
-        <div class="card"><strong data-key="service4_title">Conseil Immobilier</strong><p data-key="service4_desc">Expertise locale et transparence.</p></div>
-    </div>
+    <div class="mosaic-pattern" style="margin-top: 30px;"></div>
 </section>
 
-<!-- ========== PROPERTIES ========== -->
 <section id="biens">
-    <h3 data-key="properties_title">Nos Biens Immobiliers</h3>
-    <div class="grid">
-        <div class="property">
-            <h4 data-key="prop1_title">Appartement Spacieux – Zone Touristique</h4>
-            <ul>
-                <li data-key="prop1_size">175 m²</li>
-                <li data-key="prop1_bed">3 chambres</li>
-                <li data-key="prop1_balcony">2 balcons</li>
-                <li data-key="prop1_park">Parking privé</li>
-            </ul>
-            <a class="btn" href="#contact" data-key="prop1_btn">Demander infos</a>
-        </div>
-        <div class="property">
-            <h4 data-key="prop2_title">Villa Moderne – Quartier Résidentiel</h4>
-            <ul>
-                <li data-key="prop2_area">Quartier calme</li>
-                <li data-key="prop2_finish">Finitions modernes</li>
-                <li data-key="prop2_family">Idéal famille</li>
-            </ul>
-            <a class="btn" href="#contact" data-key="prop2_btn">Demander infos</a>
-        </div>
+    <h3 data-key="properties_title">Biens Immobiliers Disponibles</h3>
+    <div class="grid" id="propertiesContainer">
+        <!-- Заполняется динамически через JS -->
     </div>
+    <p style="text-align: center; margin-top: 20px;">
+        <button id="adminBtn" style="background: var(--terracotta); color: white; border: none; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 14px;">
+            🔐 Administration
+        </button>
+    </p>
 </section>
 
-<!-- ========== GALLERY ========== -->
 <section id="galerie">
     <h3 data-key="gallery_title">Galerie Photos</h3>
-    
-    <!-- Add Photo Section -->
-    <div class="gallery-controls">
-        <input type="text" id="photoUrl" placeholder="https://example.com/image.jpg" data-key-placeholder="add_photo_placeholder" />
-        <button id="addPhotoBtn" data-key="add_photo_btn">Ajouter Photo</button>
-    </div>
-
-    <!-- Gallery Grid -->
-    <div class="gallery-grid" id="galleryGrid">
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="Appartement moderne Monastir" loading="lazy" />
-            <button class="gallery-delete" title="Supprimer">✕</button>
-        </div>
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="Villa résidentielle Monastir" loading="lazy" />
-            <button class="gallery-delete" title="Supprimer">✕</button>
-        </div>
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1600566753086-00f18f6c9f21?w=600&h=400&fit=crop" alt="Salon lumineux Tunisie" loading="lazy" />
-            <button class="gallery-delete" title="Supprimer">✕</button>
-        </div>
+    <div class="grid gallery">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop" alt="Appartement Monastir">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop" alt="Villa Monastir">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18f6c9f21?w=400&h=300&fit=crop" alt="Salon Tunisie">
     </div>
 </section>
 
-<!-- ========== CONTACT ========== -->
 <section id="contact">
     <h3 data-key="contact_title">Contactez-nous</h3>
-    <form id="contactForm">
-        <input type="text" id="name" placeholder="Nom complet" required data-key-placeholder="form_name" />
-        <input type="email" id="email" placeholder="Email" required data-key-placeholder="form_email" />
-        <textarea id="message" rows="4" placeholder="Votre message" data-key-placeholder="form_message"></textarea>
+    <form class="contact-form">
+        <input type="text" placeholder="Nom complet" data-key-placeholder="form_name">
+        <input type="email" placeholder="Email" data-key-placeholder="form_email">
+        <textarea rows="4" placeholder="Votre message" data-key-placeholder="form_message"></textarea>
         <button type="submit" data-key="form_btn">Envoyer</button>
     </form>
-    <div class="contact-info">
-        <div><strong data-key="address_label">Adresse :</strong> <span data-key="address">Avenue Combattant Suprême, Monastir</span></div>
-        <div><strong data-key="email_label">Email :</strong> contact@elitehome.tn</div>
-        <div><strong data-key="whatsapp_label">WhatsApp :</strong> +216 25 801 607</div>
-    </div>
-    <div class="map-container">
-        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=10.8155%2C35.7675%2C10.8355%2C35.7875&amp;layer=mapnik&amp;marker=35.7775%2C10.8255" allowfullscreen="" loading="lazy" title="Carte Monastir"></iframe>
+    <div style="margin-top: 30px; background: white; padding: 20px; border-radius: 12px;">
+        <p><strong>📍 Adresse :</strong> Avenue Habib Bourguiba, Monastir</p>
+        <p><strong>📧 Email :</strong> contact@elitehome.tn</p>
+        <p><strong>📱 WhatsApp :</strong> +216 12 345 678</p>
     </div>
 </section>
 
-<!-- ========== WHATSAPP FLOAT BUTTON ========== -->
-<a href="https://wa.me/21625801607?text=Bonjour%20Elite%20Home%2C%20je%20souhaite%20des%20informations." class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <span style="font-size:34px;">💬</span>
-</a>
+<a href="https://wa.me/21612345678" class="whatsapp-float" target="_blank">💬</a>
 
-<!-- ========== FOOTER ========== -->
+<!-- АДМИН-ЛОГИН -->
+<div class="admin-login" id="adminLogin">
+    <h3>🔐 Accès administrateur</h3>
+    <input type="password" id="adminPassword" placeholder="Mot de passe">
+    <button onclick="loginAdmin()">Connexion</button>
+    <button onclick="closeAdminLogin()" style="background:#ccc;">Annuler</button>
+</div>
+
+<!-- АДМИН-ПАНЕЛЬ -->
+<div class="admin-panel" id="adminPanel">
+    <div class="admin-content">
+        <h2>Gestion des Biens Immobiliers</h2>
+        <p>Ajouter / Modifier / Supprimer des objets. Ces changements s'afficheront sur le site (stockés localement).</p>
+        <div>
+            <input type="text" id="newTitle" placeholder="Titre du bien (ex: Appartement vue mer)">
+            <textarea id="newDesc" placeholder="Description courte"></textarea>
+            <input type="text" id="newImage" placeholder="URL de l'image (lien web)">
+            <input type="text" id="newDetails" placeholder="Caractéristiques (séparées par des virgules)">
+            <button onclick="addProperty()">➕ Ajouter</button>
+        </div>
+        <hr style="margin: 20px 0;">
+        <div id="adminList"></div>
+        <button onclick="closeAdminPanel()">❌ Fermer</button>
+    </div>
+</div>
+
 <footer>
-    <p>© Elite Home – Agence Immobilière à Monastir | <span data-key="rights">Tous droits réservés</span></p>
+    <p>© Elite Home – Agence Immobilière Monastir | <span data-key="rights">Tous droits réservés</span></p>
+    <p style="font-size: 12px; opacity: 0.8;">Inspiré par l’héritage d’Hannibal – 🐘</p>
 </footer>
 
-<!-- ========== MULTI-LANG & GALLERY SCRIPT ========== -->
 <script>
-    (function() {
-        const translations = {
-            fr: {
-                nav_home: "Accueil",
-                nav_services: "Services",
-                nav_properties: "Biens",
-                nav_gallery: "Galerie",
-                nav_contact: "Contact",
-                hero_title: "Agence Immobilière de Confiance à Monastir",
-                hero_sub: "Nous vous accompagnons pour acheter, vendre, louer et investir en toute sérénité.",
-                cta_contact: "Contactez-nous",
-                services_main_title: "Nos Services Principaux",
-                services_additional_title: "Services Additionnels",
-                service_investment_title: "🏢 Investissement",
-                service_investment_desc: "Opportunités d'investissement rentables dans les meilleures zones touristiques et résidentielles de Monastir.",
-                service_rentals_title: "🔑 Locations",
-                service_rentals_desc: "Nous gérons la location de vos propriétés avec une gestion complète et des locataires fiables.",
-                service_sales_title: "💼 Ventes",
-                service_sales_desc: "Vente de biens immobiliers de qualité. Processus clair, transparent et sécurisé pour tous les clients.",
-                service1_title: "Achat & Vente",
-                service1_desc: "Processus clair et sécurisé.",
-                service2_title: "Biens Résidentiels",
-                service2_desc: "Appartements et villas sélectionnés.",
-                service4_title: "Conseil Immobilier",
-                service4_desc: "Expertise locale et transparence.",
-                properties_title: "Nos Biens Immobiliers",
-                prop1_title: "Appartement Spacieux – Zone Touristique",
-                prop1_size: "175 m²",
-                prop1_bed: "3 chambres",
-                prop1_balcony: "2 balcons",
-                prop1_park: "Parking privé",
-                prop1_btn: "Demander infos",
-                prop2_title: "Villa Moderne – Quartier Résidentiel",
-                prop2_area: "Quartier calme",
-                prop2_finish: "Finitions modernes",
-                prop2_family: "Idéal famille",
-                prop2_btn: "Demander infos",
-                gallery_title: "Galerie Photos",
-                add_photo_placeholder: "Collez l'URL de votre photo ici...",
-                add_photo_btn: "Ajouter Photo",
-                contact_title: "Contactez-nous",
-                form_name: "Nom complet",
-                form_email: "Email",
-                form_message: "Votre message",
-                form_btn: "Envoyer",
-                address_label: "Adresse :",
-                address: "Avenue Combattant Suprême, Monastir",
-                email_label: "Email :",
-                whatsapp_label: "WhatsApp :",
-                rights: "Tous droits réservés"
-            },
-            en: {
-                nav_home: "Home",
-                nav_services: "Services",
-                nav_properties: "Properties",
-                nav_gallery: "Gallery",
-                nav_contact: "Contact",
-                hero_title: "Trusted Real Estate Agency in Monastir",
-                hero_sub: "We assist you in buying, selling, renting, and investing with complete peace of mind.",
-                cta_contact: "Contact us",
-                services_main_title: "Our Main Services",
-                services_additional_title: "Additional Services",
-                service_investment_title: "🏢 Investment",
-                service_investment_desc: "Profitable investment opportunities in the best tourist and residential areas of Monastir.",
-                service_rentals_title: "🔑 Rentals",
-                service_rentals_desc: "We manage the rental of your properties with complete management and reliable tenants.",
-                service_sales_title: "💼 Sales",
-                service_sales_desc: "Sale of quality real estate. Clear, transparent and secure process for all clients.",
-                service1_title: "Buying & Selling",
-                service1_desc: "Clear and secure process.",
-                service2_title: "Residential Properties",
-                service2_desc: "Selected apartments and villas.",
-                service4_title: "Real Estate Consulting",
-                service4_desc: "Local expertise and transparency.",
-                properties_title: "Our Properties",
-                prop1_title: "Spacious Apartment – Tourist Area",
-                prop1_size: "175 sqm",
-                prop1_bed: "3 bedrooms",
-                prop1_balcony: "2 balconies",
-                prop1_park: "Private parking",
-                prop1_btn: "Request info",
-                prop2_title: "Modern Villa – Residential Area",
-                prop2_area: "Quiet neighborhood",
-                prop2_finish: "Modern finishes",
-                prop2_family: "Family-friendly",
-                prop2_btn: "Request info",
-                gallery_title: "Photo Gallery",
-                add_photo_placeholder: "Paste your photo URL here...",
-                add_photo_btn: "Add Photo",
-                contact_title: "Contact Us",
-                form_name: "Full name",
-                form_email: "Email",
-                form_message: "Your message",
-                form_btn: "Send",
-                address_label: "Address:",
-                address: "Avenue Combattant Suprême, Monastir",
-                email_label: "Email:",
-                whatsapp_label: "WhatsApp:",
-                rights: "All rights reserved"
-            }
-        };
-
-        let currentLang = 'fr';
-        const langToggle = document.getElementById('langToggle');
-        const elements = document.querySelectorAll('[data-key]');
-        const placeholders = document.querySelectorAll('[data-key-placeholder]');
-
-        function switchLanguage(lang) {
-            currentLang = lang;
-            elements.forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (translations[lang] && translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
-            });
-            placeholders.forEach(el => {
-                const key = el.getAttribute('data-key-placeholder');
-                if (translations[lang] && translations[lang][key]) {
-                    el.placeholder = translations[lang][key];
-                }
-            });
-            document.documentElement.lang = lang;
-            langToggle.textContent = lang === 'fr' ? 'EN' : 'FR';
-            const waLink = document.querySelector('.whatsapp-float');
-            if (waLink) {
-                const msg = lang === 'fr' ?
-                    "Bonjour%20Elite%20Home%2C%20je%20souhaite%20des%20informations." :
-                    "Hello%20Elite%20Home%2C%20I%20would%20like%20some%20information.";
-                waLink.href = `https://wa.me/21625801607?text=${msg}`;
-            }
+    // ========== МУЛЬТИЯЗЫЧНОСТЬ ==========
+    const translations = {
+        fr: {
+            nav_home: "Accueil",
+            nav_services: "Services",
+            nav_properties: "Biens",
+            nav_gallery: "Galerie",
+            nav_contact: "Contact",
+            hero_title: "Votre Agence Immobilière à Monastir",
+            hero_sub: "Location, vente et investissement – avec l’esprit de Carthage",
+            services_title: "Nos Services",
+            service_location: "Location",
+            service_location_desc: "Appartements et villas à louer toute l'année.",
+            service_vente: "Vente",
+            service_vente_desc: "Achetez votre bien résidentiel ou commercial.",
+            service_invest: "Investissement",
+            service_invest_desc: "Rentabilité optimale dans les zones touristiques.",
+            properties_title: "Biens Immobiliers Disponibles",
+            gallery_title: "Galerie Photos",
+            contact_title: "Contactez-nous",
+            form_name: "Nom complet",
+            form_email: "Email",
+            form_message: "Votre message",
+            form_btn: "Envoyer",
+            rights: "Tous droits réservés"
+        },
+        en: {
+            nav_home: "Home",
+            nav_services: "Services",
+            nav_properties: "Properties",
+            nav_gallery: "Gallery",
+            nav_contact: "Contact",
+            hero_title: "Your Real Estate Agency in Monastir",
+            hero_sub: "Rental, sale and investment – with the spirit of Carthage",
+            services_title: "Our Services",
+            service_location: "Rental",
+            service_location_desc: "Apartments and villas for rent all year round.",
+            service_vente: "Sale",
+            service_vente_desc: "Buy your residential or commercial property.",
+            service_invest: "Investment",
+            service_invest_desc: "Optimal profitability in tourist areas.",
+            properties_title: "Available Properties",
+            gallery_title: "Photo Gallery",
+            contact_title: "Contact Us",
+            form_name: "Full name",
+            form_email: "Email",
+            form_message: "Your message",
+            form_btn: "Send",
+            rights: "All rights reserved"
         }
+    };
 
-        langToggle.addEventListener('click', () => {
-            const newLang = currentLang === 'fr' ? 'en' : 'fr';
-            switchLanguage(newLang);
+    let currentLang = 'fr';
+    function switchLang(lang) {
+        currentLang = lang;
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (translations[lang][key]) el.textContent = translations[lang][key];
         });
-
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const mainNav = document.getElementById('mainNav');
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
+        document.querySelectorAll('[data-key-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-key-placeholder');
+            if (translations[lang][key]) el.placeholder = translations[lang][key];
         });
+        document.documentElement.lang = lang;
+        document.getElementById('langToggle').textContent = lang === 'fr' ? 'EN' : 'FR';
+    }
+    document.getElementById('langToggle').addEventListener('click', () => {
+        switchLang(currentLang === 'fr' ? 'en' : 'fr');
+    });
 
-        mainNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
-            });
-        });
+    // ========== СВОЙСТВА (динамическое хранилище) ==========
+    const STORAGE_KEY = 'elitehome_properties';
+    const defaultProperties = [
+        {
+            title: "Appartement Spacieux – Zone Touristique",
+            desc: "Superbe appartement lumineux proche de la plage.",
+            image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop",
+            details: ["175 m²", "3 chambres", "2 balcons", "Parking privé"]
+        },
+        {
+            title: "Villa Moderne – Quartier Résidentiel",
+            desc: "Villa familiale avec jardin méditerranéen.",
+            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop",
+            details: ["Quartier calme", "Finitions modernes", "Idéal famille"]
+        }
+    ];
 
-        // Contact form
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-            if(name && email) {
-                alert(currentLang === 'fr' ? 
-                    `Merci ${name}, votre message a bien été envoyé.` : 
-                    `Thank you ${name}, your message has been sent.`);
-                this.reset();
-            } else {
-                alert(currentLang === 'fr' ? 'Veuillez remplir les champs obligatoires.' : 'Please fill in the required fields.');
-            }
-        });
-
-        // Initialize with French
-        switchLanguage('fr');
-    })();
-
-    // Gallery functionality with LocalStorage
-    const galleryGrid = document.getElementById('galleryGrid');
-    const photoUrlInput = document.getElementById('photoUrl');
-    const addPhotoBtn = document.getElementById('addPhotoBtn');
-    const STORAGE_KEY = 'eliteHomePhotos';
-
-    // Load photos from localStorage
-    function loadPhotos() {
+    function loadProperties() {
         const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-            const photos = JSON.parse(stored);
-            photos.forEach(url => addPhotoToGallery(url, false));
-        }
+        return stored ? JSON.parse(stored) : defaultProperties;
+    }
+    function saveProperties(props) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(props));
     }
 
-    // Add photo to gallery and localStorage
-    function addPhotoToGallery(url, save = true) {
-        if (!url.trim()) return;
-        
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-        item.innerHTML = `
-            <img src="${url}" alt="Photo" loading="lazy" onerror="this.parentElement.remove()" />
-            <button class="gallery-delete" title="Supprimer">✕</button>
-        `;
-
-        item.querySelector('.gallery-delete').addEventListener('click', function(e) {
-            e.preventDefault();
-            item.remove();
-            if (save) savePhotos();
-        });
-
-        galleryGrid.appendChild(item);
-
-        if (save) {
-            savePhotos();
-            photoUrlInput.value = '';
-        }
+    function renderProperties() {
+        const container = document.getElementById('propertiesContainer');
+        const props = loadProperties();
+        container.innerHTML = props.map((p, index) => `
+            <div class="property">
+                <img src="${p.image}" alt="${p.title}">
+                <div class="property-info">
+                    <h4>${p.title}</h4>
+                    <p>${p.desc}</p>
+                    <ul>${p.details.map(d => `<li>✔️ ${d}</li>`).join('')}</ul>
+                    <a class="btn" href="#contact">Demander infos</a>
+                </div>
+            </div>
+        `).join('');
+        // Обновляем также админ-список
+        renderAdminList();
     }
 
-    // Save photos to localStorage
-    function savePhotos() {
-        const photos = Array.from(galleryGrid.querySelectorAll('img')).map(img => img.src);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(photos));
+    // ========== АДМИНКА ==========
+    const ADMIN_PASSWORD = 'Carthage2024'; // измените на свой пароль
+
+    function showAdminLogin() {
+        document.getElementById('adminLogin').style.display = 'flex';
+    }
+    function closeAdminLogin() {
+        document.getElementById('adminLogin').style.display = 'none';
+    }
+    function loginAdmin() {
+        const pwd = document.getElementById('adminPassword').value;
+        if (pwd === ADMIN_PASSWORD) {
+            closeAdminLogin();
+            openAdminPanel();
+        } else {
+            alert('Mot de passe incorrect');
+        }
+    }
+    function openAdminPanel() {
+        document.getElementById('adminPanel').style.display = 'block';
+        renderAdminList();
+    }
+    function closeAdminPanel() {
+        document.getElementById('adminPanel').style.display = 'none';
     }
 
-    // Add photo button click
-    addPhotoBtn.addEventListener('click', function() {
-        const url = photoUrlInput.value.trim();
-        if (url) {
-            addPhotoToGallery(url);
-        }
+    function renderAdminList() {
+        const props = loadProperties();
+        const listDiv = document.getElementById('adminList');
+        listDiv.innerHTML = props.map((p, index) => `
+            <div class="property-admin-item">
+                <div>
+                    <strong>${p.title}</strong><br>
+                    <small>${p.desc}</small>
+                </div>
+                <button onclick="deleteProperty(${index})">🗑️ Supprimer</button>
+            </div>
+        `).join('');
+    }
+
+    function addProperty() {
+        const title = document.getElementById('newTitle').value.trim();
+        const desc = document.getElementById('newDesc').value.trim();
+        const image = document.getElementById('newImage').value.trim();
+        const detailsStr = document.getElementById('newDetails').value.trim();
+        if (!title || !image) return alert('Titre et image requis');
+        const details = detailsStr.split(',').map(s => s.trim()).filter(s => s);
+        const props = loadProperties();
+        props.push({ title, desc, image, details });
+        saveProperties(props);
+        renderProperties();
+        // Очистка полей
+        ['newTitle','newDesc','newImage','newDetails'].forEach(id => document.getElementById(id).value = '');
+    }
+
+    function deleteProperty(index) {
+        const props = loadProperties();
+        props.splice(index, 1);
+        saveProperties(props);
+        renderProperties();
+    }
+
+    // Кнопка админа
+    document.getElementById('adminBtn').addEventListener('click', showAdminLogin);
+
+    // Вход по Enter
+    document.getElementById('adminPassword').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') loginAdmin();
     });
 
-    // Add photo on Enter key
-    photoUrlInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            addPhotoBtn.click();
-        }
+    // Мобильное меню
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+        document.getElementById('nav').classList.toggle('active');
     });
 
-    // Load photos on page load
-    window.addEventListener('load', loadPhotos);
+    // Инициализация
+    renderProperties();
+    switchLang('fr');
 </script>
-
 </body>
 </html>

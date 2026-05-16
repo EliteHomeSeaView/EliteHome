@@ -2,644 +2,681 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>EliteHomes | Tunisie Immobilier</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>EliteHomes · Agence Immobilière</title>
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
-            line-height: 1.5;
-            background-image: url('https://images.unsplash.com/photo-1544967082-d9d25d867d77?q=80&w=2070&auto=format');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            position: relative;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        body::before {
-            content: "";
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            background-color: #ffffff;
+            color: #0a1f3f;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Карфагенский мозаичный фон (светлый, едва заметный) */
+        .mosaic-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(248, 250, 252, 0.88);
-            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230a1f3f' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
         }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-        .header {
-            background: rgba(255,255,255,0.95);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== Header ===== */
+        .main-header {
+            background: #0a1f3f; /* navy */
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(2px);
-            border-bottom: 1px solid #e2e8f0;
+            backdrop-filter: blur(5px);
         }
-        .header-content {
+
+        .header-container {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 16px 0;
+            justify-content: space-between;
             flex-wrap: wrap;
-            gap: 12px;
         }
+
         .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #b45309, #d97706);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #f5e7d3; /* светлый золотистый оттенок */
+            text-shadow: 2px 2px 0 #0a1f3f;
         }
+        .logo span {
+            color: #c8a96e; /* золотой акцент */
+        }
+
         .lang-switch {
             display: flex;
-            gap: 12px;
-            background: #f1f5f9;
-            padding: 6px 12px;
-            border-radius: 40px;
+            gap: 10px;
+            margin-left: auto;
+            margin-right: 20px;
         }
         .lang-btn {
-            background: none;
-            border: none;
-            font-weight: 600;
+            background: transparent;
+            border: 1px solid #c8a96e;
+            color: #c8a96e;
+            padding: 6px 12px;
+            border-radius: 20px;
             cursor: pointer;
-            padding: 6px 14px;
-            border-radius: 30px;
-            transition: 0.2s;
-            font-size: 0.9rem;
-            color: #334155;
-        }
-        .lang-btn.active { background: #d97706; color: white; }
-        .whatsapp-btn {
-            background-color: #25D366;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 60px;
-            text-decoration: none;
             font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.2s;
+            transition: 0.3s;
+            font-size: 0.9rem;
         }
-        .hero {
-            background: linear-gradient(105deg, rgba(30,41,59,0.85) 0%, rgba(15,23,42,0.85) 100%);
-            padding: 60px 0;
-            color: white;
-            text-align: center;
+        .lang-btn.active {
+            background: #c8a96e;
+            color: #0a1f3f;
         }
-        .hero h2 { font-size: 2.5rem; margin-bottom: 16px; }
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 48px 0 28px 0;
-            position: relative;
-            display: inline-block;
+        .lang-btn:hover {
+            background: rgba(200,169,110,0.2);
         }
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60%;
-            height: 3px;
-            background: #d97706;
-        }
-        /* Filtres */
-        .filter-tabs {
+
+        /* Навигация */
+        .nav-links {
             display: flex;
-            gap: 16px;
-            margin: 20px 0 30px;
+            gap: 25px;
+            list-style: none;
+            font-weight: 600;
+            font-size: 1.1rem;
             flex-wrap: wrap;
         }
-        .filter-btn {
-            background: white;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .filter-btn.active {
-            background: #d97706;
+        .nav-links a {
             color: white;
+            text-decoration: none;
+            position: relative;
+            padding: 5px 0;
+            transition: 0.3s;
         }
-        .property-grid {
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: #c8a96e;
+            transition: 0.3s;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .admin-trigger {
+            background: #c8a96e;
+            color: #0a1f3f !important;
+            padding: 8px 18px !important;
+            border-radius: 25px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        /* ===== Плавающие знаки (анимированные иконки) ===== */
+        .floating-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .floating-icon {
+            position: absolute;
+            font-size: 2.5rem;
+            color: rgba(10, 31, 63, 0.12);
+            animation: float 8s infinite ease-in-out;
+            opacity: 0.7;
+        }
+        .floating-icon:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .floating-icon:nth-child(2) { top: 20%; right: 8%; animation-delay: 1.5s; font-size: 2rem; }
+        .floating-icon:nth-child(3) { bottom: 15%; left: 10%; animation-delay: 3s; }
+        .floating-icon:nth-child(4) { bottom: 25%; right: 12%; animation-delay: 4.5s; font-size: 3rem; }
+        .floating-icon:nth-child(5) { top: 45%; left: 50%; animation-delay: 2s; font-size: 2.2rem; }
+        .floating-icon:nth-child(6) { top: 70%; left: 80%; animation-delay: 5.5s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(2deg); }
+            50% { transform: translateY(-10px) rotate(-1deg); }
+            75% { transform: translateY(-25px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* ===== Основной контент ===== */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 30px 0 20px;
+            color: #0a1f3f;
+            border-left: 6px solid #c8a96e;
+            padding-left: 15px;
+        }
+
+        .properties-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 20px 0 40px;
         }
+
         .property-card {
             background: white;
-            border-radius: 24px;
+            border-radius: 16px;
             overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e9ecef;
+            display: flex;
+            flex-direction: column;
         }
-        .property-card:hover { transform: translateY(-5px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15); }
-        .card-img { height: 220px; background-size: cover; background-position: center; }
-        .card-content { padding: 20px; }
-        .card-content h3 { font-size: 1.35rem; margin-bottom: 8px; }
-        .price { font-weight: 700; color: #d97706; font-size: 1.1rem; margin: 12px 0; display: flex; gap: 15px; flex-wrap: wrap; }
-        .price-eur, .price-tnd { background: #fef3c7; padding: 4px 12px; border-radius: 40px; display: inline-block; }
-        .details { display: flex; gap: 16px; color: #475569; font-size: 0.9rem; border-top: 1px solid #eef2ff; padding-top: 12px; margin-top: 8px; }
-        .type-badge {
-            display: inline-block;
-            background: #e2e8f0;
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 10px;
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
         }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
-        }
-        .gallery-item {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-        .gallery-item img, .gallery-item video { width: 100%; height: 200px; object-fit: cover; }
-        .gallery-item .caption { padding: 12px; text-align: center; background: #fff; font-weight: 500; }
-        .upload-area, .admin-panel, .contact-card {
-            background: rgba(255,255,255,0.96);
-            border-radius: 32px;
-            padding: 28px;
-            margin: 32px 0;
-            border: 1px solid #e2e8f0;
-        }
-        .upload-label, .admin-toggle {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background-color: #1e293b;
-            color: white;
-            padding: 12px 26px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            border: none;
-        }
-        .admin-form { display: flex; flex-direction: column; gap: 15px; margin: 20px 0; max-width: 600px; }
-        .admin-form input, .admin-form textarea, .admin-form select { padding: 12px; border-radius: 20px; border: 1px solid #cbd5e1; }
-        .admin-form button { background: #d97706; color: white; border: none; padding: 12px; border-radius: 40px; font-weight: bold; }
-        .hidden { display: none; }
-        .user-media-gallery, .admin-properties-list { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 25px; }
-        .user-media-card, .admin-property-item {
+        .property-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
             position: relative;
-            width: 180px;
-            background: #f1f5f9;
-            border-radius: 20px;
-            overflow: hidden;
         }
-        .delete-media, .delete-admin-prop {
+        .property-type {
             position: absolute;
-            top: 6px;
-            right: 6px;
-            background: rgba(0,0,0,0.6);
+            top: 12px;
+            left: 12px;
+            background: #0a1f3f;
             color: white;
-            border-radius: 30px;
-            width: 28px;
-            height: 28px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .property-details {
+            padding: 18px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .property-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #0a1f3f;
+        }
+        .property-desc {
+            font-size: 0.95rem;
+            color: #4a5568;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        .price-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+        .price-tnd {
+            font-size: 1.4rem;
+            color: #0a1f3f;
+        }
+        .price-eur {
+            font-size: 1rem;
+            color: #718096;
+            background: #f0f4f8;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .video-link {
+            margin-top: 10px;
+            color: #c8a96e;
+            font-size: 0.9rem;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ===== WhatsApp кнопка ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 12px 22px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
+            gap: 10px;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            z-index: 200;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
         }
-        .map-container { border-radius: 28px; overflow: hidden; margin: 40px 0; height: 380px; }
-        iframe { width: 100%; height: 100%; border: 0; }
-        .footer { background: #0f172a; color: #cbd5e1; padding: 40px 0 24px; text-align: center; margin-top: 50px; }
+        .whatsapp-float:hover {
+            background: #20b858;
+            transform: scale(1.03);
+        }
+        .whatsapp-float i {
+            font-size: 1.6rem;
+        }
+
+        /* ===== Админ панель (модальное окно) ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 300;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .admin-panel {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 20px;
+            padding: 25px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #0a1f3f;
+        }
+        .admin-panel h2 {
+            color: #0a1f3f;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+        .btn {
+            background: #0a1f3f;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-gold {
+            background: #c8a96e;
+            color: #0a1f3f;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Адаптивность */
         @media (max-width: 768px) {
-            .container { padding: 0 16px; }
-            .hero h2 { font-size: 1.8rem; }
-            .section-title { font-size: 1.5rem; }
-            .filter-btn { padding: 8px 16px; font-size: 0.9rem; }
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .nav-links {
+                gap: 12px;
+                font-size: 0.95rem;
+            }
+            .whatsapp-float {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
+<div class="mosaic-background"></div>
 
-<header class="header">
-    <div class="container">
-        <div class="header-content">
-            <div class="logo">
-                <h1>✨ EliteHomes</h1>
-                <p data-i18n="logo-sub">Tunisie | Monastir | Immobilier de prestige</p>
-            </div>
-            <div class="lang-switch">
-                <button class="lang-btn active" data-lang="fr">FR</button>
-                <button class="lang-btn" data-lang="en">EN</button>
-            </div>
-            <a href="https://wa.me/21625801607" target="_blank" class="whatsapp-btn">
-                <i class="fab fa-whatsapp"></i> +216 25 801 607
-            </a>
+<!-- Плавающие иконки (живые знаки) -->
+<div class="floating-icons">
+    <i class="fas fa-key floating-icon"></i>
+    <i class="fas fa-landmark floating-icon"></i>
+    <i class="fas fa-home floating-icon"></i>
+    <i class="fas fa-columns floating-icon"></i>
+    <i class="fas fa-city floating-icon"></i>
+    <i class="fas fa-scroll floating-icon"></i>
+</div>
+
+<!-- WhatsApp кнопка -->
+<a href="https://wa.me/21625801607" target="_blank" class="whatsapp-float" id="whatsappBtn">
+    <i class="fab fa-whatsapp"></i> <span id="whatsappText">+216 25 801 607</span>
+</a>
+
+<!-- Header -->
+<header class="main-header">
+    <div class="content-wrapper header-container">
+        <div class="logo">
+            <h1>Elite<span>Homes</span></h1>
+        </div>
+        <div class="lang-switch">
+            <button id="btnFr" class="lang-btn active">FR</button>
+            <button id="btnEn" class="lang-btn">EN</button>
+        </div>
+        <nav>
+            <ul class="nav-links" id="navMenu">
+                <!-- Заполняется JS -->
+            </ul>
+        </nav>
+        <div class="admin-trigger" id="openAdminBtn">
+            <i class="fas fa-user-cog"></i> <span id="adminText">Admin</span>
         </div>
     </div>
 </header>
 
-<section class="hero">
-    <div class="container">
-        <div class="badge"><i class="fas fa-place-of-worship"></i> <span data-i18n="hero-badge">Ribat de Monastir • Tunisie</span></div>
-        <h2 data-i18n="hero-title">Votre bien immobilier entre mer et histoire</h2>
-        <p data-i18n="hero-desc">Location, vente, investissement — EliteHomes vous accompagne.</p>
-        <a href="#contact" id="hero-cta" style="background:#d97706; color:white; padding:12px 28px; border-radius:40px; display:inline-block; margin-top:8px; text-decoration:none;"><i class="fab fa-whatsapp"></i> <span data-i18n="hero-btn">Contacter maintenant</span></a>
+<main class="content-wrapper">
+    <h2 class="section-title" id="propertiesTitle">Propriétés</h2>
+    <div class="properties-grid" id="propertiesContainer">
+        <!-- Карточки объектов генерируются динамически -->
     </div>
-</section>
+</main>
 
-<div class="container">
-    <!-- Filtres : Location / Vente / Investissement -->
-    <div class="filter-tabs">
-        <button class="filter-btn active" data-type="all"><i class="fas fa-globe"></i> <span data-i18n="filter_all">Tous</span></button>
-        <button class="filter-btn" data-type="rent"><i class="fas fa-key"></i> <span data-i18n="filter_rent">Location</span></button>
-        <button class="filter-btn" data-type="sale"><i class="fas fa-home"></i> <span data-i18n="filter_sale">Vente</span></button>
-        <button class="filter-btn" data-type="investment"><i class="fas fa-chart-line"></i> <span data-i18n="filter_invest">Investissement</span></button>
-    </div>
-
-    <div id="propertyGrid" class="property-grid"></div>
-
-    <h2 class="section-title"><i class="fas fa-camera-retro"></i> <span data-i18n="gallery-title">Découvrez la Tunisie</span></h2>
-    <div id="galleryGrid" class="gallery-grid"></div>
-
-    <!-- Admin Panel -->
+<!-- Модальное окно админ-панели -->
+<div class="modal" id="adminModal">
     <div class="admin-panel">
-        <button id="adminToggleBtn" class="admin-toggle"><i class="fas fa-user-shield"></i> <span data-i18n="admin_toggle">Admin : Ajouter un bien</span></button>
-        <div id="adminFormContainer" class="hidden">
-            <h3 data-i18n="admin_title">➕ Nouveau bien</h3>
-            <div class="admin-form">
-                <input type="text" id="propTitle" placeholder="Titre" data-i18n-placeholder="admin_title_placeholder">
-                <textarea id="propDesc" rows="2" placeholder="Description" data-i18n-placeholder="admin_desc_placeholder"></textarea>
-                <select id="propType">
-                    <option value="sale">Vente</option>
-                    <option value="rent">Location</option>
-                    <option value="investment">Investissement</option>
-                </select>
-                <input type="text" id="propPriceEur" placeholder="Prix EUR (ex: 125000)">
-                <input type="text" id="propPriceTnd" placeholder="Prix TND (ex: 425000)">
-                <input type="text" id="propBeds" placeholder="Chambres">
-                <input type="text" id="propBaths" placeholder="SDB">
-                <input type="text" id="propArea" placeholder="Surface m²">
-                <input type="url" id="propImageUrl" placeholder="URL image (ou téléchargement)">
-                <input type="file" id="propImageFile" accept="image/*">
-                <button id="addPropertyBtn"><i class="fas fa-save"></i> Ajouter</button>
+        <span class="close-modal" id="closeModalBtn">&times;</span>
+        <h2 id="adminTitle">Ajouter un bien</h2>
+        <form id="propertyForm">
+            <div class="form-group">
+                <label id="labelTitleFr">Titre (FR)</label>
+                <input type="text" id="titleFr" required>
             </div>
-            <h4 data-i18n="admin_list">Biens ajoutés</h4>
-            <div id="adminPropertiesList" class="admin-properties-list"></div>
-        </div>
-    </div>
-
-    <!-- Upload utilisateur -->
-    <div class="upload-area">
-        <i class="fas fa-cloud-upload-alt" style="font-size: 2.5rem; color:#d97706;"></i>
-        <h3 data-i18n="upload-title">📱 Partagez vos photos et vidéos</h3>
-        <label for="uploadInput" class="upload-label"><i class="fas fa-plus-circle"></i> <span data-i18n="upload-btn">Sélectionner</span></label>
-        <input type="file" id="uploadInput" accept="image/*,video/*" multiple>
-        <div id="userMediaContainer" class="user-media-gallery"></div>
-        <button id="clearAllBtn" class="clear-all" style="background:#e2e8f0; border:none; padding:8px 20px; border-radius:40px;"><i class="fas fa-trash"></i> <span data-i18n="upload-clear">Effacer</span></button>
-    </div>
-
-    <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3249.244340381691!2d10.8339272!3d35.7759665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd8b6e4b4c4b9b%3A0x9b1c3d1c8b7b6b5!2z0KDQuNCx0LDRgiDQnNC-0L3QsNGB0YLQuNGALCDQnNC-0L3QsNGB0YLQuNGA!5e0!3m2!1sru!2sru!4v1711790000000" allowfullscreen=""></iframe>
-    </div>
-
-    <div id="contact" class="contact-card" style="text-align: center;">
-        <i class="fab fa-whatsapp" style="font-size: 44px; color:#25D366;"></i>
-        <h3 data-i18n="contact-title">EliteHomes Conseil</h3>
-        <p data-i18n="contact-desc">Contactez-nous pour location, vente ou investissement.</p>
-        <a href="https://wa.me/21625801607" target="_blank" class="whatsapp-btn" style="display: inline-flex;">Contacter WhatsApp →</a>
+            <div class="form-group">
+                <label id="labelTitleEn">Titre (EN)</label>
+                <input type="text" id="titleEn">
+            </div>
+            <div class="form-group">
+                <label id="labelDescFr">Description (FR)</label>
+                <textarea id="descFr" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label id="labelDescEn">Description (EN)</label>
+                <textarea id="descEn" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label id="labelPrice">Prix (TND)</label>
+                <input type="number" id="priceTND" step="0.001" required>
+            </div>
+            <div class="form-group">
+                <label id="labelType">Type</label>
+                <select id="propertyType">
+                    <option value="vente">Vente</option>
+                    <option value="location">Location</option>
+                    <option value="investissement">Investissement</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label id="labelPhoto">URL Photo</label>
+                <input type="url" id="photoUrl" placeholder="https://...">
+            </div>
+            <div class="form-group">
+                <label id="labelVideo">URL Vidéo (YouTube)</label>
+                <input type="url" id="videoUrl" placeholder="https://...">
+            </div>
+            <button type="submit" class="btn btn-gold" id="submitBtn">Ajouter</button>
+        </form>
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p>© 2025 EliteHomes - Immobilier de prestige en Tunisie</p>
-        <p><i class="fab fa-whatsapp"></i> +216 25 801 607 | Monastir, Tunisie</p>
-    </div>
-</footer>
-
 <script>
-    // ---------- TRADUCTIONS ----------
-    const translations = {
-        fr: {
-            "logo-sub": "Tunisie | Monastir | Immobilier de prestige",
-            "hero-badge": "Ribat de Monastir • Tunisie",
-            "hero-title": "Votre bien immobilier entre mer et histoire",
-            "hero-desc": "Location, vente, investissement — EliteHomes vous accompagne.",
-            "hero-btn": "Contacter maintenant",
-            "filter_all": "Tous",
-            "filter_rent": "Location",
-            "filter_sale": "Vente",
-            "filter_invest": "Investissement",
-            "gallery-title": "Découvrez la Tunisie",
-            "upload-title": "📱 Partagez vos photos et vidéos",
-            "upload-btn": "Sélectionner",
-            "upload-clear": "Effacer",
-            "admin_toggle": "Admin : Ajouter un bien",
-            "admin_title": "➕ Nouveau bien",
-            "admin_title_placeholder": "Titre du bien",
-            "admin_desc_placeholder": "Description",
-            "admin_list": "Biens ajoutés",
-            "contact-title": "EliteHomes Conseil",
-            "contact-desc": "Contactez-nous pour location, vente ou investissement."
-        },
-        en: {
-            "logo-sub": "Tunisia | Monastir | Premium Real Estate",
-            "hero-badge": "Ribat of Monastir • Tunisia",
-            "hero-title": "Your property between sea and history",
-            "hero-desc": "Rent, sale, investment — EliteHomes supports you.",
-            "hero-btn": "Contact now",
-            "filter_all": "All",
-            "filter_rent": "Rent",
-            "filter_sale": "Sale",
-            "filter_invest": "Investment",
-            "gallery-title": "Discover Tunisia",
-            "upload-title": "📱 Share your photos and videos",
-            "upload-btn": "Select",
-            "upload-clear": "Clear",
-            "admin_toggle": "Admin: Add property",
-            "admin_title": "➕ New property",
-            "admin_title_placeholder": "Property title",
-            "admin_desc_placeholder": "Description",
-            "admin_list": "Added properties",
-            "contact-title": "EliteHomes Consulting",
-            "contact-desc": "Contact us for rent, sale or investment."
-        }
-    };
-    let currentLang = 'fr';
-    let currentFilter = 'all';
-
-    // Données statiques avec type
-    const staticProperties = [
-        { img: "https://images.unsplash.com/photo-1580237072351-8c2f92303918?q=80&w=1974&auto=format", priceEur: "125 000", priceTnd: "425 000", beds: 2, baths: 2, area: "70m²", key: "prop1", type: "sale" },
-        { img: "https://images.unsplash.com/photo-1565043666747-69b6646c0d4f?q=80&w=2070&auto=format", priceEur: "290 000", priceTnd: "986 000", beds: 3, baths: 3, area: "145m²", key: "prop2", type: "sale" },
-        { img: "https://images.unsplash.com/photo-1583083527882-4bee9aba2eea?q=80&w=2070&auto=format", priceEur: "520 000", priceTnd: "1 768 000", beds: 4, baths: 3, area: "210m²", key: "prop3", type: "sale" },
-        // Ajout d'exemples location et investissement
-        { img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1974&auto=format", priceEur: "1 200", priceTnd: "4 080", beds: 2, baths: 1, area: "55m²", key: "rent1", type: "rent", customTitle: "Appartement moderne en location", customDesc: "Meublé, proche plage, disponible longue durée." },
-        { img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format", priceEur: "350 000", priceTnd: "1 190 000", beds: 3, baths: 2, area: "120m²", key: "inv1", type: "investment", customTitle: "Projet de résidence étudiante", customDesc: "Rendement locatif garanti, emplacement stratégique." }
-    ];
-
-    let dynamicProperties = [];
-    function loadDynamicProperties() {
-        const stored = localStorage.getItem("elitehomes_properties");
-        if(stored) dynamicProperties = JSON.parse(stored);
-        else dynamicProperties = [];
-    }
-    function saveDynamicProperties() { localStorage.setItem("elitehomes_properties", JSON.stringify(dynamicProperties)); }
-
-    function getPropertyTitle(prop) {
-        if(prop.customTitle) return prop.customTitle;
-        return translations[currentLang][prop.key + '_title'] || prop.key;
-    }
-    function getPropertyDesc(prop) {
-        if(prop.customDesc) return prop.customDesc;
-        return translations[currentLang][prop.key + '_desc'] || '';
-    }
-
-    function createPropertyCard(prop) {
-        const title = getPropertyTitle(prop);
-        const desc = getPropertyDesc(prop);
-        const typeLabel = prop.type === 'rent' ? (currentLang === 'fr' ? '📍 Location' : '📍 Rent') : (prop.type === 'sale' ? (currentLang === 'fr' ? '🏷️ Vente' : '🏷️ Sale') : (currentLang === 'fr' ? '📈 Investissement' : '📈 Investment'));
-        const card = document.createElement('div');
-        card.className = 'property-card';
-        card.innerHTML = `
-            <div class="card-img" style="background-image: url('${prop.img}'); background-size: cover;"></div>
-            <div class="card-content">
-                <div class="type-badge">${typeLabel}</div>
-                <h3>${title}</h3>
-                <div class="price"><span class="price-eur">€ ${prop.priceEur}</span> <span class="price-tnd">${prop.priceTnd} TND</span></div>
-                <p>${desc}</p>
-                <div class="details"><span><i class="fas fa-bed"></i> ${prop.beds}</span> <span><i class="fas fa-bath"></i> ${prop.baths}</span> <span><i class="fas fa-vector-square"></i> ${prop.area}</span></div>
-            </div>
-        `;
-        return card;
-    }
-
-    function renderProperties() {
-        const container = document.getElementById('propertyGrid');
-        if(!container) return;
-        container.innerHTML = '';
-        let allProps = [...staticProperties, ...dynamicProperties];
-        if(currentFilter !== 'all') allProps = allProps.filter(p => p.type === currentFilter);
-        allProps.forEach(prop => { container.appendChild(createPropertyCard(prop)); });
-    }
-
-    // Gallery
-    const galleryData = [
-        { type: "img", src: "https://images.unsplash.com/photo-1533929736458-ca588d47db77?q=80&w=2070&auto=format", captionKey: "gal1" },
-        { type: "img", src: "https://images.unsplash.com/photo-1602264769956-1451eb3cf57e?q=80&w=1974&auto=format", captionKey: "gal2" },
-        { type: "video", src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", poster: "https://images.unsplash.com/photo-1591954946403-7b983c9b8d71?q=80&w=1974&auto=format", captionKey: "gal3" },
-        { type: "img", src: "https://plus.unsplash.com/premium_photo-1661915661139-5b6a4e4a6f7c?q=80&w=2070&auto=format", captionKey: "gal4" },
-        { type: "img", src: "https://images.unsplash.com/photo-1559128010-7a1ad5e2b6a0?q=80&w=1974&auto=format", captionKey: "gal5" }
-    ];
-    function renderGallery() {
-        const container = document.getElementById('galleryGrid');
-        if(!container) return;
-        container.innerHTML = '';
-        galleryData.forEach(item => {
-            const captionText = translations[currentLang][item.captionKey] || '';
-            const div = document.createElement('div'); div.className = 'gallery-item';
-            if(item.type === 'img') {
-                const img = document.createElement('img'); img.src = item.src; img.alt = captionText;
-                div.appendChild(img);
-            } else {
-                const video = document.createElement('video'); video.controls = true; video.poster = item.poster;
-                const src = document.createElement('source'); src.src = item.src; src.type = 'video/mp4';
-                video.appendChild(src);
-                div.appendChild(video);
+    (function() {
+        // Локализация
+        const texts = {
+            fr: {
+                navVente: 'Vente',
+                navLocation: 'Location',
+                navInvest: 'Investissement',
+                adminTrigger: 'Admin',
+                propertiesTitle: 'Propriétés',
+                whatsappText: '+216 25 801 607',
+                adminTitle: 'Ajouter un bien',
+                labelTitleFr: 'Titre (FR)',
+                labelTitleEn: 'Titre (EN)',
+                labelDescFr: 'Description (FR)',
+                labelDescEn: 'Description (EN)',
+                labelPrice: 'Prix (TND)',
+                labelType: 'Type',
+                labelPhoto: 'URL Photo',
+                labelVideo: 'URL Vidéo (YouTube)',
+                submitBtn: 'Ajouter',
+                priceTND: 'TND',
+                priceEUR: 'EUR',
+                typeVente: 'Vente',
+                typeLocation: 'Location',
+                typeInvest: 'Investissement'
+            },
+            en: {
+                navVente: 'Sale',
+                navLocation: 'Rent',
+                navInvest: 'Investment',
+                adminTrigger: 'Admin',
+                propertiesTitle: 'Properties',
+                whatsappText: '+216 25 801 607',
+                adminTitle: 'Add Property',
+                labelTitleFr: 'Title (FR)',
+                labelTitleEn: 'Title (EN)',
+                labelDescFr: 'Description (FR)',
+                labelDescEn: 'Description (EN)',
+                labelPrice: 'Price (TND)',
+                labelType: 'Type',
+                labelPhoto: 'Photo URL',
+                labelVideo: 'Video URL (YouTube)',
+                submitBtn: 'Add',
+                priceTND: 'TND',
+                priceEUR: 'EUR',
+                typeVente: 'Sale',
+                typeLocation: 'Rent',
+                typeInvest: 'Investment'
             }
-            const cap = document.createElement('div'); cap.className = 'caption'; cap.textContent = captionText;
-            div.appendChild(cap);
-            container.appendChild(div);
-        });
-    }
-
-    // Admin
-    function renderAdminList() {
-        const container = document.getElementById('adminPropertiesList');
-        if(!container) return;
-        container.innerHTML = '';
-        dynamicProperties.forEach((prop, idx) => {
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'admin-property-item';
-            itemDiv.style.position = 'relative';
-            itemDiv.innerHTML = `
-                <img src="${prop.img}" style="width:100%; height:100px; object-fit:cover;">
-                <div style="padding:8px;"><strong>${prop.customTitle || prop.key}</strong><br>${prop.priceTnd} TND</div>
-                <div class="delete-admin-prop" data-idx="${idx}"><i class="fas fa-trash"></i></div>
-            `;
-            container.appendChild(itemDiv);
-        });
-        document.querySelectorAll('.delete-admin-prop').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const idx = btn.getAttribute('data-idx');
-                if(idx !== null) {
-                    dynamicProperties.splice(parseInt(idx), 1);
-                    saveDynamicProperties();
-                    renderAdminList();
-                    renderProperties();
-                }
-            });
-        });
-    }
-
-    async function addPropertyFromForm() {
-        let title = document.getElementById('propTitle').value.trim();
-        let desc = document.getElementById('propDesc').value.trim();
-        let type = document.getElementById('propType').value;
-        let priceEur = document.getElementById('propPriceEur').value.trim();
-        let priceTnd = document.getElementById('propPriceTnd').value.trim();
-        let beds = document.getElementById('propBeds').value.trim();
-        let baths = document.getElementById('propBaths').value.trim();
-        let area = document.getElementById('propArea').value.trim();
-        let imgUrl = document.getElementById('propImageUrl').value.trim();
-        const fileInput = document.getElementById('propImageFile');
-        let finalImg = imgUrl;
-
-        if(!title || !desc || !priceEur || !priceTnd || !beds || !baths || !area) {
-            alert("Veuillez remplir tous les champs");
-            return;
-        }
-        if(fileInput.files.length > 0) {
-            const file = fileInput.files[0];
-            if(file.type.startsWith('image/')) {
-                finalImg = await new Promise(resolve => {
-                    const reader = new FileReader();
-                    reader.onload = () => resolve(reader.result);
-                    reader.readAsDataURL(file);
-                });
-            } else { alert("Fichier image requis"); return; }
-        } else if(!finalImg) { alert("URL ou image requise"); return; }
-        const newProp = {
-            id: Date.now(),
-            customTitle: title,
-            customDesc: desc,
-            type: type,
-            priceEur: priceEur,
-            priceTnd: priceTnd,
-            beds: beds,
-            baths: baths,
-            area: area,
-            img: finalImg,
-            key: 'dynamic_' + Date.now()
         };
-        dynamicProperties.push(newProp);
-        saveDynamicProperties();
-        renderProperties();
-        renderAdminList();
-        // reset
-        document.getElementById('propTitle').value = '';
-        document.getElementById('propDesc').value = '';
-        document.getElementById('propPriceEur').value = '';
-        document.getElementById('propPriceTnd').value = '';
-        document.getElementById('propBeds').value = '';
-        document.getElementById('propBaths').value = '';
-        document.getElementById('propArea').value = '';
-        document.getElementById('propImageUrl').value = '';
-        document.getElementById('propImageFile').value = '';
-        alert("Bien ajouté !");
-    }
 
-    // Lang & filter
-    function updateStaticTexts() {
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if(translations[currentLang][key]) el.innerText = translations[currentLang][key];
-        });
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-            const key = el.getAttribute('data-i18n-placeholder');
-            if(translations[currentLang][key]) el.placeholder = translations[currentLang][key];
-        });
-        const heroSpan = document.querySelector('#hero-cta span');
-        if(heroSpan) heroSpan.innerText = translations[currentLang]['hero-btn'];
-    }
-    function setLanguage(lang) {
-        currentLang = lang;
-        renderProperties();
-        renderGallery();
-        updateStaticTexts();
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            if(btn.getAttribute('data-lang') === lang) btn.classList.add('active');
-            else btn.classList.remove('active');
-        });
-    }
+        let currentLang = 'fr';
+        const TND_TO_EUR = 0.30; // примерный курс
 
-    // Filter logic
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentFilter = btn.getAttribute('data-type');
-            renderProperties();
-        });
-    });
+        // Хранилище объектов
+        let properties = JSON.parse(localStorage.getItem('eliteHomesProperties')) || [];
 
-    // User upload
-    const uploadInput = document.getElementById('uploadInput');
-    const userMediaContainer = document.getElementById('userMediaContainer');
-    const clearAllBtn = document.getElementById('clearAllBtn');
-    let userFiles = [];
-    function renderUserMedia() {
-        userMediaContainer.innerHTML = '';
-        if(userFiles.length === 0) { userMediaContainer.innerHTML = '<div style="padding:20px;">Aucun média</div>'; return; }
-        userFiles.forEach((file, idx) => {
-            const url = URL.createObjectURL(file);
-            const div = document.createElement('div'); div.className = 'user-media-card';
-            if(file.type.startsWith('image/')) { const img = document.createElement('img'); img.src = url; img.style.width='100%'; img.style.height='140px'; div.appendChild(img); }
-            else { const vid = document.createElement('video'); vid.src = url; vid.controls = true; vid.style.width='100%'; vid.style.height='140px'; div.appendChild(vid); }
-            const del = document.createElement('div'); del.className = 'delete-media'; del.innerHTML = '<i class="fas fa-times"></i>';
-            del.onclick = () => { userFiles.splice(idx,1); renderUserMedia(); };
-            div.appendChild(del);
-            userMediaContainer.appendChild(div);
-        });
-    }
-    uploadInput.addEventListener('change', (e) => {
-        if(e.target.files.length) {
-            const files = Array.from(e.target.files).filter(f => f.type.startsWith('image/') || f.type.startsWith('video/'));
-            userFiles.push(...files);
-            renderUserMedia();
-            uploadInput.value = '';
+        // Предустановленные объекты для демонстрации
+        if (properties.length === 0) {
+            properties = [
+                {
+                    id: Date.now() + 1,
+                    titleFr: 'Villa Carthage Vue Mer',
+                    titleEn: 'Carthage Sea View Villa',
+                    descFr: 'Magnifique villa avec piscine et jardin, proche des sites archéologiques.',
+                    descEn: 'Stunning villa with pool and garden, close to archaeological sites.',
+                    priceTND: 850000,
+                    type: 'vente',
+                    photoUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    videoUrl: ''
+                },
+                {
+                    id: Date.now() + 2,
+                    titleFr: 'Appartement Sidi Bou Saïd',
+                    titleEn: 'Sidi Bou Saïd Apartment',
+                    descFr: 'Charmant appartement avec terrasse panoramique, décoration traditionnelle.',
+                    descEn: 'Charming apartment with panoramic terrace, traditional decor.',
+                    priceTND: 320000,
+                    type: 'location',
+                    photoUrl: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+                }
+            ];
+            localStorage.setItem('eliteHomesProperties', JSON.stringify(properties));
         }
-    });
-    clearAllBtn.addEventListener('click', () => { userFiles = []; renderUserMedia(); });
-    renderUserMedia();
 
-    // Admin toggle
-    const adminToggle = document.getElementById('adminToggleBtn');
-    const adminFormContainer = document.getElementById('adminFormContainer');
-    adminToggle.addEventListener('click', () => adminFormContainer.classList.toggle('hidden'));
-    document.getElementById('addPropertyBtn').addEventListener('click', addPropertyFromForm);
+        // Элементы DOM
+        const navMenu = document.getElementById('navMenu');
+        const propertiesContainer = document.getElementById('propertiesContainer');
+        const propertiesTitle = document.getElementById('propertiesTitle');
+        const adminTriggerText = document.getElementById('adminText');
+        const whatsappTextSpan = document.getElementById('whatsappText');
+        const adminTitle = document.getElementById('adminTitle');
+        const labelTitleFr = document.getElementById('labelTitleFr');
+        const labelTitleEn = document.getElementById('labelTitleEn');
+        const labelDescFr = document.getElementById('labelDescFr');
+        const labelDescEn = document.getElementById('labelDescEn');
+        const labelPrice = document.getElementById('labelPrice');
+        const labelType = document.getElementById('labelType');
+        const labelPhoto = document.getElementById('labelPhoto');
+        const labelVideo = document.getElementById('labelVideo');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnFr = document.getElementById('btnFr');
+        const btnEn = document.getElementById('btnEn');
+        const adminModal = document.getElementById('adminModal');
+        const openAdminBtn = document.getElementById('openAdminBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const propertyForm = document.getElementById('propertyForm');
 
-    loadDynamicProperties();
-    renderProperties();
-    renderGallery();
-    renderAdminList();
-    setLanguage('fr');
-    // Add missing translations for gallery captions
-    translations.fr.gal1 = "🏛️ Ribat de Monastir — forteresse VIIIe siècle";
-    translations.fr.gal2 = "🌊 Plage de Skanes • eau turquoise";
-    translations.fr.gal3 = "🎥 Promenade à Monastir • ambiance";
-    translations.fr.gal4 = "🏜️ Lac salé Chott el-Jérid";
-    translations.fr.gal5 = "🕌 Médina de Tunis • UNESCO";
-    translations.en.gal1 = "🏛️ Ribat of Monastir — 8th century fortress";
-    translations.en.gal2 = "🌊 Skanes Beach • turquoise water";
-    translations.en.gal3 = "🎥 Walk in Monastir • city atmosphere";
-    translations.en.gal4 = "🏜️ Chott el-Jerid salt lake";
-    translations.en.gal5 = "🕌 Medina of Tunis • UNESCO";
-    renderGallery();
+        // Функция обновления интерфейса
+        function updateLanguage(lang) {
+            currentLang = lang;
+            const t = texts[lang];
+            // Навигация
+            navMenu.innerHTML = `
+                <li><a href="#">${t.navVente}</a></li>
+                <li><a href="#">${t.navLocation}</a></li>
+                <li><a href="#">${t.navInvest}</a></li>
+            `;
+            propertiesTitle.textContent = t.propertiesTitle;
+            adminTriggerText.textContent = t.adminTrigger;
+            whatsappTextSpan.textContent = t.whatsappText;
+            adminTitle.textContent = t.adminTitle;
+            labelTitleFr.textContent = t.labelTitleFr;
+            labelTitleEn.textContent = t.labelTitleEn;
+            labelDescFr.textContent = t.labelDescFr;
+            labelDescEn.textContent = t.labelDescEn;
+            labelPrice.textContent = t.labelPrice;
+            labelType.textContent = t.labelType;
+            labelPhoto.textContent = t.labelPhoto;
+            labelVideo.textContent = t.labelVideo;
+            submitBtn.textContent = t.submitBtn;
+            
+            // Кнопки языка
+            btnFr.classList.toggle('active', lang === 'fr');
+            btnEn.classList.toggle('active', lang === 'en');
+            
+            renderProperties();
+        }
+
+        // Рендер карточек
+        function renderProperties() {
+            const t = texts[currentLang];
+            propertiesContainer.innerHTML = '';
+            if (properties.length === 0) {
+                propertiesContainer.innerHTML = '<p style="grid-column:1/-1; text-align:center;">Aucun bien pour le moment.</p>';
+                return;
+            }
+            properties.forEach(prop => {
+                const title = currentLang === 'fr' ? prop.titleFr : prop.titleEn;
+                const desc = currentLang === 'fr' ? prop.descFr : prop.descEn;
+                const priceTND = parseFloat(prop.priceTND).toLocaleString('fr-TN', { minimumFractionDigits: 0 });
+                const priceEUR = (prop.priceTND * TND_TO_EUR).toLocaleString('fr-FR', { minimumFractionDigits: 0 });
+                const typeText = prop.type === 'vente' ? t.typeVente : (prop.type === 'location' ? t.typeLocation : t.typeInvest);
+                
+                const card = document.createElement('div');
+                card.className = 'property-card';
+                card.innerHTML = `
+                    <div class="property-img" style="background-image: url('${prop.photoUrl || 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'}')">
+                        <span class="property-type">${typeText}</span>
+                    </div>
+                    <div class="property-details">
+                        <h3 class="property-title">${title}</h3>
+                        <p class="property-desc">${desc}</p>
+                        <div class="price-container">
+                            <span class="price-tnd">${priceTND} TND</span>
+                            <span class="price-eur">≈ ${priceEUR} EUR</span>
+                        </div>
+                        ${prop.videoUrl ? `<a href="${prop.videoUrl}" target="_blank" class="video-link"><i class="fab fa-youtube"></i> Vidéo</a>` : ''}
+                    </div>
+                `;
+                propertiesContainer.appendChild(card);
+            });
+        }
+
+        // Сохранение и добавление
+        propertyForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const newProp = {
+                id: Date.now(),
+                titleFr: document.getElementById('titleFr').value,
+                titleEn: document.getElementById('titleEn').value,
+                descFr: document.getElementById('descFr').value,
+                descEn: document.getElementById('descEn').value,
+                priceTND: parseFloat(document.getElementById('priceTND').value),
+                type: document.getElementById('propertyType').value,
+                photoUrl: document.getElementById('photoUrl').value,
+                videoUrl: document.getElementById('videoUrl').value
+            };
+            properties.push(newProp);
+            localStorage.setItem('eliteHomesProperties', JSON.stringify(properties));
+            renderProperties();
+            propertyForm.reset();
+            adminModal.classList.remove('active');
+        });
+
+        // Модальное окно
+        openAdminBtn.addEventListener('click', () => adminModal.classList.add('active'));
+        closeModalBtn.addEventListener('click', () => adminModal.classList.remove('active'));
+        window.addEventListener('click', (e) => {
+            if (e.target === adminModal) adminModal.classList.remove('active');
+        });
+
+        // Переключение языка
+        btnFr.addEventListener('click', () => updateLanguage('fr'));
+        btnEn.addEventListener('click', () => updateLanguage('en'));
+
+        // Инициализация
+        updateLanguage('fr');
+    })();
 </script>
 </body>
 </html>

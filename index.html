@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>EliteHomes · Agence Immobilière</title>
-    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -12,28 +11,21 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-            background-color: #ffffff;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
             color: #0a1f3f;
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
         }
-
-        /* Карфагенский мозаичный фон (светлый, едва заметный) */
-        .mosaic-background {
+        .mosaic-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230a1f3f' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%230a1f3f' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             pointer-events: none;
             z-index: 0;
         }
-
         .content-wrapper {
             position: relative;
             z-index: 2;
@@ -41,37 +33,30 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        /* ===== Header ===== */
         .main-header {
-            background: #0a1f3f; /* navy */
+            background: #0a1f3f;
             color: white;
             padding: 15px 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(5px);
         }
-
         .header-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
         }
-
         .logo h1 {
             font-size: 2rem;
             font-weight: 700;
+            color: #f5e7d3;
             letter-spacing: 1px;
-            color: #f5e7d3; /* светлый золотистый оттенок */
-            text-shadow: 2px 2px 0 #0a1f3f;
         }
         .logo span {
-            color: #c8a96e; /* золотой акцент */
+            color: #c8a96e;
         }
-
         .lang-switch {
             display: flex;
             gap: 10px;
@@ -87,31 +72,23 @@
             cursor: pointer;
             font-weight: 600;
             transition: 0.3s;
-            font-size: 0.9rem;
         }
         .lang-btn.active {
             background: #c8a96e;
             color: #0a1f3f;
         }
-        .lang-btn:hover {
-            background: rgba(200,169,110,0.2);
-        }
-
-        /* Навигация */
         .nav-links {
             display: flex;
             gap: 25px;
             list-style: none;
             font-weight: 600;
             font-size: 1.1rem;
-            flex-wrap: wrap;
         }
         .nav-links a {
             color: white;
             text-decoration: none;
             position: relative;
             padding: 5px 0;
-            transition: 0.3s;
         }
         .nav-links a::after {
             content: '';
@@ -131,43 +108,32 @@
             color: #0a1f3f !important;
             padding: 8px 18px !important;
             border-radius: 25px;
-            margin-left: 10px;
             cursor: pointer;
+            margin-left: 15px;
+            font-weight: 700;
         }
-
-        /* ===== Плавающие знаки (анимированные иконки) ===== */
         .floating-icons {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
             z-index: 1;
         }
         .floating-icon {
             position: absolute;
             font-size: 2.5rem;
-            color: rgba(10, 31, 63, 0.12);
+            color: rgba(10,31,63,0.1);
             animation: float 8s infinite ease-in-out;
-            opacity: 0.7;
         }
-        .floating-icon:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
-        .floating-icon:nth-child(2) { top: 20%; right: 8%; animation-delay: 1.5s; font-size: 2rem; }
+        .floating-icon:nth-child(1) { top: 10%; left: 5%; }
+        .floating-icon:nth-child(2) { top: 20%; right: 8%; animation-delay: 1.5s; }
         .floating-icon:nth-child(3) { bottom: 15%; left: 10%; animation-delay: 3s; }
-        .floating-icon:nth-child(4) { bottom: 25%; right: 12%; animation-delay: 4.5s; font-size: 3rem; }
-        .floating-icon:nth-child(5) { top: 45%; left: 50%; animation-delay: 2s; font-size: 2.2rem; }
-        .floating-icon:nth-child(6) { top: 70%; left: 80%; animation-delay: 5.5s; }
-
+        .floating-icon:nth-child(4) { bottom: 25%; right: 12%; animation-delay: 4.5s; }
+        .floating-icon:nth-child(5) { top: 45%; left: 50%; animation-delay: 2s; }
         @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-20px) rotate(2deg); }
-            50% { transform: translateY(-10px) rotate(-1deg); }
-            75% { transform: translateY(-25px) rotate(1deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
             100% { transform: translateY(0px) rotate(0deg); }
         }
-
-        /* ===== Основной контент ===== */
         .section-title {
             font-size: 2rem;
             font-weight: 700;
@@ -176,20 +142,19 @@
             border-left: 6px solid #c8a96e;
             padding-left: 15px;
         }
-
         .properties-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             margin: 20px 0 40px;
         }
-
         .property-card {
             background: white;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
             border: 1px solid #e9ecef;
             display: flex;
             flex-direction: column;
@@ -214,7 +179,6 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
         }
         .property-details {
             padding: 18px;
@@ -231,8 +195,19 @@
         .property-desc {
             font-size: 0.95rem;
             color: #4a5568;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             flex-grow: 1;
+        }
+        .features-row {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+            color: #2d3748;
+        }
+        .features-row i {
+            color: #c8a96e;
+            margin-right: 4px;
         }
         .price-container {
             display: flex;
@@ -252,15 +227,6 @@
             padding: 4px 10px;
             border-radius: 20px;
         }
-        .video-link {
-            margin-top: 10px;
-            color: #c8a96e;
-            font-size: 0.9rem;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* ===== WhatsApp кнопка ===== */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
@@ -276,18 +242,7 @@
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
             z-index: 200;
             text-decoration: none;
-            transition: 0.3s;
-            font-size: 1rem;
         }
-        .whatsapp-float:hover {
-            background: #20b858;
-            transform: scale(1.03);
-        }
-        .whatsapp-float i {
-            font-size: 1.6rem;
-        }
-
-        /* ===== Админ панель (модальное окно) ===== */
         .modal {
             display: none;
             position: fixed;
@@ -300,15 +255,14 @@
         .modal.active {
             display: flex;
         }
-        .admin-panel {
+        .admin-panel, .detail-panel, .login-panel {
             background: white;
             width: 90%;
-            max-width: 600px;
+            max-width: 650px;
             border-radius: 20px;
             padding: 25px;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             position: relative;
         }
         .close-modal {
@@ -317,10 +271,6 @@
             font-size: 1.8rem;
             cursor: pointer;
             color: #0a1f3f;
-        }
-        .admin-panel h2 {
-            color: #0a1f3f;
-            margin-bottom: 20px;
         }
         .form-group {
             margin-bottom: 15px;
@@ -345,306 +295,360 @@
             border-radius: 30px;
             font-weight: 700;
             cursor: pointer;
-            transition: 0.3s;
         }
         .btn-gold {
             background: #c8a96e;
             color: #0a1f3f;
         }
-        .btn:hover {
-            opacity: 0.9;
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        /* Адаптивность */
+        .gallery-main {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        .gallery-controls {
+            display: flex;
+            gap: 20px;
+            font-size: 1.5rem;
+            color: #0a1f3f;
+            cursor: pointer;
+        }
+        .detail-features {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+            font-size: 1.1rem;
+        }
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 10px;
-            }
-            .nav-links {
-                gap: 12px;
-                font-size: 0.95rem;
-            }
-            .whatsapp-float {
-                padding: 10px 18px;
-                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-<div class="mosaic-background"></div>
-
-<!-- Плавающие иконки (живые знаки) -->
+<div class="mosaic-bg"></div>
 <div class="floating-icons">
     <i class="fas fa-key floating-icon"></i>
     <i class="fas fa-landmark floating-icon"></i>
     <i class="fas fa-home floating-icon"></i>
     <i class="fas fa-columns floating-icon"></i>
     <i class="fas fa-city floating-icon"></i>
-    <i class="fas fa-scroll floating-icon"></i>
 </div>
 
-<!-- WhatsApp кнопка -->
 <a href="https://wa.me/21625801607" target="_blank" class="whatsapp-float" id="whatsappBtn">
     <i class="fab fa-whatsapp"></i> <span id="whatsappText">+216 25 801 607</span>
 </a>
 
-<!-- Header -->
 <header class="main-header">
     <div class="content-wrapper header-container">
-        <div class="logo">
-            <h1>Elite<span>Homes</span></h1>
-        </div>
+        <div class="logo"><h1>Elite<span>Homes</span></h1></div>
         <div class="lang-switch">
             <button id="btnFr" class="lang-btn active">FR</button>
             <button id="btnEn" class="lang-btn">EN</button>
         </div>
         <nav>
-            <ul class="nav-links" id="navMenu">
-                <!-- Заполняется JS -->
-            </ul>
+            <ul class="nav-links" id="navMenu"></ul>
         </nav>
-        <div class="admin-trigger" id="openAdminBtn">
-            <i class="fas fa-user-cog"></i> <span id="adminText">Admin</span>
-        </div>
+        <div class="admin-trigger" id="openLoginBtn"><i class="fas fa-user-cog"></i> <span id="adminText">Admin</span></div>
     </div>
 </header>
 
 <main class="content-wrapper">
     <h2 class="section-title" id="propertiesTitle">Propriétés</h2>
-    <div class="properties-grid" id="propertiesContainer">
-        <!-- Карточки объектов генерируются динамически -->
-    </div>
+    <div class="properties-grid" id="propertiesContainer"></div>
 </main>
 
-<!-- Модальное окно админ-панели -->
+<!-- Модальное окно входа -->
+<div class="modal" id="loginModal">
+    <div class="login-panel">
+        <span class="close-modal" id="closeLoginBtn">&times;</span>
+        <h2>Connexion Admin</h2>
+        <div class="form-group">
+            <label>Login</label>
+            <input type="text" id="loginInput" placeholder="admin">
+        </div>
+        <div class="form-group">
+            <label>Mot de passe</label>
+            <input type="password" id="passwordInput">
+        </div>
+        <button class="btn btn-gold" id="loginSubmitBtn">Se connecter</button>
+        <p id="loginError" style="color:red; margin-top:10px;"></p>
+    </div>
+</div>
+
+<!-- Админ-панель -->
 <div class="modal" id="adminModal">
     <div class="admin-panel">
-        <span class="close-modal" id="closeModalBtn">&times;</span>
+        <span class="close-modal" id="closeAdminBtn">&times;</span>
         <h2 id="adminTitle">Ajouter un bien</h2>
         <form id="propertyForm">
-            <div class="form-group">
-                <label id="labelTitleFr">Titre (FR)</label>
-                <input type="text" id="titleFr" required>
+            <div class="form-group"><label id="labelTitleFr">Titre (FR)</label><input type="text" id="titleFr" required></div>
+            <div class="form-group"><label id="labelTitleEn">Titre (EN)</label><input type="text" id="titleEn"></div>
+            <div class="form-group"><label id="labelDescFr">Description (FR)</label><textarea id="descFr" rows="2" required></textarea></div>
+            <div class="form-group"><label id="labelDescEn">Description (EN)</label><textarea id="descEn" rows="2"></textarea></div>
+            <div class="form-group"><label id="labelPrice">Prix (TND)</label><input type="number" id="priceTND" step="0.001" required></div>
+            <div class="form-group"><label id="labelType">Type</label>
+                <select id="propertyType"><option value="vente">Vente</option><option value="location">Location</option><option value="investissement">Investissement</option></select>
             </div>
-            <div class="form-group">
-                <label id="labelTitleEn">Titre (EN)</label>
-                <input type="text" id="titleEn">
-            </div>
-            <div class="form-group">
-                <label id="labelDescFr">Description (FR)</label>
-                <textarea id="descFr" rows="3" required></textarea>
-            </div>
-            <div class="form-group">
-                <label id="labelDescEn">Description (EN)</label>
-                <textarea id="descEn" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-                <label id="labelPrice">Prix (TND)</label>
-                <input type="number" id="priceTND" step="0.001" required>
-            </div>
-            <div class="form-group">
-                <label id="labelType">Type</label>
-                <select id="propertyType">
-                    <option value="vente">Vente</option>
-                    <option value="location">Location</option>
-                    <option value="investissement">Investissement</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label id="labelPhoto">URL Photo</label>
-                <input type="url" id="photoUrl" placeholder="https://...">
-            </div>
-            <div class="form-group">
-                <label id="labelVideo">URL Vidéo (YouTube)</label>
-                <input type="url" id="videoUrl" placeholder="https://...">
-            </div>
+            <div class="form-group"><label id="labelSuperficie">Superficie (m²)</label><input type="number" id="superficie" required></div>
+            <div class="form-group"><label id="labelBedrooms">Chambres</label><input type="number" id="bedrooms" min="0" required></div>
+            <div class="form-group"><label id="labelBathrooms">Salles de bain</label><input type="number" id="bathrooms" min="0" required></div>
+            <div class="form-group"><label id="labelKitchens">Cuisines</label><input type="number" id="kitchens" min="0" required></div>
+            <div class="form-group"><label id="labelPhotos">Photos (depuis l'appareil)</label><input type="file" id="photosInput" multiple accept="image/*"></div>
+            <div class="form-group"><label id="labelVideoFile">Vidéo (depuis l'appareil)</label><input type="file" id="videoFileInput" accept="video/*"></div>
+            <div class="form-group"><label id="labelVideoUrl">Ou URL Vidéo (YouTube)</label><input type="url" id="videoUrl" placeholder="https://..."></div>
             <button type="submit" class="btn btn-gold" id="submitBtn">Ajouter</button>
         </form>
     </div>
 </div>
 
+<!-- Детальный просмотр -->
+<div class="modal" id="detailModal">
+    <div class="detail-panel">
+        <span class="close-modal" id="closeDetailBtn">&times;</span>
+        <div class="gallery" id="detailGallery"></div>
+        <h2 id="detailTitle"></h2>
+        <p id="detailDesc"></p>
+        <div class="detail-features" id="detailFeatures"></div>
+        <div class="price-container" id="detailPrice"></div>
+        <div id="detailVideo"></div>
+    </div>
+</div>
+
 <script>
     (function() {
-        // Локализация
+        // Логин и пароль
+        const ADMIN_LOGIN = 'admin';
+        const ADMIN_PASSWORD = 'EliteHomes2025!';
+
         const texts = {
             fr: {
-                navVente: 'Vente',
-                navLocation: 'Location',
-                navInvest: 'Investissement',
-                adminTrigger: 'Admin',
-                propertiesTitle: 'Propriétés',
-                whatsappText: '+216 25 801 607',
-                adminTitle: 'Ajouter un bien',
-                labelTitleFr: 'Titre (FR)',
-                labelTitleEn: 'Titre (EN)',
-                labelDescFr: 'Description (FR)',
-                labelDescEn: 'Description (EN)',
-                labelPrice: 'Prix (TND)',
-                labelType: 'Type',
-                labelPhoto: 'URL Photo',
-                labelVideo: 'URL Vidéo (YouTube)',
-                submitBtn: 'Ajouter',
-                priceTND: 'TND',
-                priceEUR: 'EUR',
-                typeVente: 'Vente',
-                typeLocation: 'Location',
-                typeInvest: 'Investissement'
+                navVente: 'Vente', navLocation: 'Location', navInvest: 'Investissement',
+                propertiesTitle: 'Propriétés', whatsappText: '+216 25 801 607',
+                adminTitle: 'Ajouter un bien', labelTitleFr: 'Titre (FR)', labelTitleEn: 'Titre (EN)',
+                labelDescFr: 'Description (FR)', labelDescEn: 'Description (EN)', labelPrice: 'Prix (TND)',
+                labelType: 'Type', labelSuperficie: 'Superficie (m²)', labelBedrooms: 'Chambres',
+                labelBathrooms: 'Salles de bain', labelKitchens: 'Cuisines', labelPhotos: 'Photos (depuis l\'appareil)',
+                labelVideoFile: 'Vidéo (depuis l\'appareil)', labelVideoUrl: 'Ou URL Vidéo (YouTube)',
+                submitBtn: 'Ajouter', typeVente: 'Vente', typeLocation: 'Location', typeInvest: 'Investissement'
             },
             en: {
-                navVente: 'Sale',
-                navLocation: 'Rent',
-                navInvest: 'Investment',
-                adminTrigger: 'Admin',
-                propertiesTitle: 'Properties',
-                whatsappText: '+216 25 801 607',
-                adminTitle: 'Add Property',
-                labelTitleFr: 'Title (FR)',
-                labelTitleEn: 'Title (EN)',
-                labelDescFr: 'Description (FR)',
-                labelDescEn: 'Description (EN)',
-                labelPrice: 'Price (TND)',
-                labelType: 'Type',
-                labelPhoto: 'Photo URL',
-                labelVideo: 'Video URL (YouTube)',
-                submitBtn: 'Add',
-                priceTND: 'TND',
-                priceEUR: 'EUR',
-                typeVente: 'Sale',
-                typeLocation: 'Rent',
-                typeInvest: 'Investment'
+                navVente: 'Sale', navLocation: 'Rent', navInvest: 'Investment',
+                propertiesTitle: 'Properties', whatsappText: '+216 25 801 607',
+                adminTitle: 'Add Property', labelTitleFr: 'Title (FR)', labelTitleEn: 'Title (EN)',
+                labelDescFr: 'Description (FR)', labelDescEn: 'Description (EN)', labelPrice: 'Price (TND)',
+                labelType: 'Type', labelSuperficie: 'Area (m²)', labelBedrooms: 'Bedrooms',
+                labelBathrooms: 'Bathrooms', labelKitchens: 'Kitchens', labelPhotos: 'Photos (from device)',
+                labelVideoFile: 'Video (from device)', labelVideoUrl: 'Or Video URL (YouTube)',
+                submitBtn: 'Add', typeVente: 'Sale', typeLocation: 'Rent', typeInvest: 'Investment'
             }
         };
 
         let currentLang = 'fr';
-        const TND_TO_EUR = 0.30; // примерный курс
-
-        // Хранилище объектов
+        const TND_TO_EUR = 0.30;
         let properties = JSON.parse(localStorage.getItem('eliteHomesProperties')) || [];
 
-        // Предустановленные объекты для демонстрации
+        // Загрузка из localStorage, videoBlob не сохраняется
+        properties = properties.map(p => ({...p, videoBlob: null}));
+
         if (properties.length === 0) {
             properties = [
                 {
-                    id: Date.now() + 1,
-                    titleFr: 'Villa Carthage Vue Mer',
-                    titleEn: 'Carthage Sea View Villa',
-                    descFr: 'Magnifique villa avec piscine et jardin, proche des sites archéologiques.',
-                    descEn: 'Stunning villa with pool and garden, close to archaeological sites.',
-                    priceTND: 850000,
-                    type: 'vente',
-                    photoUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                    videoUrl: ''
+                    id: Date.now()+1, titleFr: 'Villa Carthage Vue Mer', titleEn: 'Carthage Sea View Villa',
+                    descFr: 'Magnifique villa avec piscine et jardin.', descEn: 'Stunning villa with pool and garden.',
+                    priceTND: 850000, type: 'vente', superficie: 250, bedrooms: 4, bathrooms: 3, kitchens: 1,
+                    photos: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800'],
+                    videoUrl: '', videoBlob: null
                 },
                 {
-                    id: Date.now() + 2,
-                    titleFr: 'Appartement Sidi Bou Saïd',
-                    titleEn: 'Sidi Bou Saïd Apartment',
-                    descFr: 'Charmant appartement avec terrasse panoramique, décoration traditionnelle.',
-                    descEn: 'Charming apartment with panoramic terrace, traditional decor.',
-                    priceTND: 320000,
-                    type: 'location',
-                    photoUrl: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+                    id: Date.now()+2, titleFr: 'Appartement Sidi Bou Saïd', titleEn: 'Sidi Bou Saïd Apartment',
+                    descFr: 'Charmant appartement avec terrasse.', descEn: 'Charming apartment with terrace.',
+                    priceTND: 320000, type: 'location', superficie: 120, bedrooms: 2, bathrooms: 1, kitchens: 1,
+                    photos: ['https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800'],
+                    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', videoBlob: null
                 }
             ];
-            localStorage.setItem('eliteHomesProperties', JSON.stringify(properties));
+            saveToStorage();
         }
 
-        // Элементы DOM
+        function saveToStorage() {
+            const toSave = properties.map(({videoBlob, ...rest}) => rest);
+            localStorage.setItem('eliteHomesProperties', JSON.stringify(toSave));
+        }
+
+        // DOM элементы
         const navMenu = document.getElementById('navMenu');
         const propertiesContainer = document.getElementById('propertiesContainer');
         const propertiesTitle = document.getElementById('propertiesTitle');
-        const adminTriggerText = document.getElementById('adminText');
-        const whatsappTextSpan = document.getElementById('whatsappText');
-        const adminTitle = document.getElementById('adminTitle');
-        const labelTitleFr = document.getElementById('labelTitleFr');
-        const labelTitleEn = document.getElementById('labelTitleEn');
-        const labelDescFr = document.getElementById('labelDescFr');
-        const labelDescEn = document.getElementById('labelDescEn');
-        const labelPrice = document.getElementById('labelPrice');
-        const labelType = document.getElementById('labelType');
-        const labelPhoto = document.getElementById('labelPhoto');
-        const labelVideo = document.getElementById('labelVideo');
-        const submitBtn = document.getElementById('submitBtn');
-        const btnFr = document.getElementById('btnFr');
-        const btnEn = document.getElementById('btnEn');
+        const btnFr = document.getElementById('btnFr'), btnEn = document.getElementById('btnEn');
+        const loginModal = document.getElementById('loginModal');
         const adminModal = document.getElementById('adminModal');
-        const openAdminBtn = document.getElementById('openAdminBtn');
-        const closeModalBtn = document.getElementById('closeModalBtn');
+        const detailModal = document.getElementById('detailModal');
+        const openLoginBtn = document.getElementById('openLoginBtn');
+        const closeLoginBtn = document.getElementById('closeLoginBtn');
+        const closeAdminBtn = document.getElementById('closeAdminBtn');
+        const closeDetailBtn = document.getElementById('closeDetailBtn');
+        const loginSubmitBtn = document.getElementById('loginSubmitBtn');
         const propertyForm = document.getElementById('propertyForm');
 
-        // Функция обновления интерфейса
         function updateLanguage(lang) {
             currentLang = lang;
             const t = texts[lang];
-            // Навигация
-            navMenu.innerHTML = `
-                <li><a href="#">${t.navVente}</a></li>
-                <li><a href="#">${t.navLocation}</a></li>
-                <li><a href="#">${t.navInvest}</a></li>
-            `;
+            navMenu.innerHTML = `<li><a href="#">${t.navVente}</a></li><li><a href="#">${t.navLocation}</a></li><li><a href="#">${t.navInvest}</a></li>`;
             propertiesTitle.textContent = t.propertiesTitle;
-            adminTriggerText.textContent = t.adminTrigger;
-            whatsappTextSpan.textContent = t.whatsappText;
-            adminTitle.textContent = t.adminTitle;
-            labelTitleFr.textContent = t.labelTitleFr;
-            labelTitleEn.textContent = t.labelTitleEn;
-            labelDescFr.textContent = t.labelDescFr;
-            labelDescEn.textContent = t.labelDescEn;
-            labelPrice.textContent = t.labelPrice;
-            labelType.textContent = t.labelType;
-            labelPhoto.textContent = t.labelPhoto;
-            labelVideo.textContent = t.labelVideo;
-            submitBtn.textContent = t.submitBtn;
-            
-            // Кнопки языка
-            btnFr.classList.toggle('active', lang === 'fr');
-            btnEn.classList.toggle('active', lang === 'en');
-            
+            document.getElementById('whatsappText').textContent = t.whatsappText;
+            document.getElementById('adminText').textContent = 'Admin';
+            document.getElementById('adminTitle').textContent = t.adminTitle;
+            document.getElementById('labelTitleFr').textContent = t.labelTitleFr;
+            document.getElementById('labelTitleEn').textContent = t.labelTitleEn;
+            document.getElementById('labelDescFr').textContent = t.labelDescFr;
+            document.getElementById('labelDescEn').textContent = t.labelDescEn;
+            document.getElementById('labelPrice').textContent = t.labelPrice;
+            document.getElementById('labelType').textContent = t.labelType;
+            document.getElementById('labelSuperficie').textContent = t.labelSuperficie;
+            document.getElementById('labelBedrooms').textContent = t.labelBedrooms;
+            document.getElementById('labelBathrooms').textContent = t.labelBathrooms;
+            document.getElementById('labelKitchens').textContent = t.labelKitchens;
+            document.getElementById('labelPhotos').textContent = t.labelPhotos;
+            document.getElementById('labelVideoFile').textContent = t.labelVideoFile;
+            document.getElementById('labelVideoUrl').textContent = t.labelVideoUrl;
+            document.getElementById('submitBtn').textContent = t.submitBtn;
+            btnFr.classList.toggle('active', lang==='fr');
+            btnEn.classList.toggle('active', lang==='en');
             renderProperties();
         }
 
-        // Рендер карточек
         function renderProperties() {
             const t = texts[currentLang];
             propertiesContainer.innerHTML = '';
-            if (properties.length === 0) {
-                propertiesContainer.innerHTML = '<p style="grid-column:1/-1; text-align:center;">Aucun bien pour le moment.</p>';
+            if (!properties.length) {
+                propertiesContainer.innerHTML = '<p style="grid-column:1/-1;">Aucun bien.</p>';
                 return;
             }
             properties.forEach(prop => {
-                const title = currentLang === 'fr' ? prop.titleFr : prop.titleEn;
-                const desc = currentLang === 'fr' ? prop.descFr : prop.descEn;
-                const priceTND = parseFloat(prop.priceTND).toLocaleString('fr-TN', { minimumFractionDigits: 0 });
-                const priceEUR = (prop.priceTND * TND_TO_EUR).toLocaleString('fr-FR', { minimumFractionDigits: 0 });
-                const typeText = prop.type === 'vente' ? t.typeVente : (prop.type === 'location' ? t.typeLocation : t.typeInvest);
-                
+                const title = currentLang==='fr' ? prop.titleFr : prop.titleEn;
+                const desc = (currentLang==='fr' ? prop.descFr : prop.descEn).substring(0,80)+'...';
+                const typeText = prop.type==='vente' ? t.typeVente : (prop.type==='location'? t.typeLocation : t.typeInvest);
+                const img = prop.photos?.[0] || 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=800';
                 const card = document.createElement('div');
                 card.className = 'property-card';
                 card.innerHTML = `
-                    <div class="property-img" style="background-image: url('${prop.photoUrl || 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'}')">
-                        <span class="property-type">${typeText}</span>
-                    </div>
+                    <div class="property-img" style="background-image:url('${img}')"><span class="property-type">${typeText}</span></div>
                     <div class="property-details">
                         <h3 class="property-title">${title}</h3>
                         <p class="property-desc">${desc}</p>
-                        <div class="price-container">
-                            <span class="price-tnd">${priceTND} TND</span>
-                            <span class="price-eur">≈ ${priceEUR} EUR</span>
+                        <div class="features-row">
+                            <span><i class="fas fa-vector-square"></i> ${prop.superficie} m²</span>
+                            <span><i class="fas fa-bed"></i> ${prop.bedrooms}</span>
+                            <span><i class="fas fa-bath"></i> ${prop.bathrooms}</span>
+                            <span><i class="fas fa-utensils"></i> ${prop.kitchens}</span>
                         </div>
-                        ${prop.videoUrl ? `<a href="${prop.videoUrl}" target="_blank" class="video-link"><i class="fab fa-youtube"></i> Vidéo</a>` : ''}
-                    </div>
-                `;
+                        <div class="price-container">
+                            <span class="price-tnd">${prop.priceTND.toLocaleString()} TND</span>
+                            <span class="price-eur">≈ ${(prop.priceTND*TND_TO_EUR).toLocaleString()} EUR</span>
+                        </div>
+                    </div>`;
+                card.addEventListener('click', () => openDetail(prop));
                 propertiesContainer.appendChild(card);
             });
         }
 
-        // Сохранение и добавление
-        propertyForm.addEventListener('submit', function(e) {
+        function openDetail(prop) {
+            const t = texts[currentLang];
+            document.getElementById('detailTitle').textContent = currentLang==='fr' ? prop.titleFr : prop.titleEn;
+            document.getElementById('detailDesc').textContent = currentLang==='fr' ? prop.descFr : prop.descEn;
+            document.getElementById('detailFeatures').innerHTML = `
+                <span><i class="fas fa-vector-square"></i> ${prop.superficie} m²</span>
+                <span><i class="fas fa-bed"></i> ${prop.bedrooms} chambres</span>
+                <span><i class="fas fa-bath"></i> ${prop.bathrooms} sdb</span>
+                <span><i class="fas fa-utensils"></i> ${prop.kitchens} cuisines</span>`;
+            document.getElementById('detailPrice').innerHTML = `
+                <span class="price-tnd">${prop.priceTND.toLocaleString()} TND</span>
+                <span class="price-eur">≈ ${(prop.priceTND*TND_TO_EUR).toLocaleString()} EUR</span>`;
+
+            const galleryDiv = document.getElementById('detailGallery');
+            galleryDiv.innerHTML = '';
+            const photos = prop.photos || [];
+            let currentIndex = 0;
+            function showPhoto(index) {
+                galleryDiv.innerHTML = '';
+                if (photos.length) {
+                    const img = document.createElement('img');
+                    img.src = photos[index];
+                    img.className = 'gallery-main';
+                    galleryDiv.appendChild(img);
+                    if (photos.length > 1) {
+                        const controls = document.createElement('div');
+                        controls.className = 'gallery-controls';
+                        controls.innerHTML = `<i class="fas fa-chevron-left" id="prevBtn"></i> ${index+1}/${photos.length} <i class="fas fa-chevron-right" id="nextBtn"></i>`;
+                        galleryDiv.appendChild(controls);
+                        document.getElementById('prevBtn').addEventListener('click', (e) => { e.stopPropagation(); currentIndex = (currentIndex-1+photos.length)%photos.length; showPhoto(currentIndex); });
+                        document.getElementById('nextBtn').addEventListener('click', (e) => { e.stopPropagation(); currentIndex = (currentIndex+1)%photos.length; showPhoto(currentIndex); });
+                    }
+                } else {
+                    galleryDiv.innerHTML = '<p>Aucune photo</p>';
+                }
+            }
+            showPhoto(0);
+
+            const videoDiv = document.getElementById('detailVideo');
+            videoDiv.innerHTML = '';
+            if (prop.videoBlob) {
+                videoDiv.innerHTML = `<video controls style="width:100%; border-radius:12px; margin-top:15px;"><source src="${prop.videoBlob}" type="video/mp4"></video>`;
+            } else if (prop.videoUrl) {
+                if (prop.videoUrl.includes('youtube.com/embed') || prop.videoUrl.includes('youtu.be')) {
+                    videoDiv.innerHTML = `<iframe width="100%" height="315" src="${prop.videoUrl}" frameborder="0" allowfullscreen style="border-radius:12px; margin-top:15px;"></iframe>`;
+                } else {
+                    videoDiv.innerHTML = `<video controls style="width:100%; border-radius:12px; margin-top:15px;"><source src="${prop.videoUrl}" type="video/mp4"></video>`;
+                }
+            }
+            detailModal.classList.add('active');
+        }
+
+        // Логин
+        openLoginBtn.addEventListener('click', () => loginModal.classList.add('active'));
+        closeLoginBtn.addEventListener('click', () => loginModal.classList.remove('active'));
+        loginSubmitBtn.addEventListener('click', () => {
+            const login = document.getElementById('loginInput').value.trim();
+            const pass = document.getElementById('passwordInput').value;
+            if (login === ADMIN_LOGIN && pass === ADMIN_PASSWORD) {
+                loginModal.classList.remove('active');
+                adminModal.classList.add('active');
+                document.getElementById('loginError').textContent = '';
+            } else {
+                document.getElementById('loginError').textContent = 'Identifiants incorrects';
+            }
+        });
+
+        closeAdminBtn.addEventListener('click', () => adminModal.classList.remove('active'));
+        closeDetailBtn.addEventListener('click', () => detailModal.classList.remove('active'));
+        window.addEventListener('click', (e) => { if (e.target.classList.contains('modal')) e.target.classList.remove('active'); });
+
+        // Добавление объекта
+        propertyForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+            const photosInput = document.getElementById('photosInput');
+            const videoFileInput = document.getElementById('videoFileInput');
+            const photosBase64 = [];
+            if (photosInput.files.length) {
+                for (let file of photosInput.files) {
+                    const dataUrl = await readFileAsDataURL(file);
+                    photosBase64.push(dataUrl);
+                }
+            }
+            let videoBlob = null;
+            if (videoFileInput.files.length) {
+                videoBlob = URL.createObjectURL(videoFileInput.files[0]);
+            }
             const newProp = {
                 id: Date.now(),
                 titleFr: document.getElementById('titleFr').value,
@@ -653,28 +657,31 @@
                 descEn: document.getElementById('descEn').value,
                 priceTND: parseFloat(document.getElementById('priceTND').value),
                 type: document.getElementById('propertyType').value,
-                photoUrl: document.getElementById('photoUrl').value,
-                videoUrl: document.getElementById('videoUrl').value
+                superficie: parseInt(document.getElementById('superficie').value),
+                bedrooms: parseInt(document.getElementById('bedrooms').value),
+                bathrooms: parseInt(document.getElementById('bathrooms').value),
+                kitchens: parseInt(document.getElementById('kitchens').value),
+                photos: photosBase64.length ? photosBase64 : ['https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=800'],
+                videoUrl: document.getElementById('videoUrl').value,
+                videoBlob: videoBlob
             };
             properties.push(newProp);
-            localStorage.setItem('eliteHomesProperties', JSON.stringify(properties));
+            saveToStorage();
             renderProperties();
             propertyForm.reset();
             adminModal.classList.remove('active');
         });
 
-        // Модальное окно
-        openAdminBtn.addEventListener('click', () => adminModal.classList.add('active'));
-        closeModalBtn.addEventListener('click', () => adminModal.classList.remove('active'));
-        window.addEventListener('click', (e) => {
-            if (e.target === adminModal) adminModal.classList.remove('active');
-        });
+        function readFileAsDataURL(file) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = (e) => resolve(e.target.result);
+                reader.readAsDataURL(file);
+            });
+        }
 
-        // Переключение языка
         btnFr.addEventListener('click', () => updateLanguage('fr'));
         btnEn.addEventListener('click', () => updateLanguage('en'));
-
-        // Инициализация
         updateLanguage('fr');
     })();
 </script>

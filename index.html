@@ -21,10 +21,7 @@
         }
         .mosaic-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%230a1f3f' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             pointer-events: none;
             z-index: 0;
@@ -127,10 +124,7 @@
         }
         .floating-icons {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
             z-index: 1;
         }
@@ -165,10 +159,8 @@
         }
         .hero-slide {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background-size: cover;
             background-position: center;
             opacity: 0;
@@ -179,10 +171,8 @@
         }
         .hero-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(10, 31, 63, 0.35);
             display: flex;
             align-items: center;
@@ -202,9 +192,7 @@
             color: #c8a96e;
         }
         @media (max-width: 768px) {
-            .hero-text {
-                font-size: 1.8rem;
-            }
+            .hero-text { font-size: 1.8rem; }
         }
 
         .section-title {
@@ -244,8 +232,7 @@
         }
         .property-type {
             position: absolute;
-            top: 12px;
-            left: 12px;
+            top: 12px; left: 12px;
             background: #0a1f3f;
             color: white;
             padding: 5px 14px;
@@ -303,8 +290,7 @@
         }
         .whatsapp-float {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
+            bottom: 25px; right: 25px;
             background: #25D366;
             color: white;
             border-radius: 50px;
@@ -325,10 +311,7 @@
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.6);
             z-index: 300;
             justify-content: center;
@@ -350,8 +333,7 @@
         }
         .close-modal {
             position: absolute;
-            top: 15px;
-            right: 20px;
+            top: 15px; right: 20px;
             font-size: 1.8rem;
             cursor: pointer;
             color: #0a1f3f;
@@ -459,11 +441,12 @@
     </div>
 </header>
 
-<!-- Hero Slider -->
+<!-- Hero Slider с тунисскими достопримечательностями -->
 <div class="hero-slider" id="heroSlider">
-    <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1598906092484-24e2b3d8e2d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
-    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1600165782069-6b6e2c5b0e4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
-    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1578154253343-9e72b7e3f44f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+    <div class="hero-slide active" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Karthago_Tophet_2.JPG/1280px-Karthago_Tophet_2.JPG');"></div>
+    <div class="hero-slide" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Amphith%C3%A9%C3%A2tre_d%27El_Jem_2.jpg/1280px-Amphith%C3%A9%C3%A2tre_d%27El_Jem_2.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Sidi_Bou_Said_-_Tunisie.jpg/1280px-Sidi_Bou_Said_-_Tunisie.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Tunis_Medina.jpg/1280px-Tunis_Medina.jpg');"></div>
     <div class="hero-overlay">
         <div class="hero-text" id="heroText">La route vers un bel avenir <span>passe par nous</span>.</div>
     </div>
@@ -533,62 +516,30 @@
 
 <script>
     (function() {
-        // Учетные данные администратора
         const ADMIN_LOGIN = 'admin';
         const ADMIN_PASSWORD = 'EliteHomes2025!';
 
-        // Тексты локализации
         const texts = {
             fr: {
-                navVente: 'Vente',
-                navLocation: 'Location',
-                navInvest: 'Investissement',
-                propertiesTitle: 'Propriétés',
-                whatsappText: '+216 25 801 607',
-                adminTitle: 'Ajouter un bien',
-                labelTitleFr: 'Titre (FR)',
-                labelTitleEn: 'Titre (EN)',
-                labelDescFr: 'Description (FR)',
-                labelDescEn: 'Description (EN)',
-                labelPrice: 'Prix (TND)',
-                labelType: 'Type',
-                labelSuperficie: 'Superficie (m²)',
-                labelBedrooms: 'Chambres',
-                labelBathrooms: 'Salles de bain',
-                labelKitchens: 'Cuisines',
-                labelPhotos: 'Photos (depuis l\'appareil)',
-                labelVideoFile: 'Vidéo (depuis l\'appareil)',
-                labelVideoUrl: 'Ou URL Vidéo (YouTube)',
-                submitBtn: 'Ajouter',
-                typeVente: 'Vente',
-                typeLocation: 'Location',
-                typeInvest: 'Investissement',
+                navVente: 'Vente', navLocation: 'Location', navInvest: 'Investissement',
+                propertiesTitle: 'Propriétés', whatsappText: '+216 25 801 607',
+                adminTitle: 'Ajouter un bien', labelTitleFr: 'Titre (FR)', labelTitleEn: 'Titre (EN)',
+                labelDescFr: 'Description (FR)', labelDescEn: 'Description (EN)', labelPrice: 'Prix (TND)',
+                labelType: 'Type', labelSuperficie: 'Superficie (m²)', labelBedrooms: 'Chambres',
+                labelBathrooms: 'Salles de bain', labelKitchens: 'Cuisines', labelPhotos: 'Photos (depuis l\'appareil)',
+                labelVideoFile: 'Vidéo (depuis l\'appareil)', labelVideoUrl: 'Ou URL Vidéo (YouTube)',
+                submitBtn: 'Ajouter', typeVente: 'Vente', typeLocation: 'Location', typeInvest: 'Investissement',
                 heroText: 'La route vers un bel avenir <span>passe par nous</span>.'
             },
             en: {
-                navVente: 'Sale',
-                navLocation: 'Rent',
-                navInvest: 'Investment',
-                propertiesTitle: 'Properties',
-                whatsappText: '+216 25 801 607',
-                adminTitle: 'Add Property',
-                labelTitleFr: 'Title (FR)',
-                labelTitleEn: 'Title (EN)',
-                labelDescFr: 'Description (FR)',
-                labelDescEn: 'Description (EN)',
-                labelPrice: 'Price (TND)',
-                labelType: 'Type',
-                labelSuperficie: 'Area (m²)',
-                labelBedrooms: 'Bedrooms',
-                labelBathrooms: 'Bathrooms',
-                labelKitchens: 'Kitchens',
-                labelPhotos: 'Photos (from device)',
-                labelVideoFile: 'Video (from device)',
-                labelVideoUrl: 'Or Video URL (YouTube)',
-                submitBtn: 'Add',
-                typeVente: 'Sale',
-                typeLocation: 'Rent',
-                typeInvest: 'Investment',
+                navVente: 'Sale', navLocation: 'Rent', navInvest: 'Investment',
+                propertiesTitle: 'Properties', whatsappText: '+216 25 801 607',
+                adminTitle: 'Add Property', labelTitleFr: 'Title (FR)', labelTitleEn: 'Title (EN)',
+                labelDescFr: 'Description (FR)', labelDescEn: 'Description (EN)', labelPrice: 'Price (TND)',
+                labelType: 'Type', labelSuperficie: 'Area (m²)', labelBedrooms: 'Bedrooms',
+                labelBathrooms: 'Bathrooms', labelKitchens: 'Kitchens', labelPhotos: 'Photos (from device)',
+                labelVideoFile: 'Video (from device)', labelVideoUrl: 'Or Video URL (YouTube)',
+                submitBtn: 'Add', typeVente: 'Sale', typeLocation: 'Rent', typeInvest: 'Investment',
                 heroText: 'The road to a beautiful future <span>goes through us</span>.'
             }
         };
@@ -596,42 +547,21 @@
         let currentLang = 'fr';
         const TND_TO_EUR = 0.30;
         let properties = JSON.parse(localStorage.getItem('eliteHomesProperties')) || [];
-        properties = properties.map(p => ({...p, videoBlob: null})); // blob не сохраняется
+        properties = properties.map(p => ({...p, videoBlob: null}));
 
-        // Демо-данные, если пусто
         if (properties.length === 0) {
             properties = [
                 {
-                    id: Date.now()+1,
-                    titleFr: 'Villa Carthage Vue Mer',
-                    titleEn: 'Carthage Sea View Villa',
-                    descFr: 'Magnifique villa avec piscine et jardin.',
-                    descEn: 'Stunning villa with pool and garden.',
-                    priceTND: 850000,
-                    type: 'vente',
-                    superficie: 250,
-                    bedrooms: 4,
-                    bathrooms: 3,
-                    kitchens: 1,
-                    photos: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800'],
-                    videoUrl: '',
-                    videoBlob: null
+                    id: Date.now()+1, titleFr: 'Villa Carthage Vue Mer', titleEn: 'Carthage Sea View Villa',
+                    descFr: 'Magnifique villa avec piscine et jardin.', descEn: 'Stunning villa with pool and garden.',
+                    priceTND: 850000, type: 'vente', superficie: 250, bedrooms: 4, bathrooms: 3, kitchens: 1,
+                    photos: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800'], videoUrl: '', videoBlob: null
                 },
                 {
-                    id: Date.now()+2,
-                    titleFr: 'Appartement Sidi Bou Saïd',
-                    titleEn: 'Sidi Bou Saïd Apartment',
-                    descFr: 'Charmant appartement avec terrasse.',
-                    descEn: 'Charming apartment with terrace.',
-                    priceTND: 320000,
-                    type: 'location',
-                    superficie: 120,
-                    bedrooms: 2,
-                    bathrooms: 1,
-                    kitchens: 1,
-                    photos: ['https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800'],
-                    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-                    videoBlob: null
+                    id: Date.now()+2, titleFr: 'Appartement Sidi Bou Saïd', titleEn: 'Sidi Bou Saïd Apartment',
+                    descFr: 'Charmant appartement avec terrasse.', descEn: 'Charming apartment with terrace.',
+                    priceTND: 320000, type: 'location', superficie: 120, bedrooms: 2, bathrooms: 1, kitchens: 1,
+                    photos: ['https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800'], videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', videoBlob: null
                 }
             ];
             saveToStorage();
@@ -642,10 +572,7 @@
             localStorage.setItem('eliteHomesProperties', JSON.stringify(toSave));
         }
 
-        // Состояние фильтра
-        let currentFilter = 'all'; // 'all', 'vente', 'location', 'investissement'
-
-        // DOM элементы
+        let currentFilter = 'all';
         const navMenu = document.getElementById('navMenu');
         const propertiesContainer = document.getElementById('propertiesContainer');
         const propertiesTitle = document.getElementById('propertiesTitle');
@@ -670,19 +597,16 @@
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
-        setInterval(nextSlide, 5000); // смена каждые 5 секунд
+        setInterval(nextSlide, 5000);
 
-        // Обновление языка
         function updateLanguage(lang) {
             currentLang = lang;
             const t = texts[lang];
-            // Навигация
             navMenu.innerHTML = `
                 <li><a data-filter="vente" class="${currentFilter==='vente'?'active-filter':''}">${t.navVente}</a></li>
                 <li><a data-filter="location" class="${currentFilter==='location'?'active-filter':''}">${t.navLocation}</a></li>
                 <li><a data-filter="investissement" class="${currentFilter==='investissement'?'active-filter':''}">${t.navInvest}</a></li>
             `;
-            // Привязка событий к ссылкам
             document.querySelectorAll('.nav-links li a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     const filter = this.dataset.filter;
@@ -716,7 +640,7 @@
 
         function setFilter(filter) {
             currentFilter = filter;
-            updateLanguage(currentLang); // обновит заголовок и активные классы
+            updateLanguage(currentLang);
         }
 
         function renderProperties() {
@@ -807,7 +731,6 @@
             detailModal.classList.add('active');
         }
 
-        // Логин
         openLoginBtn.addEventListener('click', () => loginModal.classList.add('active'));
         closeLoginBtn.addEventListener('click', () => loginModal.classList.remove('active'));
         loginSubmitBtn.addEventListener('click', () => {
@@ -826,7 +749,6 @@
         closeDetailBtn.addEventListener('click', () => detailModal.classList.remove('active'));
         window.addEventListener('click', (e) => { if (e.target.classList.contains('modal')) e.target.classList.remove('active'); });
 
-        // Добавление объекта
         propertyForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             const photosInput = document.getElementById('photosInput');
@@ -876,7 +798,6 @@
         btnFr.addEventListener('click', () => updateLanguage('fr'));
         btnEn.addEventListener('click', () => updateLanguage('en'));
 
-        // Инициализация
         updateLanguage('fr');
     })();
 </script>

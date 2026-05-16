@@ -12,7 +12,7 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             background: #ffffff;
             color: #0a1f3f;
             overflow-x: hidden;
@@ -21,7 +21,10 @@
         }
         .mosaic-bg {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%230a1f3f' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             pointer-events: none;
             z-index: 0;
@@ -51,8 +54,8 @@
         .logo h1 {
             font-size: 2rem;
             font-weight: 700;
-            color: #f5e7d3;
             letter-spacing: 1px;
+            color: #f5e7d3;
         }
         .logo span {
             color: #c8a96e;
@@ -72,6 +75,7 @@
             cursor: pointer;
             font-weight: 600;
             transition: 0.3s;
+            font-size: 0.9rem;
         }
         .lang-btn.active {
             background: #c8a96e;
@@ -83,14 +87,17 @@
             list-style: none;
             font-weight: 600;
             font-size: 1.1rem;
+            flex-wrap: wrap;
         }
-        .nav-links a {
+        .nav-links li a {
             color: white;
             text-decoration: none;
             position: relative;
             padding: 5px 0;
+            cursor: pointer;
+            transition: 0.3s;
         }
-        .nav-links a::after {
+        .nav-links li a::after {
             content: '';
             position: absolute;
             width: 0%;
@@ -100,8 +107,12 @@
             background: #c8a96e;
             transition: 0.3s;
         }
-        .nav-links a:hover::after {
+        .nav-links li a:hover::after,
+        .nav-links li a.active-filter::after {
             width: 100%;
+        }
+        .nav-links li a.active-filter {
+            color: #c8a96e;
         }
         .admin-trigger {
             background: #c8a96e;
@@ -111,29 +122,91 @@
             cursor: pointer;
             margin-left: 15px;
             font-weight: 700;
+            border: none;
+            font-size: 1rem;
         }
         .floating-icons {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
             z-index: 1;
         }
         .floating-icon {
             position: absolute;
             font-size: 2.5rem;
-            color: rgba(10,31,63,0.1);
+            color: rgba(10, 31, 63, 0.1);
             animation: float 8s infinite ease-in-out;
         }
         .floating-icon:nth-child(1) { top: 10%; left: 5%; }
-        .floating-icon:nth-child(2) { top: 20%; right: 8%; animation-delay: 1.5s; }
+        .floating-icon:nth-child(2) { top: 20%; right: 8%; animation-delay: 1.5s; font-size: 2rem; }
         .floating-icon:nth-child(3) { bottom: 15%; left: 10%; animation-delay: 3s; }
-        .floating-icon:nth-child(4) { bottom: 25%; right: 12%; animation-delay: 4.5s; }
-        .floating-icon:nth-child(5) { top: 45%; left: 50%; animation-delay: 2s; }
+        .floating-icon:nth-child(4) { bottom: 25%; right: 12%; animation-delay: 4.5s; font-size: 3rem; }
+        .floating-icon:nth-child(5) { top: 45%; left: 50%; animation-delay: 2s; font-size: 2.2rem; }
         @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
+            25% { transform: translateY(-20px) rotate(2deg); }
+            50% { transform: translateY(-10px) rotate(-1deg); }
+            75% { transform: translateY(-25px) rotate(1deg); }
             100% { transform: translateY(0px) rotate(0deg); }
         }
+
+        /* Hero Slider */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            min-height: 400px;
+            overflow: hidden;
+            z-index: 2;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .hero-slide.active {
+            opacity: 1;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 31, 63, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-text {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+            padding: 0 20px;
+            letter-spacing: 1px;
+            z-index: 3;
+        }
+        .hero-text span {
+            color: #c8a96e;
+        }
+        @media (max-width: 768px) {
+            .hero-text {
+                font-size: 1.8rem;
+            }
+        }
+
         .section-title {
             font-size: 2rem;
             font-weight: 700;
@@ -204,6 +277,7 @@
             margin: 10px 0;
             font-size: 0.9rem;
             color: #2d3748;
+            flex-wrap: wrap;
         }
         .features-row i {
             color: #c8a96e;
@@ -242,11 +316,19 @@
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
             z-index: 200;
             text-decoration: none;
+            transition: 0.3s;
+        }
+        .whatsapp-float:hover {
+            background: #20b858;
+            transform: scale(1.03);
         }
         .modal {
             display: none;
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0,0,0,0.6);
             z-index: 300;
             justify-content: center;
@@ -264,10 +346,12 @@
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
         .close-modal {
             position: absolute;
-            top: 15px; right: 20px;
+            top: 15px;
+            right: 20px;
             font-size: 1.8rem;
             cursor: pointer;
             color: #0a1f3f;
@@ -295,10 +379,14 @@
             border-radius: 30px;
             font-weight: 700;
             cursor: pointer;
+            transition: 0.3s;
         }
         .btn-gold {
             background: #c8a96e;
             color: #0a1f3f;
+        }
+        .btn:hover {
+            opacity: 0.9;
         }
         .gallery {
             display: flex;
@@ -318,6 +406,7 @@
             font-size: 1.5rem;
             color: #0a1f3f;
             cursor: pointer;
+            user-select: none;
         }
         .detail-features {
             display: flex;
@@ -330,6 +419,11 @@
             .header-container {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 10px;
+            }
+            .nav-links {
+                gap: 12px;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -342,6 +436,7 @@
     <i class="fas fa-home floating-icon"></i>
     <i class="fas fa-columns floating-icon"></i>
     <i class="fas fa-city floating-icon"></i>
+    <i class="fas fa-scroll floating-icon"></i>
 </div>
 
 <a href="https://wa.me/21625801607" target="_blank" class="whatsapp-float" id="whatsappBtn">
@@ -350,7 +445,9 @@
 
 <header class="main-header">
     <div class="content-wrapper header-container">
-        <div class="logo"><h1>Elite<span>Homes</span></h1></div>
+        <div class="logo">
+            <h1>Elite<span>Homes</span></h1>
+        </div>
         <div class="lang-switch">
             <button id="btnFr" class="lang-btn active">FR</button>
             <button id="btnEn" class="lang-btn">EN</button>
@@ -358,9 +455,19 @@
         <nav>
             <ul class="nav-links" id="navMenu"></ul>
         </nav>
-        <div class="admin-trigger" id="openLoginBtn"><i class="fas fa-user-cog"></i> <span id="adminText">Admin</span></div>
+        <button class="admin-trigger" id="openLoginBtn"><i class="fas fa-user-cog"></i> <span id="adminText">Admin</span></button>
     </div>
 </header>
+
+<!-- Hero Slider -->
+<div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1598906092484-24e2b3d8e2d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1600165782069-6b6e2c5b0e4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1578154253343-9e72b7e3f44f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+    <div class="hero-overlay">
+        <div class="hero-text" id="heroText">La route vers un bel avenir <span>passe par nous</span>.</div>
+    </div>
+</div>
 
 <main class="content-wrapper">
     <h2 class="section-title" id="propertiesTitle">Propriétés</h2>
@@ -426,55 +533,105 @@
 
 <script>
     (function() {
-        // Логин и пароль
+        // Учетные данные администратора
         const ADMIN_LOGIN = 'admin';
         const ADMIN_PASSWORD = 'EliteHomes2025!';
 
+        // Тексты локализации
         const texts = {
             fr: {
-                navVente: 'Vente', navLocation: 'Location', navInvest: 'Investissement',
-                propertiesTitle: 'Propriétés', whatsappText: '+216 25 801 607',
-                adminTitle: 'Ajouter un bien', labelTitleFr: 'Titre (FR)', labelTitleEn: 'Titre (EN)',
-                labelDescFr: 'Description (FR)', labelDescEn: 'Description (EN)', labelPrice: 'Prix (TND)',
-                labelType: 'Type', labelSuperficie: 'Superficie (m²)', labelBedrooms: 'Chambres',
-                labelBathrooms: 'Salles de bain', labelKitchens: 'Cuisines', labelPhotos: 'Photos (depuis l\'appareil)',
-                labelVideoFile: 'Vidéo (depuis l\'appareil)', labelVideoUrl: 'Ou URL Vidéo (YouTube)',
-                submitBtn: 'Ajouter', typeVente: 'Vente', typeLocation: 'Location', typeInvest: 'Investissement'
+                navVente: 'Vente',
+                navLocation: 'Location',
+                navInvest: 'Investissement',
+                propertiesTitle: 'Propriétés',
+                whatsappText: '+216 25 801 607',
+                adminTitle: 'Ajouter un bien',
+                labelTitleFr: 'Titre (FR)',
+                labelTitleEn: 'Titre (EN)',
+                labelDescFr: 'Description (FR)',
+                labelDescEn: 'Description (EN)',
+                labelPrice: 'Prix (TND)',
+                labelType: 'Type',
+                labelSuperficie: 'Superficie (m²)',
+                labelBedrooms: 'Chambres',
+                labelBathrooms: 'Salles de bain',
+                labelKitchens: 'Cuisines',
+                labelPhotos: 'Photos (depuis l\'appareil)',
+                labelVideoFile: 'Vidéo (depuis l\'appareil)',
+                labelVideoUrl: 'Ou URL Vidéo (YouTube)',
+                submitBtn: 'Ajouter',
+                typeVente: 'Vente',
+                typeLocation: 'Location',
+                typeInvest: 'Investissement',
+                heroText: 'La route vers un bel avenir <span>passe par nous</span>.'
             },
             en: {
-                navVente: 'Sale', navLocation: 'Rent', navInvest: 'Investment',
-                propertiesTitle: 'Properties', whatsappText: '+216 25 801 607',
-                adminTitle: 'Add Property', labelTitleFr: 'Title (FR)', labelTitleEn: 'Title (EN)',
-                labelDescFr: 'Description (FR)', labelDescEn: 'Description (EN)', labelPrice: 'Price (TND)',
-                labelType: 'Type', labelSuperficie: 'Area (m²)', labelBedrooms: 'Bedrooms',
-                labelBathrooms: 'Bathrooms', labelKitchens: 'Kitchens', labelPhotos: 'Photos (from device)',
-                labelVideoFile: 'Video (from device)', labelVideoUrl: 'Or Video URL (YouTube)',
-                submitBtn: 'Add', typeVente: 'Sale', typeLocation: 'Rent', typeInvest: 'Investment'
+                navVente: 'Sale',
+                navLocation: 'Rent',
+                navInvest: 'Investment',
+                propertiesTitle: 'Properties',
+                whatsappText: '+216 25 801 607',
+                adminTitle: 'Add Property',
+                labelTitleFr: 'Title (FR)',
+                labelTitleEn: 'Title (EN)',
+                labelDescFr: 'Description (FR)',
+                labelDescEn: 'Description (EN)',
+                labelPrice: 'Price (TND)',
+                labelType: 'Type',
+                labelSuperficie: 'Area (m²)',
+                labelBedrooms: 'Bedrooms',
+                labelBathrooms: 'Bathrooms',
+                labelKitchens: 'Kitchens',
+                labelPhotos: 'Photos (from device)',
+                labelVideoFile: 'Video (from device)',
+                labelVideoUrl: 'Or Video URL (YouTube)',
+                submitBtn: 'Add',
+                typeVente: 'Sale',
+                typeLocation: 'Rent',
+                typeInvest: 'Investment',
+                heroText: 'The road to a beautiful future <span>goes through us</span>.'
             }
         };
 
         let currentLang = 'fr';
         const TND_TO_EUR = 0.30;
         let properties = JSON.parse(localStorage.getItem('eliteHomesProperties')) || [];
+        properties = properties.map(p => ({...p, videoBlob: null})); // blob не сохраняется
 
-        // Загрузка из localStorage, videoBlob не сохраняется
-        properties = properties.map(p => ({...p, videoBlob: null}));
-
+        // Демо-данные, если пусто
         if (properties.length === 0) {
             properties = [
                 {
-                    id: Date.now()+1, titleFr: 'Villa Carthage Vue Mer', titleEn: 'Carthage Sea View Villa',
-                    descFr: 'Magnifique villa avec piscine et jardin.', descEn: 'Stunning villa with pool and garden.',
-                    priceTND: 850000, type: 'vente', superficie: 250, bedrooms: 4, bathrooms: 3, kitchens: 1,
+                    id: Date.now()+1,
+                    titleFr: 'Villa Carthage Vue Mer',
+                    titleEn: 'Carthage Sea View Villa',
+                    descFr: 'Magnifique villa avec piscine et jardin.',
+                    descEn: 'Stunning villa with pool and garden.',
+                    priceTND: 850000,
+                    type: 'vente',
+                    superficie: 250,
+                    bedrooms: 4,
+                    bathrooms: 3,
+                    kitchens: 1,
                     photos: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800'],
-                    videoUrl: '', videoBlob: null
+                    videoUrl: '',
+                    videoBlob: null
                 },
                 {
-                    id: Date.now()+2, titleFr: 'Appartement Sidi Bou Saïd', titleEn: 'Sidi Bou Saïd Apartment',
-                    descFr: 'Charmant appartement avec terrasse.', descEn: 'Charming apartment with terrace.',
-                    priceTND: 320000, type: 'location', superficie: 120, bedrooms: 2, bathrooms: 1, kitchens: 1,
+                    id: Date.now()+2,
+                    titleFr: 'Appartement Sidi Bou Saïd',
+                    titleEn: 'Sidi Bou Saïd Apartment',
+                    descFr: 'Charmant appartement avec terrasse.',
+                    descEn: 'Charming apartment with terrace.',
+                    priceTND: 320000,
+                    type: 'location',
+                    superficie: 120,
+                    bedrooms: 2,
+                    bathrooms: 1,
+                    kitchens: 1,
                     photos: ['https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800'],
-                    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', videoBlob: null
+                    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                    videoBlob: null
                 }
             ];
             saveToStorage();
@@ -485,11 +642,15 @@
             localStorage.setItem('eliteHomesProperties', JSON.stringify(toSave));
         }
 
+        // Состояние фильтра
+        let currentFilter = 'all'; // 'all', 'vente', 'location', 'investissement'
+
         // DOM элементы
         const navMenu = document.getElementById('navMenu');
         const propertiesContainer = document.getElementById('propertiesContainer');
         const propertiesTitle = document.getElementById('propertiesTitle');
-        const btnFr = document.getElementById('btnFr'), btnEn = document.getElementById('btnEn');
+        const btnFr = document.getElementById('btnFr');
+        const btnEn = document.getElementById('btnEn');
         const loginModal = document.getElementById('loginModal');
         const adminModal = document.getElementById('adminModal');
         const detailModal = document.getElementById('detailModal');
@@ -499,12 +660,37 @@
         const closeDetailBtn = document.getElementById('closeDetailBtn');
         const loginSubmitBtn = document.getElementById('loginSubmitBtn');
         const propertyForm = document.getElementById('propertyForm');
+        const heroTextEl = document.getElementById('heroText');
 
+        // Hero slider
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 5000); // смена каждые 5 секунд
+
+        // Обновление языка
         function updateLanguage(lang) {
             currentLang = lang;
             const t = texts[lang];
-            navMenu.innerHTML = `<li><a href="#">${t.navVente}</a></li><li><a href="#">${t.navLocation}</a></li><li><a href="#">${t.navInvest}</a></li>`;
-            propertiesTitle.textContent = t.propertiesTitle;
+            // Навигация
+            navMenu.innerHTML = `
+                <li><a data-filter="vente" class="${currentFilter==='vente'?'active-filter':''}">${t.navVente}</a></li>
+                <li><a data-filter="location" class="${currentFilter==='location'?'active-filter':''}">${t.navLocation}</a></li>
+                <li><a data-filter="investissement" class="${currentFilter==='investissement'?'active-filter':''}">${t.navInvest}</a></li>
+            `;
+            // Привязка событий к ссылкам
+            document.querySelectorAll('.nav-links li a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const filter = this.dataset.filter;
+                    setFilter(filter);
+                });
+            });
+            propertiesTitle.textContent = currentFilter === 'all' ? t.propertiesTitle : 
+                (currentFilter === 'vente' ? t.navVente : (currentFilter === 'location' ? t.navLocation : t.navInvest));
             document.getElementById('whatsappText').textContent = t.whatsappText;
             document.getElementById('adminText').textContent = 'Admin';
             document.getElementById('adminTitle').textContent = t.adminTitle;
@@ -522,22 +708,29 @@
             document.getElementById('labelVideoFile').textContent = t.labelVideoFile;
             document.getElementById('labelVideoUrl').textContent = t.labelVideoUrl;
             document.getElementById('submitBtn').textContent = t.submitBtn;
+            heroTextEl.innerHTML = t.heroText;
             btnFr.classList.toggle('active', lang==='fr');
             btnEn.classList.toggle('active', lang==='en');
             renderProperties();
         }
 
+        function setFilter(filter) {
+            currentFilter = filter;
+            updateLanguage(currentLang); // обновит заголовок и активные классы
+        }
+
         function renderProperties() {
             const t = texts[currentLang];
+            const filtered = currentFilter === 'all' ? properties : properties.filter(p => p.type === currentFilter);
             propertiesContainer.innerHTML = '';
-            if (!properties.length) {
-                propertiesContainer.innerHTML = '<p style="grid-column:1/-1;">Aucun bien.</p>';
+            if (filtered.length === 0) {
+                propertiesContainer.innerHTML = '<p style="grid-column:1/-1; text-align:center;">Aucun bien trouvé.</p>';
                 return;
             }
-            properties.forEach(prop => {
+            filtered.forEach(prop => {
                 const title = currentLang==='fr' ? prop.titleFr : prop.titleEn;
-                const desc = (currentLang==='fr' ? prop.descFr : prop.descEn).substring(0,80)+'...';
-                const typeText = prop.type==='vente' ? t.typeVente : (prop.type==='location'? t.typeLocation : t.typeInvest);
+                const desc = (currentLang==='fr' ? prop.descFr : prop.descEn).substring(0, 80) + '...';
+                const typeText = prop.type==='vente' ? t.typeVente : (prop.type==='location' ? t.typeLocation : t.typeInvest);
                 const img = prop.photos?.[0] || 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=800';
                 const card = document.createElement('div');
                 card.className = 'property-card';
@@ -682,6 +875,8 @@
 
         btnFr.addEventListener('click', () => updateLanguage('fr'));
         btnEn.addEventListener('click', () => updateLanguage('en'));
+
+        // Инициализация
         updateLanguage('fr');
     })();
 </script>

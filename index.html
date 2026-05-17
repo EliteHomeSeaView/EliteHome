@@ -147,7 +147,6 @@
             100% { transform: translateY(0px) rotate(0deg); }
         }
 
-        /* Hero Image static – морской пляж с пальмами на закате */
         .hero-image {
             position: relative;
             width: 100%;
@@ -313,7 +312,7 @@
         .admin-panel, .detail-panel, .login-panel {
             background: white;
             width: 90%;
-            max-width: 650px;
+            max-width: 700px;
             border-radius: 20px;
             padding: 25px;
             max-height: 90vh;
@@ -352,10 +351,23 @@
             font-weight: 700;
             cursor: pointer;
             transition: 0.3s;
+            margin: 5px;
         }
         .btn-gold {
             background: #c8a96e;
             color: #0a1f3f;
+        }
+        .btn-outline {
+            background: white;
+            color: #0a1f3f;
+            border: 1px solid #0a1f3f;
+        }
+        .btn-outline:hover {
+            background: #f0f4f8;
+        }
+        .btn-danger {
+            background: #e53e3e;
+            color: white;
         }
         .btn:hover {
             opacity: 0.9;
@@ -386,6 +398,64 @@
             flex-wrap: wrap;
             margin: 15px 0;
             font-size: 1.1rem;
+        }
+        /* Новые стили для админ-списка */
+        .admin-property-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            border-bottom: 1px solid #edf2f7;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .admin-property-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+        .admin-property-thumb {
+            width: 60px;
+            height: 60px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+        }
+        .admin-property-text {
+            font-weight: 600;
+        }
+        .admin-property-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .existing-photos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .existing-photo-item {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 6px;
+            background-size: cover;
+            background-position: center;
+        }
+        .existing-photo-item .remove-photo {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 14px;
+            line-height: 22px;
+            text-align: center;
+            cursor: pointer;
         }
         @media (max-width: 768px) {
             .header-container {
@@ -431,7 +501,6 @@
     </div>
 </header>
 
-<!-- Главный экран с морским пляжем на закате -->
 <div class="hero-image">
     <div class="hero-overlay">
         <div class="hero-text" id="heroText">La route vers un bel avenir <span>passe par nous</span>.</div>
@@ -461,11 +530,20 @@
     </div>
 </div>
 
-<!-- Админ-панель -->
+<!-- Админ-панель (расширенная) -->
 <div class="modal" id="adminModal">
     <div class="admin-panel">
         <span class="close-modal" id="closeAdminBtn">&times;</span>
-        <h2 id="adminTitle">Ajouter un bien</h2>
+        <h2 id="adminTitle">Gestion des biens</h2>
+        
+        <!-- Список объектов с кнопками Modifier / Supprimer -->
+        <div id="adminListContainer"></div>
+        
+        <div class="admin-actions" style="margin: 15px 0;">
+            <button class="btn btn-outline" id="addNewBtn"><i class="fas fa-plus"></i> <span id="addNewText">Ajouter un nouveau bien</span></button>
+            <button class="btn btn-outline" id="cancelEditBtn" style="display:none;"><span id="cancelEditText">Annuler la modification</span></button>
+        </div>
+        
         <form id="propertyForm">
             <div class="form-group"><label id="labelTitleFr">Titre (FR)</label><input type="text" id="titleFr" required></div>
             <div class="form-group"><label id="labelTitleEn">Titre (EN)</label><input type="text" id="titleEn"></div>
@@ -480,9 +558,13 @@
             <div class="form-group"><label id="labelBathrooms">Salles de bain</label><input type="number" id="bathrooms" min="0" required></div>
             <div class="form-group"><label id="labelKitchens">Cuisines</label><input type="number" id="kitchens" min="0" required></div>
             <div class="form-group"><label id="labelPhotos">Photos (depuis l'appareil)</label><input type="file" id="photosInput" multiple accept="image/*"></div>
+            <div id="existingPhotosContainer" class="existing-photos"></div>
             <div class="form-group"><label id="labelVideoFile">Vidéo (depuis l'appareil)</label><input type="file" id="videoFileInput" accept="video/*"></div>
             <div class="form-group"><label id="labelVideoUrl">Ou URL Vidéo (YouTube)</label><input type="url" id="videoUrl" placeholder="https://..."></div>
-            <button type="submit" class="btn btn-gold" id="submitBtn">Ajouter</button>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button type="submit" class="btn btn-gold" id="submitBtn">Ajouter</button>
+                <button type="button" class="btn btn-gold" id="updateBtn" style="display:none;">Mettre à jour</button>
+            </div>
         </form>
     </div>
 </div>
@@ -509,24 +591,34 @@
             fr: {
                 navVente: 'Vente', navLocation: 'Location', navInvest: 'Investissement',
                 propertiesTitle: 'Propriétés', whatsappText: '+216 25 801 607',
-                adminTitle: 'Ajouter un bien', labelTitleFr: 'Titre (FR)', labelTitleEn: 'Titre (EN)',
+                adminTitle: 'Gestion des biens', addNewText: 'Ajouter un nouveau bien',
+                cancelEditText: 'Annuler la modification', updateBtnText: 'Mettre à jour',
+                deleteBtnText: 'Supprimer', modifyBtnText: 'Modifier',
+                confirmDelete: 'Supprimer ce bien ? Cette action est irréversible.',
+                labelTitleFr: 'Titre (FR)', labelTitleEn: 'Titre (EN)',
                 labelDescFr: 'Description (FR)', labelDescEn: 'Description (EN)', labelPrice: 'Prix (TND)',
                 labelType: 'Type', labelSuperficie: 'Superficie (m²)', labelBedrooms: 'Chambres',
                 labelBathrooms: 'Salles de bain', labelKitchens: 'Cuisines', labelPhotos: 'Photos (depuis l\'appareil)',
                 labelVideoFile: 'Vidéo (depuis l\'appareil)', labelVideoUrl: 'Ou URL Vidéo (YouTube)',
                 submitBtn: 'Ajouter', typeVente: 'Vente', typeLocation: 'Location', typeInvest: 'Investissement',
-                heroText: 'La route vers un bel avenir <span>passe par nous</span>.'
+                heroText: 'La route vers un bel avenir <span>passe par nous</span>.',
+                adminListEmpty: 'Aucun bien enregistré.'
             },
             en: {
                 navVente: 'Sale', navLocation: 'Rent', navInvest: 'Investment',
                 propertiesTitle: 'Properties', whatsappText: '+216 25 801 607',
-                adminTitle: 'Add Property', labelTitleFr: 'Title (FR)', labelTitleEn: 'Title (EN)',
+                adminTitle: 'Manage Properties', addNewText: 'Add new property',
+                cancelEditText: 'Cancel editing', updateBtnText: 'Update',
+                deleteBtnText: 'Delete', modifyBtnText: 'Edit',
+                confirmDelete: 'Delete this property? This cannot be undone.',
+                labelTitleFr: 'Title (FR)', labelTitleEn: 'Title (EN)',
                 labelDescFr: 'Description (FR)', labelDescEn: 'Description (EN)', labelPrice: 'Price (TND)',
                 labelType: 'Type', labelSuperficie: 'Area (m²)', labelBedrooms: 'Bedrooms',
                 labelBathrooms: 'Bathrooms', labelKitchens: 'Kitchens', labelPhotos: 'Photos (from device)',
                 labelVideoFile: 'Video (from device)', labelVideoUrl: 'Or Video URL (YouTube)',
                 submitBtn: 'Add', typeVente: 'Sale', typeLocation: 'Rent', typeInvest: 'Investment',
-                heroText: 'The road to a beautiful future <span>goes through us</span>.'
+                heroText: 'The road to a beautiful future <span>goes through us</span>.',
+                adminListEmpty: 'No properties yet.'
             }
         };
 
@@ -559,6 +651,9 @@
         }
 
         let currentFilter = 'all';
+        let editingId = null;            // id редактируемого объекта
+        let currentEditPhotos = [];      // временный массив старых фото при редактировании
+
         const navMenu = document.getElementById('navMenu');
         const propertiesContainer = document.getElementById('propertiesContainer');
         const propertiesTitle = document.getElementById('propertiesTitle');
@@ -574,6 +669,16 @@
         const loginSubmitBtn = document.getElementById('loginSubmitBtn');
         const propertyForm = document.getElementById('propertyForm');
         const heroTextEl = document.getElementById('heroText');
+        
+        // Новые элементы
+        const adminListContainer = document.getElementById('adminListContainer');
+        const addNewBtn = document.getElementById('addNewBtn');
+        const cancelEditBtn = document.getElementById('cancelEditBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const updateBtn = document.getElementById('updateBtn');
+        const existingPhotosContainer = document.getElementById('existingPhotosContainer');
+        const photosInput = document.getElementById('photosInput');
+        const videoFileInput = document.getElementById('videoFileInput');
 
         function updateLanguage(lang) {
             currentLang = lang;
@@ -585,8 +690,7 @@
             `;
             document.querySelectorAll('.nav-links li a').forEach(link => {
                 link.addEventListener('click', function(e) {
-                    const filter = this.dataset.filter;
-                    setFilter(filter);
+                    setFilter(this.dataset.filter);
                 });
             });
             propertiesTitle.textContent = currentFilter === 'all' ? t.propertiesTitle : 
@@ -594,6 +698,10 @@
             document.getElementById('whatsappText').textContent = t.whatsappText;
             document.getElementById('adminText').textContent = 'Admin';
             document.getElementById('adminTitle').textContent = t.adminTitle;
+            document.getElementById('addNewText').textContent = t.addNewText;
+            document.getElementById('cancelEditText').textContent = t.cancelEditText;
+            document.getElementById('updateBtn').textContent = t.updateBtnText;
+            document.getElementById('submitBtn').textContent = t.submitBtn;
             document.getElementById('labelTitleFr').textContent = t.labelTitleFr;
             document.getElementById('labelTitleEn').textContent = t.labelTitleEn;
             document.getElementById('labelDescFr').textContent = t.labelDescFr;
@@ -607,11 +715,13 @@
             document.getElementById('labelPhotos').textContent = t.labelPhotos;
             document.getElementById('labelVideoFile').textContent = t.labelVideoFile;
             document.getElementById('labelVideoUrl').textContent = t.labelVideoUrl;
-            document.getElementById('submitBtn').textContent = t.submitBtn;
             heroTextEl.innerHTML = t.heroText;
             btnFr.classList.toggle('active', lang==='fr');
             btnEn.classList.toggle('active', lang==='en');
             renderProperties();
+            if (adminModal.classList.contains('active')) {
+                renderAdminList();
+            }
         }
 
         function setFilter(filter) {
@@ -707,41 +817,134 @@
             detailModal.classList.add('active');
         }
 
-        openLoginBtn.addEventListener('click', () => loginModal.classList.add('active'));
-        closeLoginBtn.addEventListener('click', () => loginModal.classList.remove('active'));
-        loginSubmitBtn.addEventListener('click', () => {
-            const login = document.getElementById('loginInput').value.trim();
-            const pass = document.getElementById('passwordInput').value;
-            if (login === ADMIN_LOGIN && pass === ADMIN_PASSWORD) {
-                loginModal.classList.remove('active');
-                adminModal.classList.add('active');
-                document.getElementById('loginError').textContent = '';
-            } else {
-                document.getElementById('loginError').textContent = 'Identifiants incorrects';
+        // === Админ-панель: список объектов ===
+        function renderAdminList() {
+            const t = texts[currentLang];
+            adminListContainer.innerHTML = '';
+            if (properties.length === 0) {
+                adminListContainer.innerHTML = `<p>${t.adminListEmpty}</p>`;
+                return;
             }
-        });
+            properties.forEach(prop => {
+                const title = currentLang === 'fr' ? prop.titleFr : prop.titleEn;
+                const img = prop.photos?.[0] || 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=800';
+                const item = document.createElement('div');
+                item.className = 'admin-property-item';
+                item.innerHTML = `
+                    <div class="admin-property-info">
+                        <div class="admin-property-thumb" style="background-image:url('${img}')"></div>
+                        <div class="admin-property-text">${title}</div>
+                    </div>
+                    <div class="admin-property-actions">
+                        <button class="btn btn-outline modify-btn" data-id="${prop.id}">${t.modifyBtnText}</button>
+                        <button class="btn btn-danger delete-btn" data-id="${prop.id}">${t.deleteBtnText}</button>
+                    </div>
+                `;
+                adminListContainer.appendChild(item);
+            });
 
-        closeAdminBtn.addEventListener('click', () => adminModal.classList.remove('active'));
-        closeDetailBtn.addEventListener('click', () => detailModal.classList.remove('active'));
-        window.addEventListener('click', (e) => { if (e.target.classList.contains('modal')) e.target.classList.remove('active'); });
+            // Навешиваем обработчики
+            document.querySelectorAll('.modify-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(btn.dataset.id);
+                    startEditing(id);
+                });
+            });
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(btn.dataset.id);
+                    deleteProperty(id);
+                });
+            });
+        }
 
-        propertyForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const photosInput = document.getElementById('photosInput');
-            const videoFileInput = document.getElementById('videoFileInput');
-            const photosBase64 = [];
+        function startEditing(id) {
+            const prop = properties.find(p => p.id === id);
+            if (!prop) return;
+            editingId = id;
+            // Заполняем форму
+            document.getElementById('titleFr').value = prop.titleFr || '';
+            document.getElementById('titleEn').value = prop.titleEn || '';
+            document.getElementById('descFr').value = prop.descFr || '';
+            document.getElementById('descEn').value = prop.descEn || '';
+            document.getElementById('priceTND').value = prop.priceTND;
+            document.getElementById('propertyType').value = prop.type;
+            document.getElementById('superficie').value = prop.superficie;
+            document.getElementById('bedrooms').value = prop.bedrooms;
+            document.getElementById('bathrooms').value = prop.bathrooms;
+            document.getElementById('kitchens').value = prop.kitchens;
+            document.getElementById('videoUrl').value = prop.videoUrl || '';
+            // Очищаем input выбора файлов
+            photosInput.value = '';
+            videoFileInput.value = '';
+            // Показываем текущие фото с возможностью удаления
+            currentEditPhotos = [...(prop.photos || [])];
+            renderExistingPhotos();
+            // Переключаем кнопки
+            submitBtn.style.display = 'none';
+            updateBtn.style.display = 'inline-block';
+            cancelEditBtn.style.display = 'inline-block';
+            // Прокручиваем к форме
+            document.getElementById('propertyForm').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function renderExistingPhotos() {
+            existingPhotosContainer.innerHTML = '';
+            if (currentEditPhotos.length === 0) {
+                existingPhotosContainer.innerHTML = '<p style="font-size:0.9rem; color:#718096;">Aucune photo actuelle</p>';
+                return;
+            }
+            currentEditPhotos.forEach((photo, index) => {
+                const div = document.createElement('div');
+                div.className = 'existing-photo-item';
+                div.style.backgroundImage = `url('${photo}')`;
+                const removeBtn = document.createElement('span');
+                removeBtn.className = 'remove-photo';
+                removeBtn.innerHTML = '&times;';
+                removeBtn.addEventListener('click', () => {
+                    currentEditPhotos.splice(index, 1);
+                    renderExistingPhotos();
+                });
+                div.appendChild(removeBtn);
+                existingPhotosContainer.appendChild(div);
+            });
+        }
+
+        function cancelEditing() {
+            editingId = null;
+            currentEditPhotos = [];
+            propertyForm.reset();
+            existingPhotosContainer.innerHTML = '';
+            submitBtn.style.display = 'inline-block';
+            updateBtn.style.display = 'none';
+            cancelEditBtn.style.display = 'none';
+            photosInput.value = '';
+            videoFileInput.value = '';
+        }
+
+        async function saveProperty(isUpdate) {
+            const t = texts[currentLang];
+            // Собираем новые фото
+            const newPhotosBase64 = [];
             if (photosInput.files.length) {
                 for (let file of photosInput.files) {
                     const dataUrl = await readFileAsDataURL(file);
-                    photosBase64.push(dataUrl);
+                    newPhotosBase64.push(dataUrl);
                 }
             }
+            // Итоговый массив фото
+            let finalPhotos;
+            if (isUpdate) {
+                finalPhotos = [...currentEditPhotos, ...newPhotosBase64];
+            } else {
+                finalPhotos = newPhotosBase64.length ? newPhotosBase64 : ['https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=800'];
+            }
+            // Видео
             let videoBlob = null;
             if (videoFileInput.files.length) {
                 videoBlob = URL.createObjectURL(videoFileInput.files[0]);
             }
-            const newProp = {
-                id: Date.now(),
+            const propData = {
                 titleFr: document.getElementById('titleFr').value,
                 titleEn: document.getElementById('titleEn').value,
                 descFr: document.getElementById('descFr').value,
@@ -752,16 +955,40 @@
                 bedrooms: parseInt(document.getElementById('bedrooms').value),
                 bathrooms: parseInt(document.getElementById('bathrooms').value),
                 kitchens: parseInt(document.getElementById('kitchens').value),
-                photos: photosBase64.length ? photosBase64 : ['https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=800'],
+                photos: finalPhotos,
                 videoUrl: document.getElementById('videoUrl').value,
-                videoBlob: videoBlob
+                videoBlob: videoBlob // при обновлении может быть null, тогда удалится старый blob
             };
-            properties.push(newProp);
+
+            if (isUpdate) {
+                const index = properties.findIndex(p => p.id === editingId);
+                if (index !== -1) {
+                    properties[index] = { ...properties[index], ...propData, id: editingId };
+                }
+            } else {
+                propData.id = Date.now();
+                properties.push(propData);
+            }
             saveToStorage();
             renderProperties();
-            propertyForm.reset();
-            adminModal.classList.remove('active');
-        });
+            renderAdminList();
+            cancelEditing();
+            // alert(`Bien ${isUpdate ? 'mis à jour' : 'ajouté'} avec succès.`);
+        }
+
+        function deleteProperty(id) {
+            const t = texts[currentLang];
+            if (confirm(t.confirmDelete)) {
+                properties = properties.filter(p => p.id !== id);
+                saveToStorage();
+                renderProperties();
+                renderAdminList();
+                // если удаляем редактируемый объект, сбрасываем режим редактирования
+                if (editingId === id) {
+                    cancelEditing();
+                }
+            }
+        }
 
         function readFileAsDataURL(file) {
             return new Promise((resolve) => {
@@ -770,6 +997,53 @@
                 reader.readAsDataURL(file);
             });
         }
+
+        // Обработчики кнопок в админ-панели
+        addNewBtn.addEventListener('click', () => {
+            cancelEditing();
+        });
+
+        cancelEditBtn.addEventListener('click', () => {
+            cancelEditing();
+        });
+
+        updateBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            saveProperty(true);
+        });
+
+        propertyForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (editingId) {
+                // если вдруг нажали Enter в режиме редактирования, но кнопка update скрыта, игнорируем
+                return;
+            }
+            saveProperty(false);
+        });
+
+        // Вход и открытие админки
+        openLoginBtn.addEventListener('click', () => loginModal.classList.add('active'));
+        closeLoginBtn.addEventListener('click', () => loginModal.classList.remove('active'));
+        loginSubmitBtn.addEventListener('click', () => {
+            const login = document.getElementById('loginInput').value.trim();
+            const pass = document.getElementById('passwordInput').value;
+            if (login === ADMIN_LOGIN && pass === ADMIN_PASSWORD) {
+                loginModal.classList.remove('active');
+                adminModal.classList.add('active');
+                document.getElementById('loginError').textContent = '';
+                cancelEditing(); // сброс на всякий случай
+                renderAdminList();
+            } else {
+                document.getElementById('loginError').textContent = 'Identifiants incorrects';
+            }
+        });
+
+        closeAdminBtn.addEventListener('click', () => {
+            adminModal.classList.remove('active');
+            cancelEditing();
+        });
+        closeDetailBtn.addEventListener('click', () => detailModal.classList.remove('active'));
+        window.addEventListener('click', (e) => { if (e.target.classList.contains('modal')) e.target.classList.remove('active'); });
 
         btnFr.addEventListener('click', () => updateLanguage('fr'));
         btnEn.addEventListener('click', () => updateLanguage('en'));
